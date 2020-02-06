@@ -6,4 +6,8 @@
 ## 기능정리
 ![function](./doc/function.png)
 ## 기술스택
-react.js django or nodejs
+1) 서버 환경 : AWS Beanstalk
+2) 개발 언어 : Python
+3) Server : Django DRF
+4) Frontend : ReactJS
+5) DBMS : PostgreSql

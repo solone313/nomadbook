@@ -2,5 +2,8 @@
 목표: 한국 버전의 “GoodReads 클론” 만들기  
 👉🏻 자세히 보기: https://hackathon.nomadcoders.co/ 
 
+
+## 기능정리
+![function](./doc/function.png)
 ## 기술스택
 react.js django or nodejs

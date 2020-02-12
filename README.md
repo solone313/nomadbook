@@ -8,6 +8,6 @@
 ## 기술스택
 1) 서버 환경 : AWS Beanstalk
 2) 개발 언어 : Nodejs
-3) Infra : AWS serverless framework
+3) Backend : Express.js
 4) Frontend : ReactJS
-5) DBMS : nosql - DynamoDB
+5) DBMS : mongoDB

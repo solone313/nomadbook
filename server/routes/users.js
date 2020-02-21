@@ -96,7 +96,7 @@ router.post("/googleLogin", (req, res) => {
                         if (err) {
                             return res.status(400).json({
                                 loginSuccess: false,
-                                error: errorHandler(err)
+                                error: err
                             });
                         }
                         user.generateToken((err, user) => {

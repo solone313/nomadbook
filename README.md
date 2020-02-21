@@ -11,3 +11,14 @@
 3) Backend : Express.js
 4) Frontend : ReactJS
 5) DBMS : mongoDB
+
+
+## 구현
+1) 로그인 구현 : 성공 (소셜로그인: 구글)
+2) 리스트 : 구현중
+3) 검색 : 구현중
+4) 디테일 : 구현중
+5) ADD NEW : 구현중
+6) RATE and REVIEW : 구현중
+7) WANT to read : 구현중
+8) Profile page : 구현중

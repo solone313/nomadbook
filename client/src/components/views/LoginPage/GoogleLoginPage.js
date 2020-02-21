@@ -3,14 +3,16 @@ import { withRouter } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import { loginWithGoogle } from '../../../_actions/user_actions';
 import { GOOGLE_CLIENT_ID } from '../../../config/key';
-
+import { useDispatch } from "react-redux";
 const GoogleLoginPage = () => {
+    const dispatch = useDispatch();
     const responseGoogle = response => {
         console.log('responseGoogle',response);
         const tokenId = response.tokenId;
         const user = { tokenId };
 
-        loginWithGoogle(user).then(data => {
+        dispatch(loginWithGoogle(user))
+        .then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {

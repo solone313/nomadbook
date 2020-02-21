@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import { loginWithGoogle } from '../../../_actions/user_actions';
 import { GOOGLE_CLIENT_ID } from '../../../config/key';
 import { useDispatch } from "react-redux";
-import { withRouter } from "react-router-dom";
-
-function GoogleLoginPage(props) {
+function GoogleLoginPage (props) {
+    const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
+  
+    const [formErrorMessage, setFormErrorMessage] = useState('')
+  
     const dispatch = useDispatch();
     const responseGoogle = response => {
         console.log('responseGoogle',response);
         const tokenId = response.tokenId;
         const user = { tokenId };
 
-        dispatch(loginWithGoogle(user))
-        .then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
+        dispatch(loginWithGoogle(response))
+        .then(response => { 
+                if (response.payload.loginSuccess ==true) {
+                window.localStorage.setItem('userId', response.payload.userId);
+               
                 props.history.push("/");
-                console.log(data,"여기가 데이터")
-            }
+              } 
+                else {
+                setFormErrorMessage('Check out your Account or Password again')
+              }
         });
     };
 

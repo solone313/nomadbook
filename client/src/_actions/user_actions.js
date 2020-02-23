@@ -50,7 +50,7 @@ export function logoutUser(){
 export function loginWithGoogle(dataToSubmit){
     const request = axios.post(`${USER_SERVER}/googleLogin`,dataToSubmit)
     .then(response => response.data);
-    //console.log(request, '오늘밤주인공은나야나');
+    // console.log(request, '오늘밤주인공은나야나');
     return {
         type: LOGIN_USER,
         payload: request

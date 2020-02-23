@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "react boiler plate",
   "main": "index.js",
-  "engine":{
-    "node": "12.13.1",
-    "npm": "6.13.4"
+  "engine":{	
+    "node": "12.13.1",	
+    "npm": "6.13.4"	
   },
   "scripts": {
     "start": "node server/index.js",

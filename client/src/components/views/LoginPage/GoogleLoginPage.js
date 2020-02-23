@@ -5,16 +5,15 @@ import { loginWithGoogle } from '../../../_actions/user_actions';
 import { GOOGLE_CLIENT_ID } from '../../../config/key';
 import { useDispatch } from "react-redux";
 function GoogleLoginPage (props) {
-  
     const [formErrorMessage, setFormErrorMessage] = useState('')
   
     const dispatch = useDispatch();
     const responseGoogle = response => {
-        // console.log(response);
+        // console.log('responseGoogle',response);
         const tokenId = response.tokenId;
         const user = { tokenId };
 
-        dispatch(loginWithGoogle(user))
+        dispatch(loginWithGoogle(response))
         .then(response => { 
                 if (response.payload.loginSuccess ==true) {
                 window.localStorage.setItem('userId', response.payload.userId);

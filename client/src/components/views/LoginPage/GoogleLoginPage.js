@@ -5,13 +5,11 @@ import { loginWithGoogle } from '../../../_actions/user_actions';
 import { GOOGLE_CLIENT_ID } from '../../../config/key';
 import { useDispatch } from "react-redux";
 function GoogleLoginPage (props) {
-    const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
-  
     const [formErrorMessage, setFormErrorMessage] = useState('')
   
     const dispatch = useDispatch();
     const responseGoogle = response => {
-        console.log('responseGoogle',response);
+        // console.log('responseGoogle',response);
         const tokenId = response.tokenId;
         const user = { tokenId };
 
@@ -30,6 +28,9 @@ function GoogleLoginPage (props) {
 
     return (
         <div className="pb-3">
+            {formErrorMessage && (
+                <label ><p style={{ color: '#ff0000bf', fontSize: '0.7rem', border: '1px solid', padding: '1rem', borderRadius: '10px' }}>{formErrorMessage}</p></label>
+            )}
             <GoogleLogin
                 clientId={`${GOOGLE_CLIENT_ID}`}
                 buttonText="Login with Google"

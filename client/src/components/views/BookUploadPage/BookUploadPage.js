@@ -21,7 +21,7 @@ const Catogory = [
     { value: 0, label: "Sports" },
 ]
 
-function UploadVideoPage(props) {
+function UploadBookPage(props) {
     const user = useSelector(state => state.user);
 
     const [title, setTitle] = useState("");
@@ -30,7 +30,6 @@ function UploadVideoPage(props) {
     const [Categories, setCategories] = useState("Film & Animation")
     const [FilePath, setFilePath] = useState("")
     const [Duration, setDuration] = useState("")
-    const [Thumbnail, setThumbnail] = useState("")
 
 
     const handleChangeTitle = (event) => {
@@ -64,14 +63,13 @@ function UploadVideoPage(props) {
             privacy: privacy,
             filePath: FilePath,
             category: Categories,
-            duration: Duration,
-            thumbnail: Thumbnail
+            duration: Duration
         }
 
         axios.post('/api/book/uploadBook', variables)
             .then(response => {
                 if (response.data.success) {
-                    message.success('성공해따리~~~')
+                    message.success('업로드에 성공했습니다')
                     setTimeout(()=>{
                         props.history.push('/')
                     },3000)
@@ -112,7 +110,7 @@ function UploadVideoPage(props) {
     return (
         <div style={{ maxWidth: '700px', margin: '2rem auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                <Title level={2} > Upload Video</Title>
+                <Title level={2} > Upload book</Title>
             </div>
 
             <Form onSubmit={onSubmit}>
@@ -149,18 +147,13 @@ function UploadVideoPage(props) {
                 <br /><br />
                 <label>author</label>
                 <Input
-                  
-                    
                 />
                 <br /><br />
                 <label>publisher</label>
-                <Input
-                   
-                />
+                <Input />
                 <br /><br />
                 <label>year</label>
-                <Input
-                   
+                <Input  
                 />
                 <br /><br />
                 <label>Description</label>
@@ -192,4 +185,4 @@ function UploadVideoPage(props) {
     )
 }
 
-export default UploadVideoPage
+export default UploadBookPage;

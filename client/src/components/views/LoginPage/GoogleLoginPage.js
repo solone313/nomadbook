@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import { loginWithGoogle } from '../../../_actions/user_actions';
-import { GOOGLE_CLIENT_ID } from '../../../config/key';
+import config from '../../../config/key';
 import { useDispatch } from "react-redux";
 function GoogleLoginPage (props) {
     const [formErrorMessage, setFormErrorMessage] = useState('')
   
     const dispatch = useDispatch();
     const responseGoogle = response => {
-        // console.log('responseGoogle',response);
+        console.log('responseGoogle',process.env.GOOOGLE_CLIENT_ID);
         const tokenId = response.tokenId;
         const user = { tokenId };
 
@@ -32,7 +32,7 @@ function GoogleLoginPage (props) {
                 <label ><p style={{ color: '#ff0000bf', fontSize: '0.7rem', border: '1px solid', padding: '1rem', borderRadius: '10px' }}>{formErrorMessage}</p></label>
             )}
             <GoogleLogin
-                clientId={`${GOOGLE_CLIENT_ID}`}
+                clientId={`${config.GOOGLE_CLIENT_ID}`}
                 buttonText="Login with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}

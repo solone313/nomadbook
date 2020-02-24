@@ -54,7 +54,7 @@ function UploadBookPage(props) {
 
         event.preventDefault();
 
-       console.log(event)
+    //    console.log(event)
  
         const variables = {
             writer: user.userData._id,
@@ -84,7 +84,7 @@ function UploadBookPage(props) {
 
         let formData = new FormData();
         const config = {
-            header: { 'content-type': 'multipart/form-data' }
+            header: { 'content-type': 'text/html' }
         }
         formData.append("file", files[0])
         axios.post('/api/book/uploadfiles', formData, config)
@@ -98,9 +98,10 @@ function UploadBookPage(props) {
                     setFilePath(response.data.url)
 
                     //gerenate thumbnail with this filepath ! 
-
+                    
 
                 } else {
+                    console.log('uploadfiles', response.data.err)
                     alert('failed to save the video in server')
                 }
             })
@@ -133,6 +134,7 @@ function UploadBookPage(props) {
 
                     {FilePath &&
                         <div>
+                            {/* <img src={`http://secret-sea-59801.herokuapp.com/${FilePath}`} alt="haha" style={{ width:'400px'}}/> */}
                             <img src={`http://localhost:5000/${FilePath}`} alt="haha" style={{ width:'400px'}}/>
                         </div>
                     }

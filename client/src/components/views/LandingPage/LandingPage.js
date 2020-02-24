@@ -22,7 +22,10 @@ function LandingPage() {
             .then(response => {
                 if (response.data.success) {
                     setbooks(response.data.books)
-                    setFilePath(response.data.books[0].filePath)
+                    // console.log('/api/book/getbooks',response.data.books[0])
+                    if(response.data.books[0]){
+                        setFilePath(response.data.books[0].filePath)
+                    }
 
                 } else {
                     alert('책 가져오기를 실패 했습니다.')
@@ -31,7 +34,7 @@ function LandingPage() {
     }, [])
 
     const renderCards = books.map((book, index) => {
-        return  <Col lg={6} md={8} xs={24}>
+        return  <Col lg={6} md={8} xs={24} key={book._id}>
         <div
             style={{
                 position: 'relative'
@@ -42,6 +45,7 @@ function LandingPage() {
                         width: '100%'
                     }}
                     alt="thumbnail"
+                    // src={`http://secret-sea-59801.herokuapp.com/${FilePath}`}/>
                     src={`http://localhost:5000/${FilePath}`}/>
                 <div
                     className=" duration"

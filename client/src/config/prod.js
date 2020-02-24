@@ -1,4 +1,4 @@
 module.exports = {
     mongoURI:process.env.MONGO_URI,
-    GOOGLE_CLIENT_ID:process.env.GOOGLE_CLIENT_ID
+    GOOGLE_CLIENT_ID:process.env.GOOOGLE_CLIENT_ID
 }

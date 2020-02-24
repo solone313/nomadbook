@@ -45,10 +45,10 @@ function LandingPage() {
                         width: '100%'
                     }}
                     alt="thumbnail"
-                    // src={`http://secret-sea-59801.herokuapp.com/${FilePath}`}/>
-                    src={`http://localhost:5000/${FilePath}`}/>
+                    src={`https://secret-sea-59801.herokuapp.com/${book.filePath}`} crossorigin="anonymous"/>
+                    {/* src={`http://localhost:5000/${book.filePath}`}/> */}
                 <div
-                    className=" duration"
+                    className="duration"
                     style={{
                         bottom: 0,
                         right: 0,
@@ -95,7 +95,7 @@ function LandingPage() {
                 margin: '3rem auto'
             }}>
             <Title level={2}>
-                Recommended</Title>
+                Books</Title>
             <hr/>
             <Row gutter={[32, 16]}>
                 {renderCards}

@@ -134,8 +134,8 @@ function UploadBookPage(props) {
 
                     {FilePath &&
                         <div>
-                            {/* <img src={`http://secret-sea-59801.herokuapp.com/${FilePath}`} alt="haha" style={{ width:'400px'}}/> */}
-                            <img src={`http://localhost:5000/${FilePath}`} alt="haha" style={{ width:'400px'}}/>
+                            <img src={`https://secret-sea-59801.herokuapp.com/${FilePath}`} alt="haha" style={{ width:'400px'}}/>
+                            {/* <img src={`http://localhost:5000/${FilePath}`} alt="haha" style={{ width:'400px'}}/> */}
                         </div>
                     }
                 </div>

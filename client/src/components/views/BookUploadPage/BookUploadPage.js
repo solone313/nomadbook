@@ -84,7 +84,7 @@ function UploadBookPage(props) {
 
         let formData = new FormData();
         const config = {
-            header: { 'content-type': 'text/html' }
+            header: { 'content-type': 'image/png' }
         }
         formData.append("file", files[0])
         axios.post('/api/book/uploadfiles', formData, config)

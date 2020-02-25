@@ -2,8 +2,18 @@ const express = require('express');
 const router = express.Router();
 const { Book } = require("../models/Book");
 const multer = require('multer');
-var ffmpeg = require('fluent-ffmpeg');
+const multerS3 = require('multer-s3');
+const fs = require('fs'); 
+const path = require('path');
+const AWS = require("aws-sdk");
+const {AWS_ACCESS_KEY,AWS_SECRET_ACCESS_KEY} = require("../config/key");
+AWS.config.update({
+    accessKeyId: AWS_ACCESS_KEY,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
+    region : 'ap-northeast-2'
+});
 
+var s3 = new AWS.S3();
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -20,19 +30,28 @@ var storage = multer.diskStorage({
         cb(null, true)
     }
 })
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: "goreads", // 버킷 이름
+        contentType: multerS3.AUTO_CONTENT_TYPE, // 자동을 콘텐츠 타입 세팅
+        acl: 'public-read', // 클라이언트에서 자유롭게 가용하기 위함
+        key: (req, file, cb) => {
+            cb(null, file.originalname)
+        },
+    }),
+    limits: { fileSize: 5 * 1024 * 1024 }, // 용량 제한
+}).single('img');
 
-var upload = multer({ storage: storage }).single("file")
-//=================================
-//             Video
-//=================================
 
 router.post('/uploadfiles', (req, res) => {
-    // 비디오를 서버에 저장한다.
+    // 사진을 서버에 저장한다.
     upload(req, res, err => {
+        console.log('req이다',res.req.file);
         if(err) {
             return res.json({success:false, err})
         }
-        return res.json({success:true, url: res.req.file.path, fileName: res.req.file.filename})
+        return res.json({success:true, url: res.req.file.location, fileName: res.req.file.originalname})
     })
 })
 

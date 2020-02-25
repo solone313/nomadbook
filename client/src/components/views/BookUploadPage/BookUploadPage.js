@@ -86,17 +86,13 @@ function UploadBookPage(props) {
         const config = {
             header: { 'content-type': 'image/png' }
         }
-        formData.append("file", files[0])
+        formData.append("img", files[0])
         axios.post('/api/book/uploadfiles', formData, config)
             .then(response => {
+                console.log(response.data)
                 if (response.data.success) {
-
-                    let variable = {
-                        filePath: response.data.url,
-                        fileName: response.data.fileName
-                    }
                     setFilePath(response.data.url)
-
+                    console.log(FilePath)
                     //gerenate thumbnail with this filepath ! 
                     
 
@@ -134,7 +130,7 @@ function UploadBookPage(props) {
 
                     {FilePath &&
                         <div>
-                            <img src={`https://secret-sea-59801.herokuapp.com/${FilePath}`} alt="haha" style={{ width:'400px'}}/>
+                            <img src={`${FilePath}`} alt="haha" style={{ width:'400px'}}/>
                             {/* <img src={`http://localhost:5000/${FilePath}`} alt="haha" style={{ width:'400px'}}/> */}
                         </div>
                     }

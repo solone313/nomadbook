@@ -10,12 +10,10 @@ function GoogleLoginPage (props) {
     const dispatch = useDispatch();
     const responseGoogle = response => {
         console.log('responseGoogle',process.env.GOOOGLE_CLIENT_ID);
-        const tokenId = response.tokenId;
-        const user = { tokenId };
 
         dispatch(loginWithGoogle(response))
         .then(response => { 
-                if (response.payload.loginSuccess ==true) {
+                if (response.payload.loginSuccess === true) {
                 window.localStorage.setItem('userId', response.payload.userId);
                
                 props.history.push("/");

@@ -45,7 +45,7 @@ function LandingPage() {
                         width: '100%'
                     }}
                     alt="thumbnail"
-                    src={`https://secret-sea-59801.herokuapp.com/${book.filePath}`} crossorigin="anonymous"/>
+                    src={`${book.filePath}`} crossOrigin="anonymous"/>
                     {/* src={`http://localhost:5000/${book.filePath}`}/> */}
                 <div
                     className="duration"

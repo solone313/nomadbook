@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Typography, Button, Form, message, Input, Icon } from 'antd';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
@@ -92,12 +92,12 @@ function UploadBookPage(props) {
                 console.log(response.data)
                 if (response.data.success) {
                     setFilePath(response.data.url)
-                    console.log(FilePath)
+                    // console.log(FilePath)
                     //gerenate thumbnail with this filepath ! 
                     
 
                 } else {
-                    console.log('uploadfiles', response.data.err)
+                    // console.log('uploadfiles', response.data.err)
                     alert('failed to save the video in server')
                 }
             })

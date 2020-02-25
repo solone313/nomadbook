@@ -1,21 +1,18 @@
 import React, {useEffect, useState} from 'react'
-import {FaCode} from "react-icons/fa";
 import {
     Card,
-    Icon,
     Avatar,
     Col,
     Typography,
     Row
 } from 'antd';
 import Axios from 'axios';
-import moment, { min } from 'moment';
+import moment from 'moment';
 const {Title} = Typography
 const {Meta} = Card;
 
 function LandingPage() {
     const [books, setbooks] = useState([])
-    const [FilePath, setFilePath] = useState([""])
     useEffect(() => {
         Axios
             .get('/api/book/getbooks')
@@ -23,10 +20,6 @@ function LandingPage() {
                 if (response.data.success) {
                     setbooks(response.data.books)
                     // console.log('/api/book/getbooks',response.data.books[0])
-                    if(response.data.books[0]){
-                        setFilePath(response.data.books[0].filePath)
-                    }
-
                 } else {
                     alert('책 가져오기를 실패 했습니다.')
                 }

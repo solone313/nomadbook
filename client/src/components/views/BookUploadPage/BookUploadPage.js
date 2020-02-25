@@ -4,68 +4,55 @@ import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { useSelector } from "react-redux";
 
-
 const { Title } = Typography;
 const { TextArea } = Input;
-
-const Private = [
-    { value: 0, label: 'Private' },
-    { value: 1, label: 'Public' }
-]
-
 const Catogory = [
-    { value: 0, label: "Film & Animation" },
-    { value: 0, label: "Autos & Vehicles" },
-    { value: 0, label: "Music" },
-    { value: 0, label: "Pets & Animals" },
-    { value: 0, label: "Sports" },
+    { value: 0, label: "베스트셀러" },
+    { value: 0, label: "소설" },
+    { value: 0, label: "시" },
+    { value: 0, label: "인문학" },
+    { value: 0, label: "에세이" },
 ]
-
 function UploadBookPage(props) {
     const user = useSelector(state => state.user);
-
     const [title, setTitle] = useState("");
+    const [Author, setAuthor] = useState("");
+    const [Publisher, setPublisher] = useState("");
+    const [Year, setYear] = useState("");
     const [Description, setDescription] = useState("");
-    const [privacy, setPrivacy] = useState(0)
-    const [Categories, setCategories] = useState("Film & Animation")
+    const [Categories, setCategories] = useState("베스트셀러")
     const [FilePath, setFilePath] = useState("")
-    const [Duration, setDuration] = useState("")
-
-
     const handleChangeTitle = (event) => {
         setTitle(event.currentTarget.value)
     }
-
-    const handleChangeDecsription = (event) => {
-        console.log(event.currentTarget.value)
-
+    const handleChangeAuthor = (event) => {
+        setAuthor(event.currentTarget.value)
+    }
+    const handleChangePublisher = (event) => {
+        setPublisher(event.currentTarget.value)
+    }
+    const handleChangeYear = (event) => {
+        setYear(event.currentTarget.value)
+    }  
+    const handleChangeDescription = (event) => {
         setDescription(event.currentTarget.value)
-    }
-
+    }  
     const handleChangeOne = (event) => {
-        setPrivacy(event.currentTarget.value)
-    }
-
-    const handleChangeTwo = (event) => {
         setCategories(event.currentTarget.value)
     }
-
     const onSubmit = (event) => {
-
         event.preventDefault();
-
     //    console.log(event)
- 
         const variables = {
             writer: user.userData._id,
             title: title,
             description: Description,
-            privacy: privacy,
             filePath: FilePath,
             category: Categories,
-            duration: Duration
+            author: Author,
+            publisher: Publisher,
+            year: Year
         }
-
         axios.post('/api/book/uploadBook', variables)
             .then(response => {
                 if (response.data.success) {
@@ -77,9 +64,7 @@ function UploadBookPage(props) {
                     alert('Failed to upload Book')
                 }
             })
-
     }
-
     const onDrop = (files) => {
 
         let formData = new FormData();
@@ -89,27 +74,20 @@ function UploadBookPage(props) {
         formData.append("img", files[0])
         axios.post('/api/book/uploadfiles', formData, config)
             .then(response => {
-                console.log(response.data)
                 if (response.data.success) {
                     setFilePath(response.data.url)
-                    // console.log(FilePath)
                     //gerenate thumbnail with this filepath ! 
-                    
-
                 } else {
                     // console.log('uploadfiles', response.data.err)
                     alert('failed to save the video in server')
                 }
             })
-
     }
-
     return (
         <div style={{ maxWidth: '700px', margin: '2rem auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                 <Title level={2} > Upload book</Title>
             </div>
-
             <Form onSubmit={onSubmit}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Dropzone
@@ -122,8 +100,6 @@ function UploadBookPage(props) {
                             >
                                 <input {...getInputProps()} />
                                 <Icon type="plus" style={{ fontSize: '3rem' }} />
-
-
                             </div>
                         )}
                     </Dropzone>
@@ -135,7 +111,6 @@ function UploadBookPage(props) {
                         </div>
                     }
                 </div>
-
                 <br /><br />
                 <label>Title</label>
                 <Input
@@ -145,39 +120,38 @@ function UploadBookPage(props) {
                 <br /><br />
                 <label>author</label>
                 <Input
+                    onChange={handleChangeAuthor}
+                    value={Author}
                 />
                 <br /><br />
                 <label>publisher</label>
-                <Input />
+                <Input
+                    onChange={handleChangePublisher}
+                    value={Publisher}
+                />
                 <br /><br />
                 <label>year</label>
-                <Input  
+                <Input
+                    onChange={handleChangeYear}
+                    value={Year}
                 />
                 <br /><br />
                 <label>Description</label>
-                <TextArea
-                   
+                <TextArea 
+                     onChange={handleChangeDescription}
+                     value={Description}
                 />
                 <br /><br />
-
                 <select onChange={handleChangeOne}>
-                    {Private.map((item, index) => (
-                        <option key={index} value={item.value}>{item.label}</option>
-                    ))}
-                </select>
-                <br /><br />
-
-                <select onChange={handleChangeTwo}>
                     {Catogory.map((item, index) => (
                         <option key={index} value={item.label}>{item.label}</option>
                     ))}
                 </select>
                 <br /><br />
-
                 <Button type="primary" size="large" onClick={onSubmit}>
-                    Submit
-            </Button>
-            <br/><br/>
+                    제출
+                </Button>
+                 <br/><br/>
             </Form>
         </div>
     )

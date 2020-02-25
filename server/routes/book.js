@@ -47,7 +47,7 @@ const upload = multer({
 router.post('/uploadfiles', (req, res) => {
     // 사진을 서버에 저장한다.
     upload(req, res, err => {
-        console.log('req이다',res.req.file);
+        // console.log('req이다',res.req.file);
         if(err) {
             return res.json({success:false, err})
         }
@@ -56,12 +56,12 @@ router.post('/uploadfiles', (req, res) => {
 })
 
 router.post('/uploadBook', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const book = new Book(req.body)
     
     book.save((err,doc)=>{
         if(err) return res.json({success:false,err})
-        console.log(doc)
+        // console.log(doc)
         res.status(200).json({success:true})
     })
 })

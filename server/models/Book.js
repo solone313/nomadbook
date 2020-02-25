@@ -19,15 +19,18 @@ const bookSchema = mongoose.Schema({
     category: {
         type: String
     },
-    views: {
-        type: String,
-        default: 0
-    },
-    duration: {
+    author: {
         type: String
     },
-    thumbnail:{
-        type:String
+    publisher: {
+        type: String
+    },
+    year: {
+        type: String,
+    },
+    rating: {
+        type: String,
+        default: 0
     }
 }, {timestamps:true})
 

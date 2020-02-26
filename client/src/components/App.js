@@ -8,7 +8,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import BookUploadPage from "./views/BookUploadPage/BookUploadPage";
-
+import BookDetailPage from "./views/BookDetailPage/BookDetailPage"
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
@@ -19,6 +19,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/book/upload" component={Auth(BookUploadPage, true)} />
+          <Route exact path="/book/:bookId" component={Auth(BookDetailPage, null)} />
         </Switch>
       </div>
       <Footer />

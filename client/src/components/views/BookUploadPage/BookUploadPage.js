@@ -79,7 +79,7 @@ function UploadBookPage(props) {
                     //gerenate thumbnail with this filepath ! 
                 } else {
                     // console.log('uploadfiles', response.data.err)
-                    alert('failed to save the video in server')
+                    alert('failed to save the book in server')
                 }
             })
     }

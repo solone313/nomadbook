@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
 function SideBook() {
@@ -16,14 +16,14 @@ function SideBook() {
     }, [])
 
     const renderSideBook = SideBook.map((book, index) => {
-        return <div style={{ display:'flex', marginBottom:'1rem', padding: '0 2rem'}}>
+        return <div key={book._id} style={{ display:'flex', marginBottom:'1rem', padding: '0 2rem'}}>
         <div style={{width: '40%', marginRight: '1rem'}}>
-            <a href>
+            <a href="#">
                 <img style={{width:'100%', height:'100%'}} src={`${book.filePath}`}  alt="thumbnail"/>
             </a>
         </div>
         <div style={{width:'50%'}}>
-            <a href style={{color:'gray'}}>
+            <a href="#" style={{color:'gray'}}>
                 <span style={{ fontSize:'1rem', color:'black'}}>{book.Title}</span>
                 <span>{book.writer.name}</span><br />
                 <span>{ book.description }</span><br />

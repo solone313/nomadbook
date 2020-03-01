@@ -1,7 +1,9 @@
 import React, {useState, useEffect } from 'react'
 import { Row, Col, List, Avatar } from 'antd';
 import Axios from 'axios';
-import SideBook from './Section/SideBook'
+import SideBook from './Sections/SideBook';
+import Subscribe from './Sections/Subscribe';
+import Comments from './Sections/Comments';
 
 function BookDetailPage(props) {
     const bookId = props.match.params.bookId
@@ -28,14 +30,14 @@ function BookDetailPage(props) {
                     <img src={`${BookDetail.filePath}`} style={{width: '100%' }}/>
                 </div>
                 <List.Item
-                    actions>
+                    actions={[<Subscribe userTo={BookDetail.writer._id} userFrom={localStorage.getItem('userId')} />]}>
                         <List.Item.Meta
                             avatar={ <Avatar src={BookDetail.writer.image} />}
                             title={ BookDetail.writer.name }
                             description={ BookDetail.description }
                             />
                 </List.Item>
-                {/* Comments */}
+                <Comments />
             </div>
         </Col>
         <Col lg={6} xs={24}>

@@ -76,7 +76,15 @@ router.get('/getbooks', (req, res) => {
         })
 })
 
-
-
+router.post('/getBookDetail', (req, res) => {
+    Book.findOne({ "_id": req.body.bookId })
+        .populate('writer')
+        .exec((err, book)=>{
+            // console.log(book)
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, book })
+        })
+ })
+ 
 
 module.exports = router;

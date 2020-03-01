@@ -6,16 +6,14 @@ import config from '../../../config/key';
 import { useDispatch } from "react-redux";
 function GoogleLoginPage (props) {
     const [formErrorMessage, setFormErrorMessage] = useState('')
-  
+
     const dispatch = useDispatch();
     const responseGoogle = response => {
         console.log('responseGoogle',process.env.GOOOGLE_CLIENT_ID);
-
         dispatch(loginWithGoogle(response))
         .then(response => { 
                 if (response.payload.loginSuccess === true) {
-                window.localStorage.setItem('userId', response.payload.userId);
-               
+                window.localStocrage.setItem('userId', response.payload.userId);            
                 props.history.push("/");
               } 
                 else {

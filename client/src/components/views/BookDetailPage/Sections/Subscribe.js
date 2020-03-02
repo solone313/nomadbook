@@ -15,19 +15,19 @@ function Subscribe(props) {
         }
 
         if(Subscribed) {
-            //when we are already subscribed 
+            //구독하고 있을 때
             axios.post('/api/subscribe/unSubscribe', subscribeVariables)
                 .then(response => {
                     if(response.data.success){ 
                         setSubscribeNumber(SubscribeNumber - 1)
                         setSubscribed(!Subscribed)
                     } else {
-                        alert('Failed to unsubscribe')
+                        alert('구독취소에 실패했습니다')
                     }
                 })
 
         } else {
-            // when we are not subscribed yet
+            //구독하지 않았을 때
             
             axios.post('/api/subscribe/subscribe', subscribeVariables)
                 .then(response => {
@@ -35,7 +35,7 @@ function Subscribe(props) {
                         setSubscribeNumber(SubscribeNumber + 1)
                         setSubscribed(!Subscribed)
                     } else {
-                        alert('Failed to subscribe')
+                        alert('구독에 실패했습니다')
                     }
                 })
         }

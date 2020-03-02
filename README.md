@@ -19,6 +19,6 @@
 3) 검색 : 구현중
 4) 디테일 : 구현중
 5) ADD NEW : 구현
-6) RATE and REVIEW : 구현중
-7) WANT to read : 구현중
+6) RATE and REVIEW : 구현
+7) WANT to read : 구현
 8) Profile page : 구현중

@@ -50,7 +50,7 @@ function BookDetailPage(props) {
                             description={ BookDetail.description }
                             />
                 </List.Item>
-                <Comment CommentLists={CommentLists} bookId={bookId} refreshFunction={updateComment} />
+                <Comment CommentLists={CommentLists} postId={bookId} refreshFunction={updateComment} />
             </div>
         </Col>
         <Col lg={6} xs={24}>

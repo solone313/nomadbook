@@ -27,7 +27,7 @@ function LandingPage() {
     }, [])
 
     const renderCards = books.map((book, index) => {
-        return  <Col lg={6} md={8} xs={24} key={book._id}>
+        return  <Col lg={4} md={8} xs={24} key={book._id}>
         <div
             style={{
                 position: 'relative'
@@ -88,7 +88,7 @@ function LandingPage() {
                 margin: '3rem auto'
             }}>
             <Title level={2}>
-                Books</Title>
+                최근 올라온 책</Title>
             <hr/>
             <Row gutter={[32, 16]}>
                 {renderCards}

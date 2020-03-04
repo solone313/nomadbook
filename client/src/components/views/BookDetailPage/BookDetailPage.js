@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import { Row, Col, List, Avatar } from 'antd';
+import { Row, Col, List } from 'antd';
 import Axios from 'axios';
 import SideBook from './Sections/SideBook';
 import Subscribe from './Sections/Subscribe';
@@ -36,27 +36,40 @@ function BookDetailPage(props) {
     }
     if(BookDetail.writer) {
         return(
+        <div>
         <Row gutter={[16, 16]}>
-        <Col lg={18} xs={24}>
-            <div style={{ width: '100%', padding:'3rem 4rem'}}>
-                <div>
-                    <img src={`${BookDetail.filePath}`} style={{width: '100%' }}/>
-                </div>
-                <List.Item
-                    actions={[<Subscribe userTo={BookDetail.writer._id} userFrom={localStorage.getItem('userId')} />]}>
-                        <List.Item.Meta
-                            avatar={ <Avatar src={BookDetail.writer.image} />}
-                            title={ BookDetail.writer.name }
-                            description={ BookDetail.description }
+            <Col lg={18} xs={24}>
+                <div style={{ width: '100%', padding:'3rem 4rem'}}>
+                    <img src={`${BookDetail.filePath}`} style={{width: '40%', float: 'left' }}/>
+                    <div style={{width:'50%', float:'right'}}>
+                        <List.Item>
+                            <List.Item.Meta
+                                title= {BookDetail.title}
+                                description={ BookDetail.year + ',' +BookDetail.author + '  ' + BookDetail.publisher }
                             />
-                </List.Item>
-                <Comment CommentLists={CommentLists} postId={bookId} refreshFunction={updateComment} />
-            </div>
-        </Col>
-        <Col lg={6} xs={24}>
-            <SideBook />
-        </Col>
-    </Row>
+                        </List.Item>
+                        <Subscribe userTo={BookDetail.writer._id} userFrom={localStorage.getItem('userId')} />
+                    </div>
+                </div>
+            </Col>
+            <Col lg={6} xs={24}>
+                <SideBook />
+            </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+            <Col lg={18} xs={24}>
+                <div style={{ width: '100%', padding:'3rem 4rem'}}>
+                    <List.Item>
+                            <List.Item.Meta
+                                title= '책소개'
+                                description={ BookDetail.description }
+                            />
+                    </List.Item>
+                    <Comment CommentLists={CommentLists} postId={bookId} refreshFunction={updateComment} />
+                </div>
+            </Col>
+        </Row>        
+        </div>
     )
     } else{
         return (

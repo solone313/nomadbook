@@ -17,16 +17,15 @@ function SideBook() {
 
     const renderSideBook = SideBook.map((book, index) => {
         return <div key={book._id} style={{ display:'flex', marginBottom:'1rem', padding: '0 2rem'}}>
-        <div style={{width: '40%', marginRight: '1rem'}}>
+        <div style={{width: '20%', marginRight: '1rem'}}>
             <a href="#">
                 <img style={{width:'100%', height:'100%'}} src={`${book.filePath}`}  alt="thumbnail"/>
             </a>
         </div>
-        <div style={{width:'50%'}}>
+        <div style={{width:'20%'}}>
             <a href="#" style={{color:'gray'}}>
                 <span style={{ fontSize:'1rem', color:'black'}}>{book.Title}</span>
-                <span>{book.writer.name}</span><br />
-                <span>{ book.description }</span><br />
+                <span>{book.writer.name}</span>
             </a>
         </div>
     </div>

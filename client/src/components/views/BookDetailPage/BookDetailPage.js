@@ -40,7 +40,7 @@ function BookDetailPage(props) {
         <Row gutter={[16, 16]}>
             <Col lg={18} xs={24}>
                 <div style={{ width: '100%', padding:'3rem 4rem'}}>
-                    <img src={`${BookDetail.filePath}`} style={{width: '40%', float: 'left' }}/>
+                    <img src={`${BookDetail.filePath}`} style={{width: '40%', float: 'left' }} alt="DetailImg"/>
                     <div style={{width:'50%', float:'right'}}>
                         <List.Item>
                             <List.Item.Meta

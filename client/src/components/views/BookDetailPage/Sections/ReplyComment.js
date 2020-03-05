@@ -13,6 +13,7 @@ function ReplyComment(props) {
             if (comment.responseTo === props.parentCommentId) {
                 commentNumber++
             }
+            return null;
         })
         setChildCommentNumber(commentNumber)
     }, [props.CommentLists, props.parentCommentId])

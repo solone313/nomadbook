@@ -5,15 +5,21 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import SingleComment from './SingleComment';
 import ReplyComment from './ReplyComment';
+import StarRatingComponent from 'react-star-rating-component';
+
 const { TextArea } = Input;
 
 function Comments(props) {
     const user = useSelector(state => state.user)
     const [Comment, setComment] = useState("")
-
+    const [Rating, setRating] = useState(1)
     const handleChange = (e) => {
         setComment(e.currentTarget.value)
     }
+
+    const onStarClick = (nextValue, prevValue, name) => {
+      setRating(nextValue)
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -21,7 +27,8 @@ function Comments(props) {
         const variables = {
             content: Comment,
             writer: user.userData._id,
-            postId: props.postId
+            postId: props.postId,
+            rating: Rating 
         }
 
         axios.post('/api/comment/saveComment', variables)
@@ -41,7 +48,6 @@ function Comments(props) {
             <p> replies</p>
             <hr />
             {/* Comment Lists  */}
-            {console.log(props.CommentLists)}
 
             {props.CommentLists && props.CommentLists.map((comment, index) => (
                 (!comment.responseTo &&
@@ -55,7 +61,12 @@ function Comments(props) {
 
 
             {/* Root Comment Form */}
-            <form style={{ display: 'flex' }} onSubmit={onSubmit}>
+            <form style={{ display: "flex", flexDirection: "column" }} onSubmit={onSubmit}>
+                <StarRatingComponent 
+                  name='bookrating'
+                  value={Rating}
+                  onStarClick={onStarClick}
+                />
                 <TextArea
                     style={{ width: '100%', borderRadius: '5px' }}
                     onChange={handleChange}

@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {
     Card,
-    Avatar,
     Col,
     Typography,
     Row
 } from 'antd';
 import Axios from 'axios';
-import moment from 'moment';
 const {Title} = Typography
 const {Meta} = Card;
 
@@ -61,23 +59,12 @@ function LandingPage() {
                 </div>
             </a>
         </div><br/>
-        <Meta
-            avatar={<Avatar src = {
-                book.writer.image
-            } />
-}
-            title={book.title}/>
-        <span>{book.writer.name}
-        </span><br/>
-        <span
-            style={{
-                marginLeft: '3rem'
-            }}>
-            {book.views}</span>
-        -
+        <Meta title={book.title} />
         <span>
-            {moment(book.createdAt).format("MMM Do YY")}
+          {book.author}, {book.publisher}
         </span>
+        <br />
+        <span>평점: {book.rating}</span>
     </Col>
     });
 

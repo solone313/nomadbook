@@ -5,7 +5,7 @@ function SideBook() {
     const [SideBook, setSideBook] = useState([])
     useEffect(() => {
         Axios
-            .get('/api/book/getbooks')
+            .get('/api/book/getsidebooks')
             .then(response => {
                 if (response.data.success) {
                     setSideBook(response.data.books)
@@ -14,7 +14,7 @@ function SideBook() {
                 }
             })
     }, [])
-
+      
     const renderSideBook = SideBook.map((book, index) => {
         return <div key={book._id} style={{ display:'flex', marginBottom:'1rem', padding: '0 2rem'}}>
         <div style={{width: '20%', marginRight: '1rem'}}>

@@ -61,6 +61,24 @@ router.get('/getbooks', (req, res) => {
         })
 })
 
+router.get('/getsidebooks', (req, res) => {
+    function shuffle(a) { var j, x, i; 
+        for (i = a.length; i; i -= 1) {
+            j = Math.floor(Math.random() * i); 
+            x = a[i - 1]; 
+            a[i - 1] = a[j]; 
+            a[j] = x;
+    }}
+    //책을 DB에 가져와서 클라이언트에 보낸다
+    Book.find()
+         .populate('writer')
+         .exec((err, books)=>{
+             if(err)return res.status(400).send(err);
+             shuffle(books);
+             res.status(200).json({success:true, books: books.slice(0,5)});
+         })
+ })
+
 router.post('/getBookDetail', (req, res) => {
     Book.findOne({ "_id": req.body.bookId })
         .populate('writer')

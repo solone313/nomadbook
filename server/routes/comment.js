@@ -9,6 +9,7 @@ const { Comment } = require("../models/Comment");
 
 
 router.post("/saveComment", (req, res) => {
+    if(!req.body.writer) return res.json({ success: false, err: "로그인이 필요합니다." })
 
     const comment = new Comment(req.body)
 

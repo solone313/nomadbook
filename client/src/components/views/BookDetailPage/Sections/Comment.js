@@ -4,7 +4,6 @@ import { Button, Input } from 'antd';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import SingleComment from './SingleComment';
-import ReplyComment from './ReplyComment';
 import StarRatingComponent from 'react-star-rating-component';
 
 const { TextArea } = Input;
@@ -37,7 +36,7 @@ function Comments(props) {
                     setComment("")
                     props.refreshFunction(response.data.result)
                 } else {
-                    alert('코멘트 저장에 실패했다')
+                    alert('코멘트 저장에 실패했습니다 이유: ' + response.data.err)
                 }
             })
     }
@@ -53,7 +52,6 @@ function Comments(props) {
                 (!comment.responseTo &&
                     <React.Fragment key={index}>
                         <SingleComment comment={comment} postId={props.postId} refreshFunction={props.refreshFunction} />
-                        <ReplyComment  CommentLists={props.CommentLists} postId={props.postId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} />
                     </React.Fragment>
                 )
             ))}

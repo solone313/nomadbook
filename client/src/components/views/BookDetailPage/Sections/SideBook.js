@@ -25,7 +25,7 @@ function SideBook() {
         <div style={{width:'20%'}}>
             <a href="#" style={{color:'gray'}}>
                 <span style={{ fontSize:'1rem', color:'black'}}>{book.Title}</span>
-                <span>{book.writer.name}</span>
+                <span>{book.title}</span>
             </a>
         </div>
     </div>

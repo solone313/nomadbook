@@ -48,7 +48,7 @@ function BookDetailPage(props) {
                                 description={ BookDetail.year + ',' +BookDetail.author + '  ' + BookDetail.publisher }
                             />
                         </List.Item>
-                        <Subscribe userTo={BookDetail.writer._id} userFrom={localStorage.getItem('userId')} />
+                        <Subscribe userTo={BookDetail._id} userFrom={localStorage.getItem('userId')} />
                     </div>
                 </div>
             </Col>

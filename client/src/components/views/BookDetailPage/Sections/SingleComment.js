@@ -15,7 +15,7 @@ function SingleComment(props) {
                     alt="image"
                 />
             }
-            content={<p><h3>{props.comment.rating}개의 별점 부여</h3>{props.comment.content}</p>}
+            content={<div><h3>{props.comment.rating}개의 별점 부여</h3><p>{props.comment.content}</p></div>}
         ></Comment>
 
     </div>

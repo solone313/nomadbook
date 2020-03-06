@@ -76,7 +76,7 @@ function Subscribe(props) {
                 borderRadius: '4px', color: 'white',
                 padding: '10px 16px', fontWeight: '500', fontSize: '1rem', textTransform: 'uppercase'
             }}>
-                {SubscribeNumber} {Subscribed ? 'Subscribed' : 'Subscribe'}
+                {SubscribeNumber} {Subscribed ? 'Cancel Want' : 'Want to Read'}
             </button>
         </div>
     )

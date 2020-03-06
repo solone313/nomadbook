@@ -100,7 +100,7 @@ router.post('/getBookDetail', (req, res) => {
             })
 
              //찾은 사람들의 책을 가지고 온다.
-            Book.find({ writer : { $in: subscribedUser}})
+            Book.find({ _id : { $in: subscribedUser}})
                 .populate('writer')
                 .exec((err,books)=>{
                     if(err) return res.status(400).send(err);

@@ -66,12 +66,13 @@ function LandingPage() {
         <span>
         {book.author}, {book.publisher}
         </span>
-        <br />
-        <span>평점: {book.rating}</span>
+        {/* <br />
+        <span>평점: {book.rating}</span> */}
     </Col>
     });
 
-    return (
+    return (<div>
+        <img src="./good.png" style={{width: "100%"}} alt="banner"></img>
         <div
             style={{
                 width: '85%',
@@ -84,6 +85,7 @@ function LandingPage() {
                 {renderCards}
             </Row>
 
+        </div>
         </div>
     )
 }

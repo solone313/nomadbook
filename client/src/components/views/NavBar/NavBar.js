@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import LeftMenu from './Sections/LeftMenu';
 import RightMenu from './Sections/RightMenu';
-import { Drawer, Button, Icon } from 'antd';
+import { Drawer, Button, Icon, Input } from 'antd';
 import './Sections/Navbar.css';
+
+const { Search } = Input;
 
 function NavBar() {
   const [visible, setVisible] = useState(false)
@@ -29,6 +31,13 @@ function NavBar() {
         <div className="menu_rigth">
           <RightMenu mode="horizontal" />
         </div>
+        <div className="menu_searchbox">
+          <Search
+            placeholder="input search text"
+            onSearch={value => alert("개발중입니다 검색: "+ value)}
+            style={{ width: 200 }}
+          />
+        </div>
         <Button
           className="menu__mobile-button"
           type="primary"
@@ -37,13 +46,14 @@ function NavBar() {
           <Icon type="align-right" />
         </Button>
         <Drawer
-          title="Basic Drawer"
+          title="메뉴"
           placement="right"
           className="menu_drawer"
           closable={false}
           onClose={onClose}
           visible={visible}
         >
+          <Search mode="inline" />
           <LeftMenu mode="inline" />
           <RightMenu mode="inline" />
         </Drawer>

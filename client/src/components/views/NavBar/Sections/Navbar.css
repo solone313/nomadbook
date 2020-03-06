@@ -38,6 +38,11 @@
   float: right;
 }
 
+.menu__container .menu_searchbox {
+  padding-top: 20px;
+  float: right;
+}
+
 .menu__mobile-button {
   float: right;
   height: 32px;
@@ -62,7 +67,8 @@
   }
 
   .menu_left,
-  .menu_rigth {
+  .menu_rigth,
+  .menu_searchbox {
     display: none;
   }
 

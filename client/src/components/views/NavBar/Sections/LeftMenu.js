@@ -9,6 +9,9 @@ function LeftMenu(props) {
     <Menu.Item key="mail">
       <a href="/">홈</a>
     </Menu.Item>
+    <Menu.Item key="introduce">
+          <a href="https://github.com/solone313/nomadbook" target="_blank">소개</a>
+        </Menu.Item>
     <Menu.Item key="subscription">
       <a href="/subscription">내 구독</a>
     </Menu.Item>

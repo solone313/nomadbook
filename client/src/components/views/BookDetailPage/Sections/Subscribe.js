@@ -15,7 +15,7 @@ function Subscribe(props) {
         }
 
         if(Subscribed) {
-            //구독하고 있을 때
+            //구독하지 않을때
             axios.post('/api/subscribe/unSubscribe', subscribeVariables)
                 .then(response => {
                     if(response.data.success){ 
@@ -27,7 +27,7 @@ function Subscribe(props) {
                 })
 
         } else {
-            //구독하지 않았을 때
+            //구독하고 있을 때
             
             axios.post('/api/subscribe/subscribe', subscribeVariables)
                 .then(response => {

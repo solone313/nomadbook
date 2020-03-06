@@ -18,7 +18,9 @@ function NavBar() {
   return (
     <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
       <div className="menu__logo">
-        <img src="https://goreads.s3.ap-northeast-2.amazonaws.com/goreads.png" height="55" width="120" alt="mainImg"/>
+        <a href="/">
+          <img src="https://goreads.s3.ap-northeast-2.amazonaws.com/goreads.png" height="55" width="120" alt="mainImg"/>
+        </a>
       </div>
       <div className="menu__container">
         <div className="menu_left">

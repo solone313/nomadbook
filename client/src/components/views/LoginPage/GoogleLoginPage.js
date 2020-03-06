@@ -8,7 +8,6 @@ function GoogleLoginPage (props) {
   
     const dispatch = useDispatch();
     const responseGoogle = response => {
-        console.log('responseGoogle',process.env.GOOOGLE_CLIENT_ID);
 
         dispatch(loginWithGoogle(response))
         .then(response => { 

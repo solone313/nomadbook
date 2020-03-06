@@ -15,7 +15,7 @@ function BookDetailPage(props) {
         Axios.post('/api/book/getBookDetail', variable)
             .then(response => {
                 if(response.data.success){
-                    console.log(response.data.book)
+                    // console.log(response.data.book)
                     setBookDetail(response.data.book)
                 }else {
                     alert('북 정보를 가져오기를 실패했습니다.')
@@ -24,7 +24,7 @@ function BookDetailPage(props) {
         Axios.post('/api/comment/getComments', variable)
             .then(response => {
                 if(response.data.success){
-                    console.log('response.data.comments',response.data.comments)
+                    // console.log('response.data.comments',response.data.comments)
                     setCommentLists(response.data.comments)
                 } else {
                     alert('코멘트 정보를 가져오는 것을 실패했습니다.')

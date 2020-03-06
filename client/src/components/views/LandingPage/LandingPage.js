@@ -33,7 +33,8 @@ function LandingPage() {
             <a href={`/book/${book._id}`}>
                 <img
                     style={{
-                        width: '100%'
+                        width: '100%',
+                        height: "280px"
                     }}
                     alt="thumbnail"
                     src={`${book.filePath}`} crossOrigin="anonymous"/>

@@ -14,6 +14,7 @@ function Footer() {
                   GitHub - This repo
                 </a>
               </div>
+              <br/><br/>
             </div>
           </Col>
           <Col lg={12} sm={24} xs={24}>

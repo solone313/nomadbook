@@ -26,43 +26,45 @@ function LandingPage() {
 
     const renderCards = books.map((book, index) => {
         return  <Col lg={4} md={8} xs={24} key={book._id}>
-        <div
-            style={{
-                position: 'relative'
-            }}>
-            <a href={`/book/${book._id}`}>
-                <img
-                    style={{
-                        width: '100%',
-                        height: "280px"
-                    }}
-                    alt="thumbnail"
-                    src={`${book.filePath}`} crossOrigin="anonymous"/>
-                    {/* src={`http://localhost:5000/${book.filePath}`}/> */}
-                <div
-                    className="duration"
-                    style={{
-                        bottom: 0,
-                        right: 0,
-                        position: 'absolute',
-                        margin: '4px',
-                        color: '#fff',
-                        backgroundColor: 'rgba(17, 17, 17, 0.8)',
-                        opacity: 0.8,
-                        padding: '2px 4px',
-                        borderRadius: '2px',
-                        letterSpacing: '0.5px',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        lineHeight: '12px'
-                    }}>
-                   
-                </div>
-            </a>
-        </div><br/>
+        <a href={`/book/${book._id}`}>
+            <div
+                style={{
+                    position: 'relative'
+                }}>
+                
+                    <img
+                        style={{
+                            width: '200px',
+                            height: "280px"
+                        }}
+                        alt="thumbnail"
+                        src={`${book.filePath}`} crossOrigin="anonymous"/>
+                        {/* src={`http://localhost:5000/${book.filePath}`}/> */}
+                    <div
+                        className="duration"
+                        style={{
+                            bottom: 0,
+                            right: 0,
+                            position: 'absolute',
+                            margin: '4px',
+                            color: '#fff',
+                            backgroundColor: 'rgba(17, 17, 17, 0.8)',
+                            opacity: 0.8,
+                            padding: '2px 4px',
+                            borderRadius: '2px',
+                            letterSpacing: '0.5px',
+                            fontSize: '12px',
+                            fontWeight: '500',
+                            lineHeight: '12px'
+                        }}>
+                    
+                    </div>
+                
+            </div><br/>
         <Meta title={book.title} />
+        </a>
         <span>
-          {book.author}, {book.publisher}
+        {book.author}, {book.publisher}
         </span>
         <br />
         <span>평점: {book.rating}</span>

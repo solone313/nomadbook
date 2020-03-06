@@ -29,7 +29,7 @@ function Footer() {
                 류호진
               </div>
               <div>
-                <a target="_blank" rel="noopener noreferrer" href="#">EMAIL</a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.naver.com/">EMAIL</a>
                 <span> - </span>
                 solone313@naver.com
               </div>

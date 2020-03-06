@@ -21,7 +21,8 @@ function SubscriptionPage() {
             .post('/api/book/getSubscriptionBooks',SubscriptionVariables )
             .then(response => {
                 if (response.data.success) {
-                    console.log(response.data.books);
+                    // console.log(response.data.books);
+                    // console.log(SubscriptionVariables);
                     setbooks(response.data.books)
                     // console.log('/api/book/getbooks',response.data.books[0])
                 } else {

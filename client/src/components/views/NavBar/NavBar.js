@@ -53,7 +53,11 @@ function NavBar() {
           onClose={onClose}
           visible={visible}
         >
-          <Search mode="inline" />
+          <Search
+            placeholder="input search text"
+            onSearch={value => alert("개발중입니다 검색: "+ value)}
+            style={{ width: "100%" }}
+          />
           <LeftMenu mode="inline" />
           <RightMenu mode="inline" />
         </Drawer>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Comment, Avatar} from 'antd';
-
+import StarRatings from 'react-star-ratings';
 
 
 function SingleComment(props) {
@@ -15,7 +15,18 @@ function SingleComment(props) {
                     alt="image"
                 />
             }
-            content={<div><h3>{props.comment.rating}개의 별점 부여</h3><p>{props.comment.content}</p></div>}
+            content={
+            <div>
+                <h3>
+                    <StarRatings
+                        rating={props.comment.rating}
+                        starRatedColor="red"
+                        starDimension="10px"
+                        starSpacing="1px"
+                    />
+                </h3>
+                <p>{props.comment.content}</p>
+            </div>}
         ></Comment>
 
     </div>

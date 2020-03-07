@@ -16,19 +16,11 @@ router.get("/auth", auth, (req, res) => {
         isAuth: true,
         email: req.user.email,
         name: req.user.name,
-        lastname: req.user.lastname,
+        nickname: req.user.nickname,
         role: req.user.role,
         image: req.user.image,
     });
 });
-
-router.get('/movies', (req, response) => {
-    axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating")
-     .then( res => {
-        console.log(res.data.data.movies) 
-        response.status(200).json(res.data.data.movies)})
-})
-
 
 router.post("/register", (req, res) => {
 
@@ -72,7 +64,7 @@ const client = new OAuth2Client(config.GOOGLE_CLIENT_ID);
 router.post("/googleLogin", (req, res) => {
     const idToken = req.body.tokenId;
     client.verifyIdToken({ idToken, audience: config.GOOGLE_CLIENT_ID }).then(response => {
-        console.log(response,'verifyIdToken')
+        // console.log(response,'verifyIdToken')
         const { email_verified, name, email, jti, given_name } = response.payload;
         if (email_verified) {
             User.findOne({ email }).exec((err, user) => {
@@ -89,9 +81,9 @@ router.post("/googleLogin", (req, res) => {
                         });
                     })
                 } else {
-                    let lastname = given_name;
+                    let nickname = given_name;
                     let password = jti;
-                    user = new User({ name, email, lastname, password });
+                    user = new User({ name, email, nickname, password });
                     user.save((err, user) => {
                         if (err) {
                             return res.status(400).json({

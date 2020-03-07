@@ -41,7 +41,7 @@ function RegisterPage(props) {
     <Formik
       initialValues={{
         email: '',
-        lastName: '',
+        nickName: '',
         name: '',
         password: '',
         confirmPassword: ''
@@ -49,8 +49,8 @@ function RegisterPage(props) {
       validationSchema={Yup.object().shape({
         name: Yup.string()
           .required('Name is required'),
-        lastName: Yup.string()
-          .required('Last Name is required'),
+        nickName: Yup.string()
+          .required('NickName is required'),
         email: Yup.string()
           .email('Email is invalid')
           .required('Email is required'),
@@ -68,7 +68,7 @@ function RegisterPage(props) {
             email: values.email,
             password: values.password,
             name: values.name,
-            lastname: values.lastname,
+            nickname: values.nickname,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
           };
 
@@ -116,20 +116,20 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Last Name">
+              <Form.Item required label="Nick Name">
                 <Input
-                  id="lastName"
-                  placeholder="Enter your Last Name"
+                  id="nickName"
+                  placeholder="Enter your Nick Name"
                   type="text"
-                  value={values.lastName}
+                  value={values.nickName}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.lastName && touched.lastName ? 'text-input error' : 'text-input'
+                    errors.nickName && touched.nickName ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.lastName && touched.lastName && (
-                  <div className="input-feedback">{errors.lastName}</div>
+                {errors.nickName && touched.nickName && (
+                  <div className="input-feedback">{errors.nickName}</div>
                 )}
               </Form.Item>
 

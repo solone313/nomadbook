@@ -28,6 +28,7 @@ function GoogleLoginPage (props) {
                 <label ><p style={{ color: '#ff0000bf', fontSize: '0.7rem', border: '1px solid', padding: '1rem', borderRadius: '10px' }}>{formErrorMessage}</p></label>
             )}
             <GoogleLogin
+                // clientId는 공개, serverKey는 heroku에 저장 (그러나 직접쓰지않는 방안 필요)
                 clientId={`816697643379-16mtj88rrfp4mu2aukeoku23gcrmplpo.apps.googleusercontent.com`}
                 buttonText="Login with Google"
                 onSuccess={responseGoogle}

@@ -37,7 +37,20 @@ router.post("/getComments", (req, res) => {
 
 });
 
+router.post("/getBookscore", (req, res) => {
 
+    Comment.find({ "postId": req.body.bookId })
+        .exec((err, books) => {
+            average = books.reduce((sum, { rating }) => sum + rating, 0) / books.length;
+    
+            // console.log(average.toFixed(2));
+            
+            if (err) return res.status(400).send(err)
+            if (books.length===0) return res.status(200).json({ success: true, rating : "0" }) 
+            res.status(200).json({ success: true, rating : average.toFixed(2) })
+        })
+
+});
 
 
 module.exports = router;

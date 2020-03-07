@@ -4,13 +4,14 @@ import Axios from 'axios';
 import SideBook from './Sections/SideBook';
 import Subscribe from './Sections/Subscribe';
 import Comment from './Sections/Comment';
+import StarRatings from 'react-star-ratings';
 
 function BookDetailPage(props) {
     const bookId = props.match.params.bookId
     const variable = { bookId: bookId }
     const [BookDetail, setBookDetail] = useState([])
     const [CommentLists, setCommentLists] = useState([])
-    
+    const [BookScore, setBookScore] = useState(0)
     useEffect(() => {
         Axios.post('/api/book/getBookDetail', variable)
             .then(response => {
@@ -30,9 +31,27 @@ function BookDetailPage(props) {
                     alert('코멘트 정보를 가져오는 것을 실패했습니다.')
                 }
             })
+        Axios.post('/api/comment/getBookscore', variable)
+        .then(response => {
+            if(response.data.success){
+                // console.log('response.data.rating',response.data.rating, typeof(response.data.rating))
+                setBookScore(parseFloat(response.data.rating));
+            } else {
+                alert('코멘트 정보를 가져오는 것을 실패했습니다.')
+            }
+        })
     }, [])
     const updateComment  = (newComment) => {
         setCommentLists(CommentLists.concat(newComment))
+        Axios.post('/api/comment/getBookscore', variable)
+        .then(response => {
+            if(response.data.success){
+                // console.log('response.data.rating',response.data.rating, typeof(response.data.rating))
+                setBookScore(parseFloat(response.data.rating));
+            } else {
+                alert('코멘트 정보를 가져오는 것을 실패했습니다.')
+            }
+        })
     }
     if(BookDetail.writer) {
         return(
@@ -42,12 +61,18 @@ function BookDetailPage(props) {
                 <div style={{ width: '100%', padding:'3rem 4rem'}}>
                     <img src={`${BookDetail.filePath}`} style={{width: '40%', float: 'left' }} alt="DetailImg"/>
                     <div style={{width:'50%', float:'right'}}>
-                        <List.Item>
-                            <List.Item.Meta
-                                title= {BookDetail.title}
-                                description={ BookDetail.year + ',' +BookDetail.author + '  ' + BookDetail.publisher }
-                            />
-                        </List.Item>
+                        <h1> { BookDetail.title } </h1>
+                        <h3> { BookDetail.year + ',' +BookDetail.author + '  ' + BookDetail.publisher } </h3>
+                        <br/>
+                        <h3> {BookScore === 0 ? '첫 리뷰를 등록해주세요': `평점: ${BookScore}` }</h3>
+                        <StarRatings
+                            rating={BookScore}
+                            starRatedColor="blue"
+                            starDimension="20px"
+                            starSpacing="10px"
+                            
+                        />
+                        <br/><br/>
                         <Subscribe userTo={BookDetail._id} userFrom={localStorage.getItem('userId')} />
                     </div>
                 </div>

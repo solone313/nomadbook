@@ -4,20 +4,20 @@ import { Button, Input } from 'antd';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import SingleComment from './SingleComment';
-import StarRatingComponent from 'react-star-rating-component';
+import StarRatings from 'react-star-ratings';
 
 const { TextArea } = Input;
 
 function Comments(props) {
     const user = useSelector(state => state.user)
     const [Comment, setComment] = useState("")
-    const [Rating, setRating] = useState(1)
+    const [Rating, setRating] = useState(0)
     const handleChange = (e) => {
         setComment(e.currentTarget.value)
     }
 
-    const onStarClick = (nextValue, prevValue, name) => {
-      setRating(nextValue)
+    const changeRating = ( newRating, name ) => {
+      setRating(newRating)
     };
 
     const onSubmit = (e) => {
@@ -44,7 +44,7 @@ function Comments(props) {
     return (
         <div>
             <br />
-            <p> replies</p>
+            <p> reviews</p>
             <hr />
             {/* Comment Lists  */}
 
@@ -60,16 +60,21 @@ function Comments(props) {
 
             {/* Root Comment Form */}
             <form style={{ display: "flex", flexDirection: "column" }} onSubmit={onSubmit}>
-                <StarRatingComponent 
-                  name='bookrating'
-                  value={Rating}
-                  onStarClick={onStarClick}
+                별점입력
+                <StarRatings
+                    rating={Rating}
+                    starRatedColor="red"
+                    changeRating={changeRating}
+                    numberOfStars={5}
+                    name='rating'
+                    starDimension="20px"
+                    starSpacing="10px"
                 />
                 <TextArea
                     style={{ width: '100%', borderRadius: '5px' }}
                     onChange={handleChange}
                     value={Comment}
-                    placeholder="코멘트를 작성해주세요"
+                    placeholder="리뷰를 작성해주세요"
                 />
                 <br />
                 <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>

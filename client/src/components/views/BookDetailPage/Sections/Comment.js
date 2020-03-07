@@ -60,7 +60,8 @@ function Comments(props) {
 
             {/* Root Comment Form */}
             <form style={{ display: "flex", flexDirection: "column" }} onSubmit={onSubmit}>
-                별점입력
+                review this book
+                <hr />
                 <StarRatings
                     rating={Rating}
                     starRatedColor="red"

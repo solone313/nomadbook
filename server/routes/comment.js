@@ -47,7 +47,7 @@ router.post("/getBookscore", (req, res) => {
             
             if (err) return res.status(400).send(err)
             if (books.length===0) return res.status(200).json({ success: true, rating : "0" }) 
-            res.status(200).json({ success: true, rating : average.toFixed(2) })
+            res.status(200).json({ success: true, rating : average.toFixed(2), count : books.length })
         })
 
 });

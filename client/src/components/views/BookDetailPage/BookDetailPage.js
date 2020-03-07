@@ -12,6 +12,7 @@ function BookDetailPage(props) {
     const [BookDetail, setBookDetail] = useState([])
     const [CommentLists, setCommentLists] = useState([])
     const [BookScore, setBookScore] = useState(0)
+    const [BookCount, setBookCount] = useState(0)
     useEffect(() => {
         Axios.post('/api/book/getBookDetail', variable)
             .then(response => {
@@ -36,6 +37,7 @@ function BookDetailPage(props) {
             if(response.data.success){
                 // console.log('response.data.rating',response.data.rating, typeof(response.data.rating))
                 setBookScore(parseFloat(response.data.rating));
+                setBookCount(response.data.count)
             } else {
                 alert('코멘트 정보를 가져오는 것을 실패했습니다.')
             }
@@ -61,16 +63,17 @@ function BookDetailPage(props) {
                 <div style={{ width: '100%', padding:'3rem 4rem'}}>
                     <img src={`${BookDetail.filePath}`} style={{width: '40%', float: 'left' }} alt="DetailImg"/>
                     <div className="Detail__container" style={{width:'50%', float:'right'}}>
-                        <h1 className="Detail_title"> { BookDetail.title } </h1>
+                        <h1 className="Detail_detail">상세정보</h1> 
+                        <h2 className="Detail_title"> { BookDetail.title } </h2>
                         <h3 className="Detail_description"> { BookDetail.year + ',' +BookDetail.author + '  ' + BookDetail.publisher } </h3>
                         <br/>
-                        <h4 className="Detail_star"> {BookScore === 0 ? '첫 리뷰를 등록해주세요': `평점: ${BookScore}` }</h4>
+                        <h4 className="Detail_star"> {BookCount === undefined ? '첫 리뷰를 등록해주세요': `리뷰 수: ${BookCount}` }</h4>
                         <StarRatings
                             rating={BookScore}
                             starRatedColor="blue"
                             starDimension="20px"
                             starSpacing="1px"
-                        />
+                        /> &nbsp; {BookScore === 0 ? '리뷰 X': `${BookScore}` }
                         <br/><br/>
                         <Subscribe userTo={BookDetail._id} userFrom={localStorage.getItem('userId')} />
                     </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import './Footer.css';
 function Footer() {
   return (
     <footer id="footer" className="dark">
@@ -45,9 +44,9 @@ function Footer() {
       <Row className="bottom-bar">
         <Col lg={4} sm={24} />
         <Col lg={20} sm={24}>
-          <span style={{ marginRight: 24 }}>
-            개발 : 강은현, 류호진
-          </span>
+          <span style={{ marginRight: 20 }}>
+            개발: 강은현,류호진
+          </span><br/>
           <span style={{ marginRight: 12 }}>Copyright © GOREADS</span>
         </Col>
       </Row>

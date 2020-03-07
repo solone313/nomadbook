@@ -77,7 +77,7 @@ function Comments(props) {
                     placeholder="리뷰를 작성해주세요"
                 />
                 <br />
-                <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>
+                <Button style={{ width: '30%', height: '52px' }} onClick={onSubmit}>Submit</Button>
             </form>
 
         </div>

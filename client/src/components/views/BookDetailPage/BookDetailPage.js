@@ -60,17 +60,16 @@ function BookDetailPage(props) {
             <Col lg={18} xs={24}>
                 <div style={{ width: '100%', padding:'3rem 4rem'}}>
                     <img src={`${BookDetail.filePath}`} style={{width: '40%', float: 'left' }} alt="DetailImg"/>
-                    <div style={{width:'50%', float:'right'}}>
-                        <h1> { BookDetail.title } </h1>
-                        <h3> { BookDetail.year + ',' +BookDetail.author + '  ' + BookDetail.publisher } </h3>
+                    <div className="Detail__container" style={{width:'50%', float:'right'}}>
+                        <h1 className="Detail_title"> { BookDetail.title } </h1>
+                        <h3 className="Detail_description"> { BookDetail.year + ',' +BookDetail.author + '  ' + BookDetail.publisher } </h3>
                         <br/>
-                        <h3> {BookScore === 0 ? '첫 리뷰를 등록해주세요': `평점: ${BookScore}` }</h3>
+                        <h4 className="Detail_star"> {BookScore === 0 ? '첫 리뷰를 등록해주세요': `평점: ${BookScore}` }</h4>
                         <StarRatings
                             rating={BookScore}
                             starRatedColor="blue"
                             starDimension="20px"
-                            starSpacing="10px"
-                            
+                            starSpacing="1px"
                         />
                         <br/><br/>
                         <Subscribe userTo={BookDetail._id} userFrom={localStorage.getItem('userId')} />

@@ -10,6 +10,7 @@ import Footer from "./views/Footer/Footer";
 import BookUploadPage from "./views/BookUploadPage/BookUploadPage";
 import BookDetailPage from "./views/BookDetailPage/BookDetailPage";
 import SubscriptionPage from "./views/SubscriptionPage/SubscriptionPage"
+import ProfilePage from "./views/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/book/upload" component={Auth(BookUploadPage, true)} />
           <Route exact path="/book/:bookId" component={Auth(BookDetailPage, null)} />
-          <Route exact path="/subscription" component={Auth(SubscriptionPage, null)} />
+          <Route exact path="/subscription" component={Auth(SubscriptionPage, true)} />
+          <Route exact path="/profile" component={Auth(ProfilePage, true)} />
         </Switch>
       </div>
       <Footer />

@@ -71,7 +71,7 @@ function SubscriptionPage() {
             } />
 }
             title={book.title}/>
-        <span>{book.writer.name}
+        <span>{book.author}
         </span><br/>
         <span
             style={{
@@ -80,7 +80,7 @@ function SubscriptionPage() {
             {book.views}</span>
         -
         <span>
-            {moment(book.createdAt).format("MMM Do YY")}
+            {moment(book.createdAt).format("MM월 DD일")}
         </span>
     </Col>
     });

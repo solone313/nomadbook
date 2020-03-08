@@ -6,9 +6,6 @@ import { Menu } from 'antd';
 function LeftMenu(props) {
   return (
     <Menu mode={props.mode}>
-    <Menu.Item key="mail">
-      <a href="/">홈</a>
-    </Menu.Item>
     <Menu.Item key="introduce">
           <a href="https://github.com/solone313/nomadbook" rel="noopener noreferrer" target="_blank">소개</a>
         </Menu.Item>

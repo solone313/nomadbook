@@ -37,6 +37,9 @@ function RightMenu(props) {
         <Menu.Item key="app">
           <a href="/book/upload">책 업로드</a>
         </Menu.Item>
+        <Menu.Item key="profile">
+          <a href="/profile">내 정보</a>
+        </Menu.Item>
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>로그아웃</a>
         </Menu.Item>

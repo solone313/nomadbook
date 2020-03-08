@@ -44,7 +44,7 @@ function Footer() {
       <Row className="bottom-bar">
         <Col lg={4} sm={24} />
         <Col lg={20} sm={24}>
-          <span style={{ marginRight: 12 , fontSize: "18px" }}>
+          <span style={{ marginRight: 12 , fontSize: "14px" }}>
             개발: 강은현,류호진
           </span><br/>
           <span style={{ marginRight: 12 }}>Copyright © GOREADS</span>

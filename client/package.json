@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.26.11",
+    "@ant-design/icons": "^4.0.2",
+    "antd": "^3.26.13",
     "axios": "^0.19.2",
     "formik": "^2.1.4",
     "moment": "^2.24.0",

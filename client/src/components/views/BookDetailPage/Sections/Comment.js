@@ -60,14 +60,16 @@ function Comments(props) {
               </React.Fragment>
             )
         )}
+      {props.CommentLists.length==0 &&
+        <p>리뷰가 없습니다.</p>
+      }
+      <p>review this book</p>
       <hr />
       {/* Root Comment Form */}
       <form
         style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSubmit}
       >
-        review this book
-        <br /><br />
         <StarRatings
           rating={Rating}
           starRatedColor="red"

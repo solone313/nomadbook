@@ -67,6 +67,7 @@ function BookDetailPage(props) {
                 style={{ width: "50%", float: "right" }}
               >
                 <h1 className="Detail_detail">상세정보</h1>
+                <hr />
                 <h2 className="Detail_title"> {BookDetail.title} </h2>
                 <h3 className="Detail_description">
                   {" "}
@@ -78,7 +79,6 @@ function BookDetailPage(props) {
                   {" "}
                   {BookDetail.publisher}{" "}
                 </h3>
-                <br />
                 <h3 className="Detail_star">
                   {" "}
                   {BookCount === undefined
@@ -93,6 +93,12 @@ function BookDetailPage(props) {
                 />{" "}
                 &nbsp; {BookScore === 0 ? "리뷰 X" : `${BookScore}`}
                 <br />
+                <List.Item>
+                <List.Item.Meta
+                  title="책소개"
+                  description={BookDetail.description}
+                />
+                </List.Item>
                 <br />
                 <Subscribe
                   userTo={BookDetail._id}
@@ -108,12 +114,6 @@ function BookDetailPage(props) {
         <Row gutter={[16, 16]}>
           <Col lg={18} xs={24}>
             <div style={{ width: "100%", padding: "3rem 4rem" }}>
-              <List.Item>
-                <List.Item.Meta
-                  title="책소개"
-                  description={BookDetail.description}
-                />
-              </List.Item>
               <Comment
                 CommentLists={CommentLists}
                 postId={bookId}

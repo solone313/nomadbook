@@ -72,21 +72,23 @@ function BookDetailPage(props) {
                   {" "}
                   {BookDetail.year +
                     "," +
-                    BookDetail.author +
-                    "  " +
-                    BookDetail.publisher}{" "}
+                    BookDetail.author}{" "}
+                </h3>
+                <h3 className="Detail_description">
+                  {" "}
+                  {BookDetail.publisher}{" "}
                 </h3>
                 <br />
-                <h4 className="Detail_star">
+                <h3 className="Detail_star">
                   {" "}
                   {BookCount === undefined
                     ? "첫 리뷰를 등록해주세요"
                     : `리뷰 수: ${BookCount}`}
-                </h4>
+                </h3>
                 <StarRatings
                   rating={BookScore}
                   starRatedColor="blue"
-                  starDimension="20px"
+                  starDimension="25px"
                   starSpacing="1px"
                 />{" "}
                 &nbsp; {BookScore === 0 ? "리뷰 X" : `${BookScore}`}

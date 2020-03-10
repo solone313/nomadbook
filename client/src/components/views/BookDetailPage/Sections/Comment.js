@@ -60,14 +60,14 @@ function Comments(props) {
               </React.Fragment>
             )
         )}
-
+      <hr />
       {/* Root Comment Form */}
       <form
         style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSubmit}
       >
         review this book
-        <hr />
+        <br /><br />
         <StarRatings
           rating={Rating}
           starRatedColor="red"
@@ -77,6 +77,7 @@ function Comments(props) {
           starDimension="20px"
           starSpacing="10px"
         />
+        <br />
         <TextArea
           style={{ width: "100%", borderRadius: "5px" }}
           onChange={handleChange}

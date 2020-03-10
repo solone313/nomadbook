@@ -54,6 +54,7 @@ function Comments(props) {
                 <SingleComment
                   comment={comment}
                   postId={props.postId}
+                  writer={user.userData ? user.userData._id : ''}
                   refreshFunction={props.refreshFunction}
                 />
               </React.Fragment>

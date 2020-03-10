@@ -92,6 +92,9 @@
     font-size: large;
   }
 
+  .Side_list{
+    display: flex;
+  }
 }
 
 footer.dark {

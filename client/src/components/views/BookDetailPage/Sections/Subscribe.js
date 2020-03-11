@@ -73,20 +73,13 @@ function Subscribe(props) {
         onClick={onSubscribe}
         style={{
           backgroundColor: `${Subscribed ? "#AAAAAA" : "#CC0000"}`,
-<<<<<<< HEAD
           borderRadius: "8px",
-=======
           borderRadius: "4px",
->>>>>>> 71548319366157399a1665e4f1770302e440e692
           color: "white",
           padding: "10px 16px",
           fontWeight: "500",
           fontSize: "1rem",
-<<<<<<< HEAD
           textTransform: "uppercase",
-=======
-          textTransform: "uppercase"
->>>>>>> 71548319366157399a1665e4f1770302e440e692
         }}
       >
         {SubscribeNumber} {Subscribed ? "Cancel Want" : "Want to Read"}
@@ -95,8 +88,4 @@ function Subscribe(props) {
   );
 }
 
-<<<<<<< HEAD
 export default Subscribe;
-=======
-export default Subscribe;
->>>>>>> 71548319366157399a1665e4f1770302e440e692

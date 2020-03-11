@@ -19,11 +19,7 @@ function LandingPage() {
 
   const renderCards = books.map((book, index) => {
     return (
-<<<<<<< HEAD
       <Col lg={6} md={8} xs={24} key={book._id}>
-=======
-      <Col lg={6} md={8} xs={12} key={book._id}>
->>>>>>> 71548319366157399a1665e4f1770302e440e692
         <a href={`/book/${book._id}`}>
           <div
             style={{

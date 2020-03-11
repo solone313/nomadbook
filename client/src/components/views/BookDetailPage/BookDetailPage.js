@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { Row, Col, Tabs,Tag,Dropdown, Button,Menu,message, Tooltip, Typography  } from "antd";
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
-=======
-import { Row, Col, List } from "antd";
->>>>>>> 71548319366157399a1665e4f1770302e440e692
 import Axios from "axios";
 import SideBook from "./Sections/SideBook";
 import Subscribe from "./Sections/Subscribe";
 import Comment from "./Sections/Comment";
 import StarRatings from "react-star-ratings";
-<<<<<<< HEAD
 
-=======
->>>>>>> 71548319366157399a1665e4f1770302e440e692
 
 function BookDetailPage(props) {
   const bookId = props.match.params.bookId;
@@ -22,7 +15,6 @@ function BookDetailPage(props) {
   const [CommentLists, setCommentLists] = useState([]);
   const [BookScore, setBookScore] = useState(0);
   const [BookCount, setBookCount] = useState(0);
-<<<<<<< HEAD
   const { Paragraph } = Typography;
   const { TabPane } = Tabs;
   function callback(key) {
@@ -48,8 +40,6 @@ function BookDetailPage(props) {
       </Menu.Item>
     </Menu>
   );
-=======
->>>>>>> 71548319366157399a1665e4f1770302e440e692
   useEffect(() => {
     Axios.post("/api/book/getBookDetail", variable).then(response => {
       if (response.data.success) {
@@ -96,22 +86,14 @@ function BookDetailPage(props) {
             <div style={{ width: "100%", padding: "3rem 4rem" }}>
               <img
                 src={`${BookDetail.filePath}`}
-<<<<<<< HEAD
                 style={{width: "40%", float: "left" }}
-=======
-                style={{ width: "40%", float: "left" }}
->>>>>>> 71548319366157399a1665e4f1770302e440e692
                 alt="DetailImg"
               />
               <div
                 className="Detail__container"
                 style={{ width: "50%", float: "right" }}
               >
-<<<<<<< HEAD
                 <h1 className="Detail_detail" >상세정보</h1>
-=======
-                <h1 className="Detail_detail">상세정보</h1>
->>>>>>> 71548319366157399a1665e4f1770302e440e692
                 <hr />
                 <h2 className="Detail_title"> {BookDetail.title} </h2>
                 <h3 className="Detail_description">
@@ -138,7 +120,6 @@ function BookDetailPage(props) {
                 />{" "}
                 &nbsp; {BookScore === 0 ? "리뷰 X" : `${BookScore}`}
                 <br />
-<<<<<<< HEAD
                 <hr />
                 <div style={{marginTop:"15px",fontSize:"25px"}}>
                   <Button>
@@ -162,27 +143,12 @@ function BookDetailPage(props) {
                 </div>  
               </div>
               <br />
-=======
-                <List.Item>
-                <List.Item.Meta
-                  title="책소개"
-                  description={BookDetail.description}
-                />
-                </List.Item>
-                <br />
-                <Subscribe
-                  userTo={BookDetail._id}
-                  userFrom={localStorage.getItem("userId")}
-                />
-              </div>
->>>>>>> 71548319366157399a1665e4f1770302e440e692
             </div>
           </Col>
           <Col lg={6} xs={24}>
             <SideBook />
           </Col>
         </Row>
-<<<<<<< HEAD
         <Row >
           <Col lg={18} xs={24}>
             <div style={{ width: "100%", padding: "3rem 4rem" }}>``
@@ -211,16 +177,6 @@ function BookDetailPage(props) {
                 Content of Tab Pane 4
               </TabPane>
             </Tabs>
-=======
-        <Row gutter={[16, 16]}>
-          <Col lg={18} xs={24}>
-            <div style={{ width: "100%", padding: "3rem 4rem" }}>
-              <Comment
-                CommentLists={CommentLists}
-                postId={bookId}
-                refreshFunction={updateComment}
-              />
->>>>>>> 71548319366157399a1665e4f1770302e440e692
             </div>
           </Col>
         </Row>
@@ -230,8 +186,4 @@ function BookDetailPage(props) {
     return <div>...Loding</div>;
   }
 }
-<<<<<<< HEAD
 export default BookDetailPage;
-=======
-export default BookDetailPage;
->>>>>>> 71548319366157399a1665e4f1770302e440e692

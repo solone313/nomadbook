@@ -86,7 +86,6 @@
   }
   .Detail_title,
   .Detail_description {
-<<<<<<< HEAD
     font-size: small;
   }
   .Detail_detail{
@@ -95,19 +94,6 @@
 
 }
 
-=======
-    font-size: medium;
-  }
-  .Detail_detail{
-    font-size: x-large;
-  }
-}
-@media (max-width: 1000px) {
-  .Side_list{
-    display: flex;
-  }
-}
->>>>>>> 71548319366157399a1665e4f1770302e440e692
 footer.dark {
   background-color: rgb(231, 247, 233);
   color: rgb(50, 104, 57);

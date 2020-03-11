@@ -103,7 +103,6 @@ router.post("/getSubscriptionBooks", (req, res) => {
         subscribedUser.push(subscriber.userTo);
       });
 
-<<<<<<< HEAD
              //찾은 사람들의 책을 가지고 온다.
             Book.find({ _id : { $in: subscribedUser}})
                 .populate('writer')
@@ -114,17 +113,5 @@ router.post("/getSubscriptionBooks", (req, res) => {
            })
    
  })
-=======
-      //찾은 사람들의 책을 가지고 온다.
-      Book.find({ _id: { $in: subscribedUser } })
-        .populate("writer")
-        .exec((err, books) => {
-          if (err) return res.status(400).send(err);
-          res.status(200).json({ success: true, books });
-        });
-    }
-  );
-});
->>>>>>> 71548319366157399a1665e4f1770302e440e692
 
 module.exports = router;

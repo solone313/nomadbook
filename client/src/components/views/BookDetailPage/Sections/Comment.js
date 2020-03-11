@@ -54,19 +54,34 @@ function Comments(props) {
                 <SingleComment
                   comment={comment}
                   postId={props.postId}
+<<<<<<< HEAD
+=======
+                  writer={user.userData ? user.userData._id : ''}
+>>>>>>> 71548319366157399a1665e4f1770302e440e692
                   refreshFunction={props.refreshFunction}
                 />
               </React.Fragment>
             )
         )}
+<<<<<<< HEAD
 
+=======
+      {props.CommentLists.length==0 &&
+        <p>리뷰가 없습니다.</p>
+      }
+      <p>review this book</p>
+      <hr />
+>>>>>>> 71548319366157399a1665e4f1770302e440e692
       {/* Root Comment Form */}
       <form
         style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSubmit}
       >
+<<<<<<< HEAD
         review this book
         <hr />
+=======
+>>>>>>> 71548319366157399a1665e4f1770302e440e692
         <StarRatings
           rating={Rating}
           starRatedColor="red"
@@ -76,6 +91,10 @@ function Comments(props) {
           starDimension="20px"
           starSpacing="10px"
         />
+<<<<<<< HEAD
+=======
+        <br />
+>>>>>>> 71548319366157399a1665e4f1770302e440e692
         <TextArea
           style={{ width: "100%", borderRadius: "5px" }}
           onChange={handleChange}

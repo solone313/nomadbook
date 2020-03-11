@@ -19,7 +19,11 @@ function SideBook() {
         key={book._id}
         style={{ display: "flex", marginBottom: "1rem", padding: "0 2rem" }}
       >
+<<<<<<< HEAD
         <div style={{ width: "50%", marginRight: "1rem" }}>
+=======
+        <div style={{ width: "40%", marginRight: "1rem" }}>
+>>>>>>> 71548319366157399a1665e4f1770302e440e692
           <a href={`/book/${book._id}`}>
             <img
               style={{ width: "100%", height: "100%" }}
@@ -34,7 +38,11 @@ function SideBook() {
 
   return (
     <React.Fragment>
+<<<<<<< HEAD
       <div style={{ marginTop: "3rem" }}>{renderSideBook}</div>
+=======
+      <div className="Side_list" style={{ marginTop: "3rem" }}>{renderSideBook}</div>
+>>>>>>> 71548319366157399a1665e4f1770302e440e692
     </React.Fragment>
   );
 }

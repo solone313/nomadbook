@@ -1,0 +1,186 @@
+@import '~antd/dist/antd.css';
+
+.menu {
+  padding: 0 20px;
+  border-bottom: solid 1px #e8e8e8;
+  overflow: auto;
+  box-shadow: 0 0 30px #f3f1f1;
+  background-color: white;
+}
+
+.menu__logo {
+  width: 150px;
+  float: left;
+}
+
+.menu__container .ant-menu-item {
+  padding: 0px 5px;
+}
+
+.menu__container .ant-menu-submenu-title {
+  padding: 10px 20px;
+}
+
+.menu__container .ant-menu-item a,
+.menu__container .ant-menu-submenu-title a {
+  padding: 10px 15px;
+}
+
+.menu__container .ant-menu-horizontal {
+  border-bottom: none;
+}
+
+.menu__container .menu_left {
+  float: left;
+}
+
+.menu__container .menu_rigth {
+  float: right;
+}
+
+.menu__container .menu_searchbox {
+  padding-top: 20px;
+  float: right;
+}
+
+.menu__mobile-button {
+  float: right;
+  height: 32px;
+  padding: 6px;
+  margin-top: 8px;
+  display: none !important; /* use of important to overwrite ant-btn */
+  background: #3e91f7;
+}
+
+.menu_drawer .ant-drawer-body {
+  padding: 0 !important;
+}
+
+/* align header of Drawer with header of page */
+.menu_drawer .ant-drawer-header {
+  padding: 14px 24px !important;
+}
+
+@media (max-width: 767px) {
+  .menu__mobile-button {
+    display: inline-block !important;
+  }
+
+  .menu_left,
+  .menu_rigth,
+  .menu_searchbox {
+    display: none;
+  }
+
+  .menu__logo a {
+    margin-left: -20px;
+  }
+
+  .menu__container .ant-menu-item,
+  .menu__container .ant-menu-submenu-title {
+    padding: 1px 20px;
+  }
+
+  .menu__logo a {
+    padding: 10px 20px;
+  }
+  .Detail_title,
+  .Detail_description {
+    font-size: small;
+  }
+  .Detail_detail{
+    font-size: large;
+  }
+
+}
+
+footer.dark {
+  background-color: rgb(231, 247, 233);
+  color: rgb(50, 104, 57);
+}
+
+footer.dark a {
+  color: rgb(50, 104, 57);
+}
+
+footer.dark h2 {
+  color: rgb(50, 104, 57);
+}
+
+footer.dark h2 > span {
+  color: rgb(50, 104, 57);
+}
+
+footer.dark .bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+footer {
+  border-top: 1px solid #e5e7eb;
+  clear: both;
+  font-size: 14px;
+  background: #fff;
+  position: relative;
+  z-index: 100;
+  color: #314659;
+  box-shadow: 0 1000px 0 1000px #fff;
+}
+
+footer .ant-row {
+  text-align: center;
+}
+
+footer .ant-row .footer-center {
+  display: inline-block;
+  text-align: left;
+}
+
+footer .ant-row .footer-center > h2 {
+  font-size: 16px;
+  margin: 0 auto 24px;
+  font-weight: 500;
+  position: relative;
+}
+
+footer .ant-row .footer-center > h2 > .title-icon {
+  width: 27px;
+  margin-right: 16px;
+}
+
+footer .ant-row .footer-center > h2 > .anticon {
+  font-size: 16px;
+  position: absolute;
+  left: -22px;
+  top: 3px;
+  color: #aaa;
+}
+
+footer .ant-row .footer-center > div {
+  margin: 12px 0;
+}
+
+footer .footer-wrap {
+  position: relative;
+  padding: 30px 120px 30px 144px;
+}
+
+footer .bottom-bar {
+  border-top: 1px solid #e5e7eb;
+  text-align: right;
+  padding: 16px 144px;
+  margin: 0;
+  line-height: 32px;
+}
+
+footer .bottom-bar a {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+footer .bottom-bar a:hover {
+  color: #fff;
+}
+
+footer .bottom-bar .translate-button {
+  text-align: left;
+}

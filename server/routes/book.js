@@ -102,7 +102,6 @@ router.post("/getSubscriptionBooks", (req, res) => {
       subscriberInfo.map((subscriber, i) => {
         subscribedUser.push(subscriber.userTo);
       });
-
              //찾은 사람들의 책을 가지고 온다.
             Book.find({ _id : { $in: subscribedUser}})
                 .populate('writer')

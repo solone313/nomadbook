@@ -1,0 +1,15 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+div {
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+}
+
+h3{
+    font-size: 14px;
+}
+
+.Detail_title{
+    font-size: medium;
+    font-weight: bold;
+}

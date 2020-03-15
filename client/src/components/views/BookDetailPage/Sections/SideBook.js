@@ -17,7 +17,7 @@ function SideBook() {
     return (
       <div
         key={book._id}
-        style={{ display: "flex", marginBottom: "1rem", padding: "0 2rem" }}
+        style={{ display: "inline-block",float:"left", marginBottom: "1rem", padding: "0 2rem" }}
       >
         <div style={{ width: "40%", marginRight: "1rem" }}>
           <a href={`/book/${book._id}`}>

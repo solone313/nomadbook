@@ -45,7 +45,7 @@ function Comments(props) {
   return (
     <div>
       <br />
-      <div style={{marginTop:"10px"}}>리뷰</div>
+      <div>리뷰</div>
       {/* Comment Lists  */}
       <hr  />
       {props.CommentLists &&
@@ -62,7 +62,7 @@ function Comments(props) {
             )
         )}
       {/* Root Comment Form */}
-      {props.CommentLists.length==0 &&
+      {props.CommentLists.length===0 &&
         <p>리뷰가 없습니다.</p>
       }
        <p> review this book </p>

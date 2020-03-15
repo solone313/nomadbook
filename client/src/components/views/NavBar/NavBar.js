@@ -1,5 +1,4 @@
 import React, { useState} from "react";
-import Axios from "axios";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
 import { Drawer, Button, Icon, Input,Col } from "antd";

@@ -84,14 +84,16 @@ function BookDetailPage(props) {
                             style={{
                                 textAlign: "center",
                                 float: "left",
-                                marginLeft:"30px"
+                                marginLeft:"10px"
                             }}>
                             <div>
                                 <img
                                     src={`${BookDetail.filePath}`}
                                     style={{
                                         padding: "50px 20px 20px",
-                                        position: "relative"
+                                        position: "relative",
+                                        width:"240px",
+                                        height:"365px"
                                     }}
                                     alt="DetailImg"/>
                             </div>
@@ -120,7 +122,7 @@ function BookDetailPage(props) {
                                 padding: "50px 20px 0",
                                 maxWidth: "100%",
                                 display: "inline-block",
-                                width:"600px"
+                                width:"800px"
                             }}>
                             <div
                                 className="Detail__container"
@@ -159,17 +161,17 @@ function BookDetailPage(props) {
                             </div>
                             </div>
                         </div>
-                        <div style={{ float:"right"}}>
-                          <SideBook/>
-                        </div>
-                        <div style={{marginLeft:"40px", width:"70%"}}>
-                            <Comment
-                                CommentLists={CommentLists}
-                                postId={bookId}
-                                refreshFunction={updateComment}/>      
-                        </div>
+                        
                     </Col>
                    
+                </Row>
+                <Row gutter={[16, 16]}>
+                    <div style={{marginLeft:"40px", width:"92%",marginBottom:"40px"}}>
+                        <Comment
+                            CommentLists={CommentLists}
+                            postId={bookId}
+                            refreshFunction={updateComment}/>      
+                    </div>                          
                 </Row>
 
             </div>

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import Axios from "axios";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
-import { Drawer, Button, Icon, Input } from "antd";
+import { Drawer, Button, Icon, Input,Col } from "antd";
 import "./Sections/style.css";
 
 const { Search } = Input;
@@ -17,11 +18,14 @@ function NavBar() {
     setVisible(false);
   };
 
+
   return (
     <nav
       className="menu"
       style={{ position: "fixed", zIndex: 5, width: "100%" }}
     >
+      <Col lg={3} xs={24}></Col>
+      <Col lg={18} xs={24}>
       <div className="menu__logo">
         <a href="/">
           <img
@@ -32,6 +36,7 @@ function NavBar() {
           />
         </a>
       </div>
+      
       <div className="menu__container">
         <div className="menu_left">
           <LeftMenu mode="horizontal" />
@@ -41,7 +46,7 @@ function NavBar() {
         </div>
         <div className="menu_searchbox">
           <Search
-            placeholder="input search text"
+            placeholder="책검색"
             onSearch={value => alert("개발중입니다 검색: " + value)}
             style={{ width: 200 }}
           />
@@ -62,7 +67,7 @@ function NavBar() {
           visible={visible}
         >
           <Search
-            placeholder="input search text"
+            placeholder="책검색"
             onSearch={value => alert("개발중입니다 검색: " + value)}
             style={{ width: "100%" }}
           />
@@ -70,6 +75,8 @@ function NavBar() {
           <RightMenu mode="inline" />
         </Drawer>
       </div>
+      </Col>
+      <Col lg={3} xs={24}></Col>
     </nav>
   );
 }

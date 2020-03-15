@@ -22,7 +22,7 @@ function SideBook() {
         <div style={{ width: "40%", marginRight: "1rem" }}>
           <a href={`/book/${book._id}`}>
             <img
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "130px", height: "200px" }}
               src={`${book.filePath}`}
               alt="thumbnail"
             />

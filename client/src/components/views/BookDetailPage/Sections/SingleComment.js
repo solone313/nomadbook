@@ -6,7 +6,7 @@ function SingleComment(props) {
   return (
     <div>
       <Comment
-        author={props.comment.writer.name}
+        author={<div style={{fontSize:"large"}}>{props.comment.writer.name}</div>}
         avatar={<Avatar src={props.comment.writer.image} alt="image" />}
         content={
           <div>
@@ -14,8 +14,8 @@ function SingleComment(props) {
               <StarRatings
                 rating={props.comment.rating}
                 starRatedColor="red"
-                starDimension="10px"
-                starSpacing="1px"
+                starDimension="15px"
+                starSpacing="2.5px"
               />
             </h3>
             <p>{props.comment.content}</p>

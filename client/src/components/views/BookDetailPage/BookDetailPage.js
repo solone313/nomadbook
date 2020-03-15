@@ -3,11 +3,8 @@ import {
     Row,
     Col,
     Tabs,
-    Menu,
-    message,
     Typography
 } from "antd";
-import {UserOutlined} from '@ant-design/icons';
 import Axios from "axios";
 import SideBook from "./Sections/SideBook";
 import Subscribe from "./Sections/Subscribe";
@@ -29,26 +26,6 @@ function BookDetailPage(props) {
     function callback(key) {
         console.log(key);
     }
-    function handleMenuClick(e) {
-        message.info('Click on menu item.');
-        console.log('click', e);
-    }
-    const menu = (
-        <Menu onClick={handleMenuClick}>
-            <Menu.Item key="1">
-                <UserOutlined/>
-                1st menu item
-            </Menu.Item>
-            <Menu.Item key="2">
-                <UserOutlined/>
-                2nd menu item
-            </Menu.Item>
-            <Menu.Item key="3">
-                <UserOutlined/>
-                3rd item
-            </Menu.Item>
-        </Menu>
-    );
     useEffect(() => {
         Axios
             .post("/api/book/getBookDetail", variable)

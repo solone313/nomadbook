@@ -18,9 +18,6 @@ function NavBar() {
     setVisible(false);
   };
 
-  const onSearch = () => {
-    setVisible(true);
-  }
 
   return (
     <nav
@@ -28,6 +25,7 @@ function NavBar() {
       style={{ position: "fixed", zIndex: 5, width: "100%" }}
     >
       <Col lg={3} xs={24}></Col>
+      <Col lg={18} xs={24}>
       <div className="menu__logo">
         <a href="/">
           <img
@@ -38,7 +36,7 @@ function NavBar() {
           />
         </a>
       </div>
-      <Col lg={16} xs={24}>
+      
       <div className="menu__container">
         <div className="menu_left">
           <LeftMenu mode="horizontal" />
@@ -49,7 +47,7 @@ function NavBar() {
         <div className="menu_searchbox">
           <Search
             placeholder="책검색"
-            onSearch={onSearch}
+            onSearch={value => alert("개발중입니다 검색: " + value)}
             style={{ width: 200 }}
           />
         </div>
@@ -70,7 +68,7 @@ function NavBar() {
         >
           <Search
             placeholder="책검색"
-            onSearch={onSearch}
+            onSearch={value => alert("개발중입니다 검색: " + value)}
             style={{ width: "100%" }}
           />
           <LeftMenu mode="inline" />

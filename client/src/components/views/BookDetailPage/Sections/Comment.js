@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import SingleComment from "./SingleComment";
 import StarRatings from "react-star-ratings";
+import '../BookDetailPage.css'
 
 const { TextArea } = Input;
 
@@ -21,6 +22,8 @@ function Comments(props) {
 
   const onSubmit = e => {
     e.preventDefault();
+
+    if(Comment===""){ alert("리뷰를 입력해주세요."); return false; }
 
     const variables = {
       content: Comment,
@@ -42,10 +45,9 @@ function Comments(props) {
   return (
     <div>
       <br />
-      <p> reviews</p>
-      <hr />
+      <div style={{marginTop:"10px"}}>리뷰</div>
       {/* Comment Lists  */}
-
+      <hr  />
       {props.CommentLists &&
         props.CommentLists.map(
           (comment, index) =>
@@ -60,12 +62,15 @@ function Comments(props) {
             )
         )}
       {/* Root Comment Form */}
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={onSubmit}
-      >
-        review this book
+      {props.CommentLists.length==0 &&
+        <p>리뷰가 없습니다.</p>
+      }
+       <p> review this book </p>
         <hr />
+        <form
+          style={{ display: "flex", flexDirection: "column" }}
+          onSubmit={onSubmit}
+        >
         <StarRatings
           rating={Rating}
           starRatedColor="red"
@@ -73,7 +78,7 @@ function Comments(props) {
           numberOfStars={5}
           name="rating"
           starDimension="20px"
-          starSpacing="10px"
+          starSpacing="3.5px"
         />
         <TextArea
           style={{ width: "100%", borderRadius: "5px" }}

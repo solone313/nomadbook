@@ -86,14 +86,17 @@
   }
   .Detail_title,
   .Detail_description {
-    font-size: small;
+    font-size: medium;
   }
   .Detail_detail{
-    font-size: large;
+    font-size: x-large;
   }
-
 }
-
+@media (max-width: 1000px) {
+  .Side_list{
+    display: flex;
+  }
+}
 footer.dark {
   background-color: rgb(231, 247, 233);
   color: rgb(50, 104, 57);

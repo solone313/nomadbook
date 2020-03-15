@@ -1,15 +1,60 @@
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(https://fonts.googleapis.com/css?family=Do+Hyeon|Sunflower:300&display=swap);
 
 div {
-    font-family: 'Nanum Gothic';
-    font-style: normal;
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: large;
 }
 
 h3{
     font-size: 14px;
 }
 
+hr {
+  border-style: solid;
+  color: #6a6a6a;
+  background-color: #6a6a6a;
+}
+
 .Detail_title{
     font-size: medium;
     font-weight: bold;
+    font-size: 25px;
+}
+
+button{
+  background:#1AAB8A;
+  color:#000;
+  border:none;
+  position:relative;
+  height:45px;
+  font-size:1.1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#000;
+  
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
 }

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import '../BookDetailPage.css';
+
 function Subscribe(props) {
   const userTo = props.userTo;
   const userFrom = props.userFrom;
@@ -72,17 +74,15 @@ function Subscribe(props) {
       <button
         onClick={onSubscribe}
         style={{
-          backgroundColor: `${Subscribed ? "#AAAAAA" : "#CC0000"}`,
-          borderRadius: "8px",
-          borderRadius: "4px",
-          color: "white",
+          backgroundColor: `${Subscribed ? "#1AAB8A" : "#fff"}`,
+          borderRadius: "5px",
+          color: "1AAB8A",
           padding: "10px 16px",
           fontWeight: "500",
-          fontSize: "1rem",
           textTransform: "uppercase",
         }}
       >
-        {SubscribeNumber} {Subscribed ? "Cancel Want" : "Want to Read"}
+        {Subscribed ? "💔 관심취소" : "💗 관심등록"}
       </button>
     </div>
   );

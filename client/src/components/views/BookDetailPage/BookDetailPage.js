@@ -3,14 +3,11 @@ import {
     Row,
     Col,
     Tabs,
-    Dropdown,
-    Button,
     Menu,
-    Rate,
     message,
     Typography
 } from "antd";
-import {DownOutlined, UserOutlined} from '@ant-design/icons';
+import {UserOutlined} from '@ant-design/icons';
 import Axios from "axios";
 import SideBook from "./Sections/SideBook";
 import Subscribe from "./Sections/Subscribe";
@@ -95,6 +92,7 @@ function BookDetailPage(props) {
                     // console.log('response.data.rating',response.data.rating,
                     // typeof(response.data.rating))
                     setBookScore(parseFloat(response.data.rating));
+                    setBookCount(response.data.count);
                 } else {
                     alert("코멘트 정보를 가져오는 것을 실패했습니다.");
                 }
@@ -104,32 +102,48 @@ function BookDetailPage(props) {
         return (
             <div>
                 <Row gutter={[16, 16]}>
-                    <Col span={3}></Col>
-                    <Col span={18}>
+                    <Col span={24}>
                         <div
                             style={{
                                 textAlign: "center",
-                                float: "left"
+                                float: "left",
+                                marginLeft:"30px"
                             }}>
-                            <div
-                                style={{
-                                    height: "400px"
-                                }}>
+                            <div>
                                 <img
                                     src={`${BookDetail.filePath}`}
                                     style={{
-                                        padding: "50px 20px",
+                                        padding: "50px 20px 20px",
                                         position: "relative"
                                     }}
                                     alt="DetailImg"/>
                             </div>
+                                <h3 className="Detail_star">
+                                    {" "}
+                                    {
+                                        BookCount === undefined
+                                            ? "첫 리뷰를 등록해주세요"
+                                            : `리뷰 수: ${BookCount}`
+                                    }
+                                </h3>
+                                <StarRatings
+                                    rating={BookScore}
+                                    starRatedColor="#F7D358"
+                                    starDimension="25px"
+                                    starSpacing="1px"
+                                    />{" "}
+                                <br/>
+                                <div>
+                                    <Subscribe userTo={BookDetail._id} userFrom={localStorage.getItem("userId")}/>
+                                </div>
                         </div>
 
                         <div
                             style={{
                                 padding: "50px 20px 0",
                                 maxWidth: "100%",
-                                display: "inline-block"
+                                display: "inline-block",
+                                width:"600px"
                             }}>
                             <div
                                 className="Detail__container"
@@ -139,8 +153,8 @@ function BookDetailPage(props) {
                                 <h2 className="Detail_title">
                                     {BookDetail.title}
                                 </h2>
-                                <hr/>
                                 <h3 className="Detail_detail">상세정보</h3>
+                                <hr/>
                                 <h3 className="Detail_description">
                                     {" "}
                                     {BookDetail.year + "," + BookDetail.author}{" "}
@@ -149,104 +163,36 @@ function BookDetailPage(props) {
                                     {" "}
                                     {BookDetail.publisher}{" "}
                                 </h3>
-                                <h3 className="Detail_star">
-                                    {" "}
-                                    {
-                                        BookCount === undefined
-                                            ? "첫 리뷰를 등록해주세요"
-                                            : `리뷰 수: ${BookCount}`
-                                    }
-                                </h3>
-                                <Rate
-                                  rating={BookScore}
-                                  starRatedColor="blue"
-                                  starDimension="25px"
-                                  starSpacing="1px" />
-                                &nbsp; {
-                                    BookScore === 0
-                                        ? "리뷰 X"
-                                        : `${BookScore}`
-                                }
-                                <br/>
-                                <hr/>
                                 <div
-                                    style={{
-                                        marginTop: "15px",
-                                        fontSize: "25px"
-                                    }}>
-                                    <Button>
-                                        <a href="https://github.com/ant-design/ant-design/issues/1862">카카오톡</a>
-                                    </Button>
-                                    <Dropdown overlay={menu}>
-                                        <Button>
-                                            온라인 상점
-                                            <DownOutlined/>
-                                        </Button>
-                                    </Dropdown>
-                                    <Button>
-                                        <a href="https://github.com/ant-design/ant-design/issues/1862">페이스북</a>
-                                    </Button>
-                                    <Button>
-                                        <a href="https://github.com/ant-design/ant-design/issues/1862">인스타그램</a>
-                                    </Button>
-                                </div>
-                                <br/>
-                                <div >
-                                    <Subscribe userTo={BookDetail._id} userFrom={localStorage.getItem("userId")}/>
-                                </div>
-                            </div>
-                            <br/>
-                        </div>
-                        {/* <div style={{height:"100%", display:"flex",float:"right",width:"auto"}}>
-                          <SideBook/>
-                        </div> */}
-                        <Col lg={24} xs={24}>
-                            <div
                                 style={{
                                     maxWidth: "100%",
-                                    marginTop: "50px"
+                                    marginTop:"20px"
                                 }}>
                                 <Tabs onChange={callback} type="card">
-                                    <TabPane tab="책소개" key="1">
-                                        <h1>책소개</h1>
-                                        <hr/>
-                                        <div>
-                                            <Paragraph
-                                                ellipsis={{
-                                                    rows: 6,
-                                                    expandable: true
-                                                }}>
-                                                {BookDetail.description}
-                                            </Paragraph>
-                                            <Comment
-                                                CommentLists={CommentLists}
-                                                postId={bookId}
-                                                refreshFunction={updateComment}/>
-                                        </div>
-
-                                    </TabPane>
-                                    <TabPane tab="댓글" key="2">
-                                        <Comment
-                                            CommentLists={CommentLists}
-                                            postId={bookId}
-                                            refreshFunction={updateComment}/>
-                                    </TabPane>
-                                    <TabPane tab="저자 및 역자소개" key="3">
-                                        Content of Tab Pane 3
-                                    </TabPane>
-                                    <TabPane tab="출판사 소개" key="4">
-                                        Content of Tab Pane 4
+                                    <TabPane tab="책소개" key="1">     
+                                        <Paragraph
+                                            ellipsis={{
+                                                rows: 6,
+                                                expandable: true
+                                            }}>
+                                            {BookDetail.description}
+                                        </Paragraph>   
                                     </TabPane>
                                 </Tabs>
                             </div>
-                        </Col>
-                        {/* <Col lg={24} xs={24}>
-                            <SideBook/>
-                        </Col> */}
-
+                            </div>
+                        </div>
+                        <div style={{ float:"right"}}>
+                          <SideBook/>
+                        </div>
+                        <div style={{marginLeft:"40px", width:"70%"}}>
+                            <Comment
+                                CommentLists={CommentLists}
+                                postId={bookId}
+                                refreshFunction={updateComment}/>      
+                        </div>
                     </Col>
-
-                    <Col span={3}></Col>
+                   
                 </Row>
 
             </div>

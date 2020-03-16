@@ -164,11 +164,11 @@ function BookDetailPage(props) {
                         </div>
                     </Col>
                 </Row>
-                {/* <Row gutter={[16, 16]}>
+                <Row gutter={[8, 8]}>
                     <div >
                         <SideBook/>
                     </div>
-                </Row> */}
+                </Row>
                 <Row gutter={[16, 16]}>
                     <div style={{marginLeft:"40px", width:"92%"}}>
                             <Comment
@@ -177,15 +177,6 @@ function BookDetailPage(props) {
                                 refreshFunction={updateComment}/>      
                     </div>
                 </Row>
-                <Row gutter={[16, 16]}>
-                    <div style={{marginLeft:"40px", width:"92%",marginBottom:"40px"}}>
-                        <Comment
-                            CommentLists={CommentLists}
-                            postId={bookId}
-                            refreshFunction={updateComment}/>      
-                    </div>                          
-                </Row>
-
             </div>
         );
     } else {

@@ -71,18 +71,16 @@ function Subscribe(props) {
 
   return (
     <div>
-      <button
+      <button className="button1"
         onClick={onSubscribe}
         style={{
           backgroundColor: `${Subscribed ? "#1AAB8A" : "#fff"}`,
-          borderRadius: "5px",
-          color: "1AAB8A",
-          padding: "10px 16px",
+          padding: "8px 16px",
           fontWeight: "500",
           textTransform: "uppercase",
         }}
       >
-        {Subscribed ? "💔 관심취소" : "💗 관심등록"}
+        {Subscribed ? "💔 관심취소" : "💖 관심등록"}
       </button>
     </div>
   );

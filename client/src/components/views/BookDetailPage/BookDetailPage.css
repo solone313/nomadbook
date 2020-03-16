@@ -21,7 +21,7 @@ hr {
     font-size: 25px;
 }
 
-button{
+.button1{
   background:#1AAB8A;
   color:#000;
   border:none;
@@ -33,28 +33,28 @@ button{
   transition:800ms ease all;
   outline:none;
 }
-button:hover{
+.button1:hover{
   background:#fff;
   color:#000;
   
 }
-button:before,button:after{
+.button1:before,button:after{
   content:'';
   position:absolute;
-  top:0;
+  top:2px;
   right:0;
   height:2px;
   width:0;
   background: #1AAB8A;
   transition:400ms ease all;
 }
-button:after{
+.button1:after{
   right:inherit;
   top:inherit;
   left:0;
   bottom:0;
 }
-button:hover:before,button:hover:after{
+.button1:hover:before,.button1:hover:after{
   width:100%;
   transition:800ms ease all;
 }

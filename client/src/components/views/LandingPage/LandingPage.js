@@ -19,17 +19,14 @@ function LandingPage() {
 
   const renderCards = books.map((book, index) => {
     return (
-      <Col lg={6} md={8} xs={10} key={book._id}>
+      <Col lg={4} md={8} xs={12} style={{textAlign:"center", maxHeight:"300px"}} key={book._id}>
         <a href={`/book/${book._id}`}>
           <div
-            style={{
-              position: "relative"
-            }}
           >
             <img
               style={{
-                width: "100%",
-                height: "100%"
+                maxWidth:"100%",
+                height: "200px"
               }}
               alt="thumbnail"
               src={`${book.filePath}`}
@@ -54,13 +51,13 @@ function LandingPage() {
       <img src="./good.png" style={{ width: "100%" }} alt="banner"></img>
       <div
         style={{
-          width: "85%",
+          maxWidth: "100%",
           margin: "3rem auto"
         }}
       >
         <Title level={2}>최근 올라온 책</Title>
         <hr />
-        <Row gutter={[32, 16]}>{renderCards}</Row>
+        <Row gutter={[16, 32]}>{renderCards}</Row>
       </div>
     </div>
   );

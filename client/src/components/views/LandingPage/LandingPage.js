@@ -19,7 +19,7 @@ function LandingPage() {
 
   const renderCards = books.map((book, index) => {
     return (
-      <Col lg={6} md={8} xs={24} key={book._id}>
+      <Col lg={6} md={8} xs={10} key={book._id}>
         <a href={`/book/${book._id}`}>
           <div
             style={{
@@ -28,8 +28,8 @@ function LandingPage() {
           >
             <img
               style={{
-                width: "200px",
-                height: "280px"
+                width: "100%",
+                height: "100%"
               }}
               alt="thumbnail"
               src={`${book.filePath}`}

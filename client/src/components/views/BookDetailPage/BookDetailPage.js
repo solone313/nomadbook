@@ -3,11 +3,9 @@ import {
     Row,
     Col,
     Tabs,
-    Menu,
-    message,
+    Spin,
     Typography
 } from "antd";
-import {UserOutlined} from '@ant-design/icons';
 import Axios from "axios";
 import SideBook from "./Sections/SideBook";
 import Subscribe from "./Sections/Subscribe";
@@ -29,26 +27,7 @@ function BookDetailPage(props) {
     function callback(key) {
         console.log(key);
     }
-    function handleMenuClick(e) {
-        message.info('Click on menu item.');
-        console.log('click', e);
-    }
-    const menu = (
-        <Menu onClick={handleMenuClick}>
-            <Menu.Item key="1">
-                <UserOutlined/>
-                1st menu item
-            </Menu.Item>
-            <Menu.Item key="2">
-                <UserOutlined/>
-                2nd menu item
-            </Menu.Item>
-            <Menu.Item key="3">
-                <UserOutlined/>
-                3rd item
-            </Menu.Item>
-        </Menu>
-    );
+
     useEffect(() => {
         Axios
             .post("/api/book/getBookDetail", variable)
@@ -107,14 +86,16 @@ function BookDetailPage(props) {
                             style={{
                                 textAlign: "center",
                                 float: "left",
-                                marginLeft:"30px"
+                                marginLeft:"10px",
                             }}>
                             <div>
                                 <img
                                     src={`${BookDetail.filePath}`}
                                     style={{
                                         padding: "50px 20px 20px",
-                                        position: "relative"
+                                        position: "relative",
+                                        width:"240px",
+                                        height:"365px"
                                     }}
                                     alt="DetailImg"/>
                             </div>
@@ -143,7 +124,7 @@ function BookDetailPage(props) {
                                 padding: "50px 20px 0",
                                 maxWidth: "100%",
                                 display: "inline-block",
-                                width:"600px"
+                                width:"800px"
                             }}>
                             <div
                                 className="Detail__container"
@@ -182,23 +163,28 @@ function BookDetailPage(props) {
                             </div>
                             </div>
                         </div>
-                        <div style={{ float:"right"}}>
-                          <SideBook/>
-                        </div>
-                        <div style={{marginLeft:"40px", width:"70%"}}>
+                    </Col>
+                </Row>
+                {/* <Row gutter={[16, 16]}>
+                    <div >
+                        <SideBook/>
+                    </div>
+                </Row> */}
+                <Row gutter={[16, 16]}>
+                    <div style={{marginLeft:"40px", width:"92%"}}>
                             <Comment
                                 CommentLists={CommentLists}
                                 postId={bookId}
                                 refreshFunction={updateComment}/>      
-                        </div>
-                    </Col>
-                   
+                    </div>
                 </Row>
 
             </div>
         );
     } else {
-        return <div>...Loding</div>;
+        return <div>
+            <Spin style={{paddingRight:"45%",paddingLeft:"45%",marginTop:"200px"}} size="large" />
+            </div>;
     }
 }
 export default BookDetailPage;

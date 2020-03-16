@@ -79,7 +79,7 @@ router.get("/getsidebooks", (req, res) => {
     .exec((err, books) => {
       if (err) return res.status(400).send(err);
       shuffle(books);
-      res.status(200).json({ success: true, books: books.slice(0, 3) });
+      res.status(200).json({ success: true, books: books.slice(0, 4) });
     });
 });
 

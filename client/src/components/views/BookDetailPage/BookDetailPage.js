@@ -27,7 +27,6 @@ function BookDetailPage(props) {
     function callback(key) {
         console.log(key);
     }
-
     useEffect(() => {
         Axios
             .post("/api/book/getBookDetail", variable)
@@ -178,12 +177,20 @@ function BookDetailPage(props) {
                                 refreshFunction={updateComment}/>      
                     </div>
                 </Row>
+                <Row gutter={[16, 16]}>
+                    <div style={{marginLeft:"40px", width:"92%",marginBottom:"40px"}}>
+                        <Comment
+                            CommentLists={CommentLists}
+                            postId={bookId}
+                            refreshFunction={updateComment}/>      
+                    </div>                          
+                </Row>
 
             </div>
         );
     } else {
         return <div>
-            <Spin style={{paddingRight:"45%",paddingLeft:"45%",marginTop:"200px"}} size="large" />
+            <Spin style={{paddingRight:"47%",paddingLeft:"47%",marginTop:"200px"}} size="large" />
             </div>;
     }
 }

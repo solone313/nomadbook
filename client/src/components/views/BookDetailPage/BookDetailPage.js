@@ -170,7 +170,7 @@ function BookDetailPage(props) {
                     </div>
                 </Row>
                 <Row gutter={[16, 16]}>
-                    <div style={{marginLeft:"40px", width:"92%"}}>
+                    <div style={{marginLeft:"10px", width:"92%",marginBottom:"30px"}}>
                             <Comment
                                 CommentLists={CommentLists}
                                 postId={bookId}

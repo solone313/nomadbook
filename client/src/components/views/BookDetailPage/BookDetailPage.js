@@ -3,6 +3,7 @@ import {
     Row,
     Col,
     Tabs,
+    Spin,
     Typography
 } from "antd";
 import Axios from "axios";
@@ -84,7 +85,7 @@ function BookDetailPage(props) {
                             style={{
                                 textAlign: "center",
                                 float: "left",
-                                marginLeft:"10px"
+                                marginLeft:"10px",
                             }}>
                             <div>
                                 <img
@@ -161,23 +162,27 @@ function BookDetailPage(props) {
                             </div>
                             </div>
                         </div>
-                        
                     </Col>
-                   
+                </Row>
+                <Row gutter={[8, 8]}>
+                    <div >
+                        <SideBook/>
+                    </div>
                 </Row>
                 <Row gutter={[16, 16]}>
-                    <div style={{marginLeft:"40px", width:"92%",marginBottom:"40px"}}>
-                        <Comment
-                            CommentLists={CommentLists}
-                            postId={bookId}
-                            refreshFunction={updateComment}/>      
-                    </div>                          
+                    <div style={{marginLeft:"40px", width:"92%"}}>
+                            <Comment
+                                CommentLists={CommentLists}
+                                postId={bookId}
+                                refreshFunction={updateComment}/>      
+                    </div>
                 </Row>
-
             </div>
         );
     } else {
-        return <div>...Loding</div>;
+        return <div>
+            <Spin style={{paddingRight:"47%",paddingLeft:"47%",marginTop:"200px"}} size="large" />
+            </div>;
     }
 }
 export default BookDetailPage;

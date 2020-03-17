@@ -17,12 +17,12 @@ function SideBook() {
     return (
       <div
         key={book._id}
-        style={{ display: "inline-block",float:"left", marginBottom: "1rem", padding: "0 2rem" }}
+        style={{ display:"inline-block", float:"left" , marginBottom: "1rem", padding: "0 2rem" }}
       >
-        <div style={{ width: "40%", marginRight: "1rem" }}>
+        <div style={{ float:"left" }}>
           <a href={`/book/${book._id}`}>
             <img
-              style={{ width: "130px", height: "200px" }}
+              style={{ width: "110px", height: "180px" }}
               src={`${book.filePath}`}
               alt="thumbnail"
             />
@@ -34,7 +34,7 @@ function SideBook() {
 
   return (
     <React.Fragment>
-      <div className="Side_list" style={{ marginTop: "3rem" }}>{renderSideBook}</div>
+      <div className="Side_list" style={{ marginTop: "2rem", marginLeft:"1rem" }}>{renderSideBook}</div>
     </React.Fragment>
   );
 }

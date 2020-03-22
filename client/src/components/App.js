@@ -11,12 +11,20 @@ import BookUploadPage from "./views/BookUploadPage/BookUploadPage";
 import BookDetailPage from "./views/BookDetailPage/BookDetailPage";
 import SubscriptionPage from "./views/SubscriptionPage/SubscriptionPage";
 import ProfilePage from "./views/ProfilePage/ProfilePage";
+import SearchPage from "./views/Searchpage/SearchPage";
 
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <NavBar />
-      <div style={{paddingRight:"15%",paddingLeft:"15%", paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
+      <div
+        style={{
+          paddingRight: "15%",
+          paddingLeft: "15%",
+          paddingTop: "69px",
+          minHeight: "calc(100vh - 80px)"
+        }}
+      >
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
@@ -37,6 +45,11 @@ function App() {
             component={Auth(SubscriptionPage, true)}
           />
           <Route exact path="/profile" component={Auth(ProfilePage, true)} />
+          <Route
+            exact
+            path="/search/:value"
+            component={Auth(SearchPage, null)}
+          />
         </Switch>
       </div>
       <Footer />

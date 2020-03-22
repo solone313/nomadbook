@@ -1,4 +1,5 @@
 import React, { useState} from "react";
+import { withRouter } from 'react-router-dom';
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
 import { Drawer, Button, Icon, Input,Col } from "antd";
@@ -6,7 +7,7 @@ import "./Sections/style.css";
 
 const { Search } = Input;
 
-function NavBar() {
+function NavBar(props) {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -17,7 +18,10 @@ function NavBar() {
     setVisible(false);
   };
 
-
+  function onSearch(value) {
+    let path = "/search/" + value
+    props.history.push(path);
+  }
   return (
     <nav
       className="menu"
@@ -44,9 +48,9 @@ function NavBar() {
           <RightMenu mode="horizontal" />
         </div>
         <div className="menu_searchbox">
-          <Search
+          <Search 
             placeholder="책검색"
-            onSearch={value => alert("개발중입니다 검색: " + value)}
+            onSearch={value => onSearch(value)}
             style={{ width: 200 }}
           />
         </div>
@@ -67,7 +71,7 @@ function NavBar() {
         >
           <Search
             placeholder="책검색"
-            onSearch={value => alert("개발중입니다 검색: " + value)}
+            onSearch={value =>  onSearch(value)}
             style={{ width: "100%" }}
           />
           <LeftMenu mode="inline" />
@@ -80,4 +84,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default withRouter(NavBar);

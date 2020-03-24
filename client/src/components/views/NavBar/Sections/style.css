@@ -23,7 +23,7 @@
 
 .menu__container .ant-menu-item a,
 .menu__container .ant-menu-submenu-title a {
-  padding: 10px 15px;
+  padding: 10px 20px;
 }
 
 .menu__container .ant-menu-horizontal {
@@ -39,8 +39,8 @@
 }
 
 .menu__container .menu_searchbox {
-  padding-top: 20px;
-  float: right;
+  padding-top: 13px;
+  text-align: center;
 }
 
 .menu__mobile-button {
@@ -187,4 +187,72 @@ footer .bottom-bar a:hover {
 
 footer .bottom-bar .translate-button {
   text-align: left;
+}
+.ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled){
+  border-right-width: 2px !important;
+  border-color:limegreen;
+  border-radius: 20px;
+}
+.ant-input:hover{
+  border-color:limegreen;
+}
+
+.ant-input-affix-wrapper .ant-input:not(:last-child){
+  border-radius: 20px;
+}
+.ant-input{
+  width: 100%;
+  height: 32px;
+  padding : 4px 11px;
+  border: 2px solid lightgray;
+}
+.ant-input-suffix{
+  font-size: 20px;
+ 
+}
+.ant-input-search-icon{
+  color:lightgray;
+}
+
+.ant-input:focus{
+  border-color: limegreen;
+}
+
+.ant-btn-primary{
+  background-color: limegreen;
+  border-color: limegreen;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus{
+  background-color: limegreen;
+  border-color: limegreen;
+}
+a:active{
+  color: limegreen;
+}
+a:hover{
+  color: limegreen;
+}
+a{
+  color: limegreen;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor:pointer;
+  transition: color 0.3s;
+}
+.ant-menu-horizontal > .ant-menu-item > a:hover{
+  color: limegreen;
+}
+.ant-menu-horizontal > .ant-menu-item:hover, .ant-menu-horizontal > .ant-menu-submenu:hover, .ant-menu-horizontal > .ant-menu-item-active, .ant-menu-horizontal > .ant-menu-submenu-active, .ant-menu-horizontal > .ant-menu-item-open, .ant-menu-horizontal > .ant-menu-submenu-open, .ant-menu-horizontal > .ant-menu-item-selected, .ant-menu-horizontal > .ant-menu-submenu-selected{
+  color: limegreen;
+  border-bottom: 2px solid limegreen;
+}
+.ant-menu-horizontal > .ant-menu-item-selected > a{
+  color: limegreen;
+}
+.ant-input-search-icon:hover{
+  color: limegreen;
+}
+.ant-input-search-icon:focus{
+  color: limegreen;
 }

@@ -93,6 +93,15 @@ router.post("/getBookDetail", (req, res) => {
     });
 });
 
+router.post("/searchresult", (req,res) => {
+  Book.find({title : { $regex: req.body.value }}).exec(
+    (err, searchresult) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).json({success: true, searchresult})
+    }
+  )
+})
+
 router.post("/getSubscriptionBooks", (req, res) => {
   //자신의 아이디를 가지고 구독하는 사람들을 찾는다.
   Subscriber.find({ userFrom: req.body.userFrom }).exec(

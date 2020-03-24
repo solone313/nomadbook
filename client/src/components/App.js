@@ -21,7 +21,7 @@ function App() {
         style={{
           paddingRight: "15%",
           paddingLeft: "15%",
-          paddingTop: "69px",
+          paddingTop: "80px",
           minHeight: "calc(100vh - 80px)"
         }}
       >

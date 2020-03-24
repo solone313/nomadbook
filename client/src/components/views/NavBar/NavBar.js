@@ -21,6 +21,7 @@ function NavBar(props) {
   function onSearch(value) {
     let path = "/search/" + value;
     props.history.push(path);
+    window.location.reload(false);
   }
   return (
     <nav

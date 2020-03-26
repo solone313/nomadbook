@@ -7,6 +7,7 @@ const { OAuth2Client } = require("google-auth-library");
 const config = require("../config/key");
 const { Comment } = require("../models/Comment");
 const { Book } = require("../models/Book");
+const { Subscriber } = require("../models/Subscriber");
 
 //=================================
 //             User
@@ -135,20 +136,22 @@ router.get("/logout", auth, (req, res) => {
 });
 
 router.post("/deleteuser", auth, (req, res) => {
-  User.findOneAndUpdate(
-    { _id: req.user._id },
-    { token: "", tokenExp: "" },
-    (err, doc) => {
+  Book.deleteMany({writer: req.user._id}), (err,doc) =>{
+    if (err) return res.json({ success: false, err });
+    Comment.deleteMany({writer: req.user._id}, (err, doc) => {
       if (err) return res.json({ success: false, err });
-      User.findOneAndDelete({ _id: req.user._id }, (err,doc) =>{
+      Subscriber.deleteMany({userFrom: req.user._id}, (err, doc) => {
         if (err) return res.json({ success: false, err });
-        console.log(doc);
-        return res.status(200).send({
-          success: true
-        });
+        User.findOneAndDelete({ _id: req.user._id }, (err,doc) =>{
+          if (err) return res.json({ success: false, err });
+          return res.status(200).send({
+            success: true
+          });
+        })
       })
-    }
-  );
+    })
+  }
+
 });
 
 router.post("/profilecomment", (req, res) => {

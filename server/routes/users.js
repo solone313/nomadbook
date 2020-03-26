@@ -5,6 +5,8 @@ const axios = require("axios");
 const { auth } = require("../middleware/auth");
 const { OAuth2Client } = require("google-auth-library");
 const config = require("../config/key");
+const { Comment } = require("../models/Comment");
+const { Book } = require("../models/Book");
 //=================================
 //             User
 //=================================
@@ -128,5 +130,23 @@ router.get("/logout", auth, (req, res) => {
     }
   );
 });
+
+router.post("/profilecomment", (req, res) => {
+   Comment.find({ writer: req.body._id})
+   .exec((err,profilecomments)=>{
+      console.log(req.body)
+      if(err) return res.status(400).send(err);
+      res.status(200).json({success:true, profilecomments})
+   })
+})
+
+router.get("/profilebook",(req,res)=>{
+    Book.find({writer: req.body._id})
+    .exec((err,profilebooks)=>{
+      console.log(req.body)
+      if(err) return res.status(400).send(err);
+      res.status(200).json({success:true,profilebooks})
+    })
+})
 
 module.exports = router;

@@ -52,7 +52,7 @@ function LandingPage() {
       <div
         style={{
           maxWidth: "100%",
-          margin: "3rem auto"
+          margin: "2rem auto"
         }}
       >
         <Title level={2}>최근 올라온 책</Title>

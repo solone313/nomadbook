@@ -22,9 +22,8 @@ function Comments(props) {
 
   const onSubmit = e => {
     e.preventDefault();
-
-    if(Comment===""){ alert("리뷰를 입력해주세요."); return false; }
-
+    if(Comment.replace(/ /gi, "")===""||Comment==="\n"){ alert("리뷰를 입력해주세요."); return false; }
+    
     const variables = {
       content: Comment,
       writer: user.userData._id,
@@ -84,7 +83,7 @@ function Comments(props) {
           style={{ width: "100%", borderRadius: "5px" }}
           onChange={handleChange}
           value={Comment}
-          placeholder="리뷰를 작성해주세요"
+          placeholder="리뷰를 작성해주세요"        
         />
         <br />
         <Button style={{marginBottom: "40px", width: "30%", height: "52px" }} onClick={onSubmit}>

@@ -47,7 +47,7 @@ function App() {
           <Route exact path="/profile" component={Auth(ProfilePage, true)} />
           <Route
             exact
-            path="/search/:value"
+            path="/search"
             component={Auth(SearchPage, null)}
           />
         </Switch>

@@ -76,7 +76,7 @@ function BookDetailPage(props) {
                 }
             });
     };
-    if (BookDetail.writer) {
+    if (BookDetail.title) {
         return (
             <div>
                 <Row gutter={[16, 16]}>

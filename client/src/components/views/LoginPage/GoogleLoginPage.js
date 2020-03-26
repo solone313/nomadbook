@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import { loginWithGoogle } from "../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
+import { message } from "antd";
 function GoogleLoginPage(props) {
   const [formErrorMessage, setFormErrorMessage] = useState("");
 
@@ -11,7 +12,7 @@ function GoogleLoginPage(props) {
     dispatch(loginWithGoogle(response)).then(response => {
       if (response.payload.loginSuccess === true) {
         window.localStorage.setItem("userId", response.payload.userId);
-
+        message.success(response.payload.msg);
         props.history.push("/");
       } else {
         setFormErrorMessage("Check out your Account or Password again");

@@ -19,7 +19,10 @@ function NavBar(props) {
   };
 
   function onSearch(value) {
-    let path = "/search/" + value;
+    if(value.replace(/ /gi, "")===""){ 
+      alert("검색을 입력해주세요."); return false; 
+    }
+    let path = `/search?value=${value}`;
     props.history.push(path);
     window.location.reload(false);
   }

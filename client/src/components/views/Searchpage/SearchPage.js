@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Card, Col } from "antd";
 import axios from "axios";
+import queryString from "query-string";
 const { Meta } = Card;
 
-function SearchPage(props) {
+function SearchPage({ match, location }) {
   const [searchResult, setsearchResult] = useState([]);
-
-  const value = props.match.params.value;
+  const [result, setresult] = useState("")
+  const query = queryString.parse(location.search);
   const variables = {
-    value: value
+    value: query.value
   };
   useEffect(() => {
     axios.post("/api/book/searchresult", variables).then(response => {
       if (response.data.success) {
         setsearchResult(response.data.searchresult);
+        if (response.data.searchresult.length===0){
+          setresult("검색결과가 없습니다.")
+        }else{
+          setresult(`${response.data.searchresult.length}건이 검색되었습니다.`)
+        }
       } else {
         alert(" 저장에 실패했습니다 이유: " + response.data.err);
       }
@@ -52,7 +58,7 @@ function SearchPage(props) {
       </Col>
     );
   });
-  return <div>{renderCards}</div>;
+  return <div>{result}<br/>{renderCards}</div>;
 }
 
 export default SearchPage;

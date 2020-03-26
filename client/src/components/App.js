@@ -11,6 +11,8 @@ import BookUploadPage from "./views/BookUploadPage/BookUploadPage";
 import BookDetailPage from "./views/BookDetailPage/BookDetailPage";
 import SubscriptionPage from "./views/SubscriptionPage/SubscriptionPage";
 import ProfilePage from "./views/ProfilePage/ProfilePage";
+import ProfileBookPage from "./views/ProfilePage/ProfileBook";
+import DeleteUserPage from "./views/ProfilePage/DeleteUser";
 import SearchPage from "./views/Searchpage/SearchPage";
 
 function App() {
@@ -45,9 +47,11 @@ function App() {
             component={Auth(SubscriptionPage, true)}
           />
           <Route exact path="/profile" component={Auth(ProfilePage, true)} />
+          <Route exact path="/profilebook" component={Auth(ProfileBookPage, true)} />
+          <Route exact path="/delete" component={Auth(DeleteUserPage, true)} />
           <Route
             exact
-            path="/search/:value"
+            path="/search"
             component={Auth(SearchPage, null)}
           />
         </Switch>

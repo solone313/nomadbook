@@ -23,8 +23,8 @@ function Comments(props) {
   const onSubmit = e => {
     e.preventDefault();
 
-    if(Comment===""){ alert("리뷰를 입력해주세요."); return false; }
-
+    if(Comment.replace(/ /gi, "")===""||Comment.replace( /\n/gi, "")===""){ alert("리뷰를 입력해주세요."); return false; }
+    
     const variables = {
       content: Comment,
       writer: user.userData._id,

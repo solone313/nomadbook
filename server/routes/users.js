@@ -5,6 +5,9 @@ const axios = require("axios");
 const { auth } = require("../middleware/auth");
 const { OAuth2Client } = require("google-auth-library");
 const config = require("../config/key");
+const { Comment } = require("../models/Comment");
+const { Book } = require("../models/Book");
+
 //=================================
 //             User
 //=================================
@@ -80,7 +83,8 @@ router.post("/googleLogin", (req, res) => {
                 .status(200)
                 .json({
                   loginSuccess: true,
-                  userId: user._id
+                  userId: user._id,
+                  msg : "로그인 되었습니다."
                 });
             });
           } else {
@@ -102,7 +106,8 @@ router.post("/googleLogin", (req, res) => {
                   .status(200)
                   .json({
                     loginSuccess: true,
-                    userId: user._id
+                    userId: user._id,
+                    msg : "가입에 성공했습니다"
                   });
               });
             });
@@ -128,5 +133,41 @@ router.get("/logout", auth, (req, res) => {
     }
   );
 });
+
+router.post("/deleteuser", auth, (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { token: "", tokenExp: "" },
+    (err, doc) => {
+      if (err) return res.json({ success: false, err });
+      User.findOneAndDelete({ _id: req.user._id }, (err,doc) =>{
+        if (err) return res.json({ success: false, err });
+        console.log(doc);
+        return res.status(200).send({
+          success: true
+        });
+      })
+    }
+  );
+});
+
+router.post("/profilecomment", (req, res) => {
+  Comment.find({ writer: req.body._id})
+  .populate("postId")
+  .exec((err,profilecomments)=>{
+    //  console.log(req.body)
+     if(err) return res.status(400).send(err);
+     res.status(200).json({success:true, profilecomments})
+  })
+})
+
+router.post("/profilebook",(req,res)=>{
+   Book.find({writer: req.body._id})
+   .exec((err,profilebooks)=>{
+    //  console.log(req.body)
+     if(err) return res.status(400).send(err);
+     res.status(200).json({success:true,profilebooks})
+   })
+})
 
 module.exports = router;

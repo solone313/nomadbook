@@ -47,12 +47,14 @@ function LandingPage() {
   });
 
   return (
-    <div>
-      <img src="./good.png" style={{ width: "100%" }} alt="banner"></img>
+    <div >
+      <img src="./main.png" style={{ width: "100%",height:"700px" }} alt="banner"></img>
       <div
         style={{
           maxWidth: "100%",
-          margin: "2rem auto"
+          margin: "2rem auto",
+          paddingRight: "15%",
+          paddingLeft: "15%",
         }}
       >
         <Title level={2}>최근 올라온 책</Title>

@@ -22,8 +22,9 @@ function RightMenu(props) {
 
   if (user.userData && !user.userData.isAuth) {
     return (
-      <Menu mode={props.mode}>
-        <Menu.Item key="mail">
+      <Menu mode={props.mode} style={{ padding: "0 20px",
+      backgroundColor:" rgba( 255, 255, 0.0, 0.0 )"}}>
+        <Menu.Item key="mail" >
           <a href="/login">로그인</a>
         </Menu.Item>
         <Menu.Item key="app">
@@ -33,8 +34,9 @@ function RightMenu(props) {
     );
   } else {
     return (
-      <Menu mode={props.mode}>
-        <Menu.Item key="app">
+      <Menu mode={props.mode} style={{ padding: "0 20px",
+      backgroundColor:" rgba( 255, 255, 0.0, 0.0 )"}}>
+        <Menu.Item key="app" >
           <a href="/book/upload">책 업로드</a>
         </Menu.Item>
         <Menu.Item key="profile">

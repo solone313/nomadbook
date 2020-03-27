@@ -4,10 +4,23 @@ import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
 import { Drawer, Button, Icon, Input, Col } from "antd";
 import "./Sections/style.css";
+import $ from 'jquery'; 
 
 const { Search } = Input;
 
 function NavBar(props) {
+$(document).ready(function(){
+  $(window).scroll(function(){
+  	var scroll = $(window).scrollTop();
+	  if (scroll > 300) {
+	    $(".menu").css("background" , "#fff");
+	  }
+
+	  else{
+		  $(".menu").css("background" , "");  	
+	  }
+  })
+})
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -36,12 +49,12 @@ function NavBar(props) {
       <Col lg={18} xs={24}>
         <div className="menu__logo">
           <a href="/">
-            <img
+            {/* <img
               src="https://goreads.s3.ap-northeast-2.amazonaws.com/goreads.png"
               height="55"
               width="120"
               alt="mainImg"
-            />
+            /> */}
           </a>
         </div>
 

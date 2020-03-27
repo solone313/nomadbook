@@ -17,16 +17,15 @@ function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <NavBar />
+      <Route exact path="/" component={Auth(LandingPage, null)} />
       <div
         style={{
           paddingRight: "15%",
           paddingLeft: "15%",
-          paddingTop: "80px",
           minHeight: "calc(100vh - 80px)"
         }}
       >
         <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route

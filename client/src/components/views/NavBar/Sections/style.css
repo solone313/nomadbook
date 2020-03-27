@@ -100,11 +100,6 @@
     font-size: x-large;
   }
 }
-@media (max-width: 300px) {
-  .Side_list{
-    display: flex;
-  }
-}
 footer.dark {
   background-color: rgb(231, 247, 233);
   color: rgb(50, 104, 57);

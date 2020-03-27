@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
-import { Drawer, Button, Icon, Input, Col } from "antd";
+import { Drawer, Button, Icon, Col } from "antd";
 import "./Sections/style.css";
 
-const { Search } = Input;
 
-function NavBar(props) {
+function NavBar() {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -18,14 +16,6 @@ function NavBar(props) {
     setVisible(false);
   };
 
-  function onSearch(value) {
-    if(value.replace(/ /gi, "")===""){ 
-      alert("검색을 입력해주세요."); return false; 
-    }
-    let path = `/search?value=${value}`;
-    props.history.push(path);
-    window.location.reload(false);
-  }
   return (
     <nav
       className="menu"
@@ -51,14 +41,6 @@ function NavBar(props) {
           <div className="menu_rigth">
             <RightMenu mode="horizontal" />
           </div>
-          <div className="menu_searchbox">
-            <Search
-              className="search-b"
-              placeholder="책검색"
-              onSearch={value => onSearch(value)}
-              style={{ width: "500px",display: "table-cell",height:"40px" }}
-            />
-          </div>
           <Button
             className="menu__mobile-button"
             type="primary"
@@ -74,11 +56,6 @@ function NavBar(props) {
             onClose={onClose}
             visible={visible}
           >
-          <Search
-              placeholder="책검색"
-              onSearch={value => onSearch(value)}
-              style={{ width: "500px",display: "table-cell",height:"40px"  }}
-            />
             <LeftMenu mode="inline" />
             <RightMenu mode="inline" />
           </Drawer>
@@ -89,4 +66,4 @@ function NavBar(props) {
   );
 }
 
-export default withRouter(NavBar);
+export default NavBar;

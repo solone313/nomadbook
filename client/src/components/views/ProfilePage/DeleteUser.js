@@ -73,7 +73,7 @@ function DeleteUserPage(props) {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              <h1>정말 탈퇴하시겠습니까?</h1><h3>- 탈퇴해도 이미 쓴 리뷰와 책들은 삭제되지 않습니다.</h3>
+              <h1>정말 탈퇴하시겠습니까?</h1><h3>- 업로드한 책과 리뷰 모두 삭제됩니다.</h3>
              <Button type="primary" size="large" onClick={onSubmit}>
               탈퇴하기
             </Button>

@@ -58,7 +58,27 @@ function SearchPage({ match, location }) {
       </Col>
     );
   });
-  return <div>{result}<br/>{renderCards}</div>;
+  if(searchResult.length===0){
+    return (<div> 
+              <div style={{margin:"1rem 0"}}>
+                {result}
+              </div> 
+              <hr />
+              <h4>찾으시는 통합검색이(가) 없습니까?</h4>
+              <h3>핵심 단어를 띄어쓰기를 제거해주세요</h3>
+              <h3>※ 미움 받을 용기 → 미움받을용기</h3>
+              <h3>※ 고마운 마음 → 고마운마음</h3>
+            </div>)
+  }
+  else{
+
+       return (<div style={{textAlign:"center",margin:"1rem 0"}} >
+                {result}
+                <div>
+                   {renderCards}
+                </div>
+            </div>)
+  }
 }
 
 export default SearchPage;

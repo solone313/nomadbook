@@ -5,7 +5,8 @@ import { Menu } from "antd";
 
 function LeftMenu(props) {
   return (
-    <Menu mode={props.mode}>
+    <Menu mode={props.mode} style={{ padding: "0 20px",
+      backgroundColor:" rgba( 255, 255, 0.0, 0.0 )"}}>
       <Menu.Item key="introduce">
         <a
           href="https://github.com/solone313/nomadbook"

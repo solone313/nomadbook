@@ -1,13 +1,20 @@
 @import '~antd/dist/antd.css';
-
+@media (max-height: 500px) {
+  .menu {
+    padding: 0 20px;
+    background-color: rgba( 255, 255, 255, 255 );
+  }
+}
 .menu {
   padding: 0 20px;
-  border-bottom: solid 1px #e8e8e8;
-  overflow: auto;
-  box-shadow: 0 0 30px #f3f1f1;
-  background-color: white;
+  background-color: rgba( 255, 255, 0.0, 0.0 );
 }
-
+@media (max-height: 500px) {
+  .menu {
+    padding: 0 20px;
+    background-color: rgba( 255, 255, 255, 255 );
+  }
+}
 .menu__logo {
   width: 150px;
   float: left;
@@ -256,3 +263,8 @@ a{
 .ant-input-search-icon:focus{
   color: limegreen;
 }
+nav.scroll {
+  background-color: #A1572F;
+  color: #eef;
+}
+

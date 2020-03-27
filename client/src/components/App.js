@@ -19,6 +19,7 @@ function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <NavBar />
+      <Route exact path="/" component={Auth(LandingPage, null)} />
       <div
         style={{
           paddingRight: "15%",
@@ -28,7 +29,6 @@ function App() {
         }}
       >
         <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route

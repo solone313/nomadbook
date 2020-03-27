@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { Card, Col, Typography, Row, Input ,  Result  } from "antd";
 import Axios from "axios";
-import { SmileOutlined } from '@ant-design/icons';
+import { RiseOutlined } from '@ant-design/icons';
 const { Title } = Typography;
 const { Meta } = Card;
 const { Search } = Input;
@@ -69,23 +69,26 @@ function LandingPage(props) {
 
   return (
     <div>
-      <img src="./good.png" style={{ width: "100%" }} alt="banner"></img>
-      <br/><br/>
+      <div style={{backgroundImage: `url('./81744.jpg')`, backgroundSize:"100% 700px", paddingTop:"100px"}}>
       <center>
       <Search
         placeholder="책 이름, 작가, 출판사를 검색해주세요"
         onSearch={value => onSearch(value)}
-        style={{ width: "60%", display: "flex",height:"50px" }}
+        style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
       />
       <Result
-        icon={<SmileOutlined />}
-        title = {`현재 ${books.length}건의 책과 ${reviews}건의 리뷰가 쌓였어요!!`}
+        icon={<RiseOutlined style={{ fontSize: '50px', color: '#08c' }}/>}
+        title = {<p>{`현재 ${books.length}건의 책과 ${reviews}건의 리뷰가 쌓였어요!!`}</p>}
       />
       </center>
+      </div>
+
       <div
         style={{
           maxWidth: "100%",
-          margin: "2rem auto"
+          margin: "2rem auto",
+          paddingRight: "15%",
+          paddingLeft: "15%",
         }}
       >
         <Title level={2}>최근 올라온 책</Title>

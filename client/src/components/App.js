@@ -19,6 +19,7 @@ function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <NavBar />
+      <Switch>
       <Route exact path="/" component={Auth(LandingPage, null)} />
       <div
         style={{
@@ -28,7 +29,6 @@ function App() {
           minHeight: "calc(100vh - 80px)"
         }}
       >
-        <Switch>
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route
@@ -54,8 +54,8 @@ function App() {
             path="/search"
             component={Auth(SearchPage, null)}
           />
-        </Switch>
       </div>
+      </Switch>
       <Footer />
     </Suspense>
   );

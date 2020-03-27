@@ -28,10 +28,6 @@ const bookSchema = mongoose.Schema({
     year: {
         type: String,
     },
-    rating: {
-        type: String,
-        default: 0
-    }
 }, {timestamps:true})
 
 const Book = mongoose.model('Book', bookSchema);

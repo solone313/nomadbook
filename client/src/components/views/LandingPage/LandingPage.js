@@ -95,7 +95,7 @@ function LandingPage(props) {
         }}
       >
         <Title level={2}>최근 올라온 책</Title>
-        <hr />
+        <hr /><br/>
         <Row gutter={[16, 32]}>{renderCards}</Row>
       </div>
     </div>

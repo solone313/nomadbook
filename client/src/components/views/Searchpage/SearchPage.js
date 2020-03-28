@@ -88,7 +88,7 @@ function SearchPage(props) {
   }
   else{
 
-       return (<div style={{textAlign:"center",margin:"1rem 0"}} >
+       return (<div style={{textAlign:"center",margin:"1rem 0",paddingBottom: "50px"}} >
                 <Search
         placeholder="책 이름, 작가, 출판사, 카테고리를 검색해주세요"
         onSearch={value => onSearch(value)}

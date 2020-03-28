@@ -10,6 +10,7 @@ const { Search } = Input;
 function LandingPage(props) {
   const [books, setbooks] = useState([]);
   const [reviews, setreviews] = useState(0)
+  
   useEffect(() => {
     Axios.get("/api/book/getbooks").then(response => {
       if (response.data.success) {
@@ -69,15 +70,17 @@ function LandingPage(props) {
 
   return (
     <div>
-      <div style={{backgroundImage: `url('./81744.jpg')`, backgroundSize:"100% 700px", paddingTop:"100px"}}>
-      <center>
+      <div style={{height:"550px",backgroundImage: `url('./81744.jpg')`, backgroundSize:"100% 550px", paddingTop:"100px"}}>
+      <center style={{marginTop:"50px"}}>
+      <h1>Go read Go review</h1>
+      <br/><br/>
       <Search
-        placeholder="책 이름, 작가, 출판사를 검색해주세요"
+        placeholder="책 이름, 작가, 출판사, 장르를 검색해주세요"
         onSearch={value => onSearch(value)}
-        style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
+        style={{ width: "100%",maxWidth: "650px",height:"50px" }}
       />
       <Result
-        icon={<RiseOutlined style={{ fontSize: '50px', color: '#08c' }}/>}
+        icon={<RiseOutlined style={{ fontSize: '30px', color: '#08c' }}/>}
         title = {<p>{`현재 ${books.length}건의 책과 ${reviews}건의 리뷰가 쌓였어요!!`}</p>}
       />
       </center>

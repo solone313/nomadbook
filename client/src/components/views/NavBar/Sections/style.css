@@ -5,10 +5,6 @@
     background-color: rgba( 255, 255, 255, 255 );
   }
 }
-.menu {
-  padding: 0 20px;
-  background-color: rgba( 255, 255, 0.0, 0.0 );
-}
 @media (max-height: 500px) {
   .menu {
     padding: 0 20px;

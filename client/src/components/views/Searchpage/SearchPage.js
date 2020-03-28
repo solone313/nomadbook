@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col } from "antd";
+import { Card, Col, Input } from "antd";
 import axios from "axios";
 import queryString from "query-string";
 const { Meta } = Card;
+const { Search } = Input;
 
-function SearchPage({ match, location }) {
+
+function SearchPage(props) {
   const [searchResult, setsearchResult] = useState([]);
   const [result, setresult] = useState("")
-  const query = queryString.parse(location.search);
+  const query = queryString.parse(props.location.search);
   const variables = {
     value: query.value
   };
+
+  function onSearch(value) {
+    if(value.replace(/ /gi, "")===""){ 
+      alert("검색을 입력해주세요."); return false; 
+    }
+    let path = `/search?value=${value}`;
+    props.history.push(path);
+    window.location.reload(false);
+  }
   useEffect(() => {
     axios.post("/api/book/searchresult", variables).then(response => {
       if (response.data.success) {
@@ -60,6 +71,11 @@ function SearchPage({ match, location }) {
   });
   if(searchResult.length===0){
     return (<div> 
+      <Search
+        placeholder="책 이름, 작가, 출판사를 검색해주세요"
+        onSearch={value => onSearch(value)}
+        style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
+      />
               <div style={{margin:"1rem 0"}}>
                 {result}
               </div> 
@@ -73,6 +89,11 @@ function SearchPage({ match, location }) {
   else{
 
        return (<div style={{textAlign:"center",margin:"1rem 0"}} >
+                <Search
+        placeholder="책 이름, 작가, 출판사, 카테고리를 검색해주세요"
+        onSearch={value => onSearch(value)}
+        style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
+      />
                 {result}
                 <div>
                    {renderCards}

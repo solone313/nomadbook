@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
 import { Drawer, Button, Icon, Col } from "antd";
+import { useLocation } from 'react-router-dom'
 import "./Sections/style.css";
 
 
 function NavBar() {
   const [visible, setVisible] = useState(false);
+  let location = useLocation();
+  let navColor = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "#fff";
+  let navBorder = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "solid 1px #e8e8e8";
 
   const showDrawer = () => {
     setVisible(true);
@@ -19,7 +23,7 @@ function NavBar() {
   return (
     <nav
       className="menu"
-      style={{ position: "fixed", zIndex: 5, width: "100%" }}
+      style={{borderBottom: navBorder,padding: "0 20px", backgroundColor: navColor , position: "fixed", zIndex: 5, width: "100%" }}
     >
       <Col lg={3} xs={24}></Col>
       <Col lg={18} xs={24}>

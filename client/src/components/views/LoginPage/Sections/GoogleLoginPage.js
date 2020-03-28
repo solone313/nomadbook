@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import GoogleLogin from "react-google-login";
-import { loginWithGoogle } from "../../../_actions/user_actions";
+import { loginWithGoogle } from "../../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import { message } from "antd";
 function GoogleLoginPage(props) {

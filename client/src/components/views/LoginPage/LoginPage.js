@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Form, Icon, Input, Button, Checkbox, Typography } from "antd";
 import { useDispatch } from "react-redux";
-import GoogleLoginPage from "./GoogleLoginPage";
+import GoogleLoginPage from "./Sections/GoogleLoginPage";
 const { Title } = Typography;
 
 function LoginPage(props) {

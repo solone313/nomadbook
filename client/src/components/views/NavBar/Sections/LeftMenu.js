@@ -7,11 +7,7 @@ function LeftMenu(props) {
   return (
     <Menu mode={props.mode} style={{ padding: "0 20px",
       backgroundColor:" rgba( 255, 255, 0.0, 0.0 )"}}>
-<<<<<<< HEAD
-      <Menu.Item key="introduce"zz>
-=======
       <Menu.Item key="introduce">
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
         <a
           href="https://github.com/solone313/nomadbook"
           rel="noopener noreferrer"

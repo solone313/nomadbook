@@ -5,13 +5,6 @@
     background-color: rgba( 255, 255, 255, 255 );
   }
 }
-<<<<<<< HEAD
-.menu {
-  padding: 0 20px;
-  background-color: rgba( 255, 255, 0.0, 0.0 );
-}
-=======
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
 @media (max-height: 500px) {
   .menu {
     padding: 0 20px;
@@ -264,9 +257,5 @@ a{
 nav.scroll {
   background-color: #A1572F;
   color: #eef;
-<<<<<<< HEAD
-}
-=======
 }
 
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0

@@ -4,31 +4,23 @@ import RightMenu from "./Sections/RightMenu";
 import { Drawer, Button, Icon, Col } from "antd";
 import { useLocation } from 'react-router-dom'
 import "./Sections/style.css";
-import $ from 'jquery'; 
 
 
-<<<<<<< HEAD
-function NavBar(props) {
-$(document).ready(function(){
-  $(window).scroll(function(){
-  	var scroll = $(window).scrollTop();
-	  if (scroll > 300) {
-	    $(".menu").css("background" , "#fff");
-	  }
-
-	  else{
-		  $(".menu").css("background" , "");  	
-	  }
-  })
-})
-=======
 function NavBar() {
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
   const [visible, setVisible] = useState(false);
   let location = useLocation();
   let navColor = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "#fff";
   let navBorder = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "solid 1px #e8e8e8";
-
+  window.onscroll = function(){
+    var top =	 window.pageYOffset || document.documentElement.scrollTop;
+    if (top > 300) {
+      document.getElementById('nav').style.background = "#fff";
+      document.getElementById('nav').style.borderBottom = "solid 1px #e8e8e8";
+    } else {
+      document.getElementById('nav').style.background = "";
+      document.getElementById('nav').style.borderBottom = "rgba( 255, 255, 0.0, 0.0 )";
+    }
+  };
   const showDrawer = () => {
     setVisible(true);
   };
@@ -37,21 +29,10 @@ function NavBar() {
     setVisible(false);
   };
 
-<<<<<<< HEAD
-  function onSearch(value) {
-    if(value.replace(/ /gi, "")===""){ 
-      alert("검색을 입력해주세요."); return false; 
-    }
-    let path = `/search?value=${value}`;
-    props.history.push(path);
-    window.location.reload(false);
-   
-  }
-=======
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
   return (
     <nav
       className="menu"
+      id="nav"
       style={{borderBottom: navBorder,padding: "0 20px", backgroundColor: navColor , position: "fixed", zIndex: 5, width: "100%" }}
     >
       <Col lg={3} xs={24}></Col>
@@ -89,15 +70,6 @@ function NavBar() {
             onClose={onClose}
             visible={visible}
           >
-<<<<<<< HEAD
-         <Search
-              className="search-b"
-              placeholder="책검색"
-              onSearch={value => onSearch(value)}
-              style={{ width: "500px",display: "table-cell",height:"40px" }}
-            />
-=======
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
             <LeftMenu mode="inline" />
             <RightMenu mode="inline" />
           </Drawer>

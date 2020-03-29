@@ -69,10 +69,6 @@ function LandingPage(props) {
   }
 
   return (
-<<<<<<< HEAD
-    <div >
-      <img src="./main.png" style={{ width: "100%",height:"700px" }} alt="banner"></img>
-=======
     <div>
       <div style={{height:"550px",backgroundImage: `url('./81744.jpg')`, backgroundSize:"100% 550px", paddingTop:"100px"}}>
       <center style={{marginTop:"50px"}}>
@@ -90,7 +86,6 @@ function LandingPage(props) {
       </center>
       </div>
 
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
       <div
         style={{
           maxWidth: "100%",

@@ -24,12 +24,8 @@ function App() {
         style={{
           paddingRight: "15%",
           paddingLeft: "15%",
-<<<<<<< HEAD
-          minHeight: "calc(100vh - 80px)"
-=======
           paddingTop: "80px",
           minHeight: "calc(70vh - 80px)"
->>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
         }}
       >
         <Switch>

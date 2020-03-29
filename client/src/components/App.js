@@ -11,6 +11,8 @@ import BookUploadPage from "./views/BookUploadPage/BookUploadPage";
 import BookDetailPage from "./views/BookDetailPage/BookDetailPage";
 import SubscriptionPage from "./views/SubscriptionPage/SubscriptionPage";
 import ProfilePage from "./views/ProfilePage/ProfilePage";
+import ProfileBookPage from "./views/ProfilePage/ProfileBook";
+import DeleteUserPage from "./views/ProfilePage/DeleteUser";
 import SearchPage from "./views/Searchpage/SearchPage";
 
 function App() {
@@ -22,7 +24,12 @@ function App() {
         style={{
           paddingRight: "15%",
           paddingLeft: "15%",
+<<<<<<< HEAD
           minHeight: "calc(100vh - 80px)"
+=======
+          paddingTop: "80px",
+          minHeight: "calc(70vh - 80px)"
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
         }}
       >
         <Switch>
@@ -44,12 +51,14 @@ function App() {
             component={Auth(SubscriptionPage, true)}
           />
           <Route exact path="/profile" component={Auth(ProfilePage, true)} />
+          <Route exact path="/profilebook" component={Auth(ProfileBookPage, true)} />
+          <Route exact path="/delete" component={Auth(DeleteUserPage, true)} />
           <Route
             exact
             path="/search"
             component={Auth(SearchPage, null)}
           />
-        </Switch>
+          </Switch>
       </div>
       <Footer />
     </Suspense>

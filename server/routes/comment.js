@@ -24,6 +24,15 @@ router.post("/saveComment", (req, res) => {
   });
 });
 
+router.get("/getCommentscount", (req, res) => {
+  //책을 DB에 가져와서 클라이언트에 보낸다
+  Comment.find()
+    .exec((err, comments) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).json({ success: true, count:comments.length });
+    });
+});
+
 router.post("/getComments", (req, res) => {
   Comment.find({ postId: req.body.bookId })
     .populate("writer")

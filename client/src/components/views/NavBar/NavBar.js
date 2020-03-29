@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
-import { Drawer, Button, Icon, Input, Col } from "antd";
+import { Drawer, Button, Icon, Col } from "antd";
+import { useLocation } from 'react-router-dom'
 import "./Sections/style.css";
 import $ from 'jquery'; 
 
-const { Search } = Input;
 
+<<<<<<< HEAD
 function NavBar(props) {
 $(document).ready(function(){
   $(window).scroll(function(){
@@ -21,7 +21,13 @@ $(document).ready(function(){
 	  }
   })
 })
+=======
+function NavBar() {
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
   const [visible, setVisible] = useState(false);
+  let location = useLocation();
+  let navColor = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "#fff";
+  let navBorder = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "solid 1px #e8e8e8";
 
   const showDrawer = () => {
     setVisible(true);
@@ -31,6 +37,7 @@ $(document).ready(function(){
     setVisible(false);
   };
 
+<<<<<<< HEAD
   function onSearch(value) {
     if(value.replace(/ /gi, "")===""){ 
       alert("검색을 입력해주세요."); return false; 
@@ -40,10 +47,12 @@ $(document).ready(function(){
     window.location.reload(false);
    
   }
+=======
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
   return (
     <nav
       className="menu"
-      style={{ position: "fixed", zIndex: 5, width: "100%" }}
+      style={{borderBottom: navBorder,padding: "0 20px", backgroundColor: navColor , position: "fixed", zIndex: 5, width: "100%" }}
     >
       <Col lg={3} xs={24}></Col>
       <Col lg={18} xs={24}>
@@ -65,14 +74,6 @@ $(document).ready(function(){
           <div className="menu_rigth">
             <RightMenu mode="horizontal" />
           </div>
-          <div className="menu_searchbox">
-            <Search
-              className="search-b"
-              placeholder="책검색"
-              onSearch={value => onSearch(value)}
-              style={{ width: "500px",display: "table-cell",height:"40px" }}
-            />
-          </div>
           <Button
             className="menu__mobile-button"
             type="primary"
@@ -88,12 +89,15 @@ $(document).ready(function(){
             onClose={onClose}
             visible={visible}
           >
+<<<<<<< HEAD
          <Search
               className="search-b"
               placeholder="책검색"
               onSearch={value => onSearch(value)}
               style={{ width: "500px",display: "table-cell",height:"40px" }}
             />
+=======
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
             <LeftMenu mode="inline" />
             <RightMenu mode="inline" />
           </Drawer>
@@ -104,4 +108,4 @@ $(document).ready(function(){
   );
 }
 
-export default withRouter(NavBar);
+export default NavBar;

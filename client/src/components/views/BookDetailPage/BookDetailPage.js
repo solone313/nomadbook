@@ -7,7 +7,6 @@ import {
     Typography
 } from "antd";
 import Axios from "axios";
-import SideBook from "./Sections/SideBook";
 import Subscribe from "./Sections/Subscribe";
 import Comment from "./Sections/Comment";
 import StarRatings from "react-star-ratings";
@@ -76,7 +75,7 @@ function BookDetailPage(props) {
                 }
             });
     };
-    if (BookDetail.writer) {
+    if (BookDetail.title) {
         return (
             <div>
                 <Row gutter={[16, 16]}>
@@ -163,11 +162,6 @@ function BookDetailPage(props) {
                             </div>
                         </div>
                     </Col>
-                </Row>
-                <Row gutter={[8, 8]}>
-                    <div >
-                        <SideBook/>
-                    </div>
                 </Row>
                 <Row gutter={[16, 16]}>
                     <div style={{marginLeft:"10px", width:"92%",marginBottom:"30px"}}>

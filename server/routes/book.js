@@ -94,7 +94,7 @@ router.post("/getBookDetail", (req, res) => {
 });
 
 router.post("/searchresult", (req,res) => {
-  Book.find({title : { $regex: req.body.value }}).exec(
+  Book.find({$or :[{title : { $regex: req.body.value }},{ author : { $regex: req.body.value }},{publisher : { $regex: req.body.value }},{category : { $regex: req.body.value }}]}).exec(
     (err, searchresult) => {
       if (err) return res.status(400).send(err);
       res.status(200).json({success: true, searchresult})

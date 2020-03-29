@@ -1,44 +1,36 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Layout, Menu, Breadcrumb } from "antd";
+import axios from "axios";
+import { Layout, Menu, Breadcrumb , message, Button} from "antd";
 import { UserOutlined, UploadOutlined } from "@ant-design/icons";
-import Axios from "axios";
-import { Row } from "antd";
+
 const { Content, Sider } = Layout;
 
-function ProfilePage() {
+function DeleteUserPage(props) {
   const user = useSelector(state => state.user);
   const [Collapse, setCollapse] = useState(false);
-  const [reviews, setreviews] = useState([]);
-  useEffect(() => {
-    const variables = {
-      _id: localStorage.getItem("userId")
-    };
-    Axios.post("/api/users/profilecomment",variables).then(response => {
-      if (response.data.success) {
-        setreviews(response.data.profilecomments);
-        // console.log('/api/book/getbooks',response.data.books[0])
-      } else {
-        alert("책 가져오기를 실패 했습니다.");
-      }
-    });
-  }, []);
 
-  const renderCards = reviews.map((review, index) => {
-    return (
-      <Row lg={4} md={8} xs={12} style={{ maxHeight:"300px"}} key={index}>
-        <span>
-          <a href={`/book/${review.postId._id}`}>{review.postId.title} </a>, {review.content} {review.rating} 
-        </span>
-        {/* <br />
-        <span>평점: {book.rating}</span> */}
-      </Row>
-    );
-  });
   const onCollapse = collapsed => {
     // console.log(collapsed);
     setCollapse(collapsed);
+  };
+  const onSubmit = event => {
+    event.preventDefault();
+    //    console.log(event)
+    const variables = {
+      _id : localStorage.getItem("userId")
+    };
+    axios.post("/api/users/deleteuser", variables).then(response => {
+      if (response.data.success) {
+        message.success("회원탈퇴에 성공했습니다");
+        setTimeout(() => {
+          props.history.push("/");
+        }, 3000);
+      } else {
+        alert("Failed to upload Book");
+      }
+    });
   };
   if (user.userData) {
     return (
@@ -50,7 +42,7 @@ function ProfilePage() {
           onCollapse={onCollapse}
         >
           <div className="logo" />
-          <Menu theme="white" defaultSelectedKeys={["profile_review"]} mode="inline">
+          <Menu theme="white" defaultSelectedKeys={["profile_delete"]} mode="inline">
             <Menu.Item key="profile_review">
               <a href='/profile'>
               <UserOutlined />
@@ -81,7 +73,10 @@ function ProfilePage() {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              {renderCards}
+              <h1>정말 탈퇴하시겠습니까?</h1><h3>- 업로드한 책과 리뷰 모두 삭제됩니다.</h3>
+             <Button type="primary" size="large" onClick={onSubmit}>
+              탈퇴하기
+            </Button>
             </div>
           </Content>
         </Layout>
@@ -92,4 +87,4 @@ function ProfilePage() {
   }
 }
 
-export default ProfilePage;
+export default DeleteUserPage;

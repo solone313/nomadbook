@@ -1,18 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col } from "antd";
+import { Card, Col, Input } from "antd";
 import axios from "axios";
 import queryString from "query-string";
 const { Meta } = Card;
+const { Search } = Input;
+
 
 function SearchPage({ match, location }) {
   const [searchResult, setsearchResult] = useState([]);
+<<<<<<< HEAD
   const [result, setresult] = useState("");
 
   const query = queryString.parse(location.search);
 
+=======
+  const [result, setresult] = useState("")
+  const query = queryString.parse(props.location.search);
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
   const variables = {
     value: query.value
   };
+
+  function onSearch(value) {
+    if(value.replace(/ /gi, "")===""){ 
+      alert("검색을 입력해주세요."); return false; 
+    }
+    let path = `/search?value=${value}`;
+    props.history.push(path);
+    window.location.reload(false);
+  }
   useEffect(() => {
     axios.post("/api/book/searchresult", variables).then(response => {
       if (response.data.success) {
@@ -61,7 +77,16 @@ function SearchPage({ match, location }) {
     );
   });
   if(searchResult.length===0){
+<<<<<<< HEAD
     return <div> 
+=======
+    return (<div> 
+      <Search
+        placeholder="책 이름, 작가, 출판사를 검색해주세요"
+        onSearch={value => onSearch(value)}
+        style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
+      />
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
               <div style={{margin:"1rem 0"}}>
                 {result}
               </div> 
@@ -70,16 +95,33 @@ function SearchPage({ match, location }) {
               <h3>핵심 단어를 띄어쓰기를 제거해주세요</h3>
               <h3>※ 미움 받을 용기 → 미움받을용기</h3>
               <h3>※ 고마운 마음 → 고마운마음</h3>
+<<<<<<< HEAD
             </div>
   }
   else{
 
        return <div style={{textAlign:"center",margin:"1rem 0"}} >
+=======
+            </div>)
+  }
+  else{
+
+       return (<div style={{textAlign:"center",margin:"1rem 0",paddingBottom: "50px"}} >
+                <Search
+        placeholder="책 이름, 작가, 출판사, 카테고리를 검색해주세요"
+        onSearch={value => onSearch(value)}
+        style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
+      />
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
                 {result}
                 <div>
                    {renderCards}
                 </div>
+<<<<<<< HEAD
             </div>
+=======
+            </div>)
+>>>>>>> 3a2672f95ccc031e741eca3839d7af8c0fab4bc0
   }
 }
 

@@ -73,7 +73,6 @@ function SubscriptionPage() {
         >
           {book.views}
         </span>
-        -<span>{moment(book.createdAt).format("MM월 DD일")}</span>
       </Col>
     );
   });

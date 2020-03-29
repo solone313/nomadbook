@@ -7,17 +7,18 @@ import Axios from "axios";
 import { Row } from "antd";
 const { Content, Sider } = Layout;
 
-function ProfilePage() {
+function ProfileBookPage() {
   const user = useSelector(state => state.user);
   const [Collapse, setCollapse] = useState(false);
-  const [reviews, setreviews] = useState([]);
+  const [books, setbooks] = useState([]);
+
   useEffect(() => {
     const variables = {
       _id: localStorage.getItem("userId")
     };
-    Axios.post("/api/users/profilecomment",variables).then(response => {
+    Axios.post("/api/users/profilebook",variables).then(response => {
       if (response.data.success) {
-        setreviews(response.data.profilecomments);
+        setbooks(response.data.profilebooks);
         // console.log('/api/book/getbooks',response.data.books[0])
       } else {
         alert("책 가져오기를 실패 했습니다.");
@@ -25,11 +26,11 @@ function ProfilePage() {
     });
   }, []);
 
-  const renderCards = reviews.map((review, index) => {
+  const renderCards = books.map((book, index) => {
     return (
       <Row lg={4} md={8} xs={12} style={{ maxHeight:"300px"}} key={index}>
         <span>
-          <a href={`/book/${review.postId._id}`}>{review.postId.title} </a>, {review.content} {review.rating} 
+          <a href={`/book/${book._id}`}>{book.title} </a>, {book.author} {book.year} 
         </span>
         {/* <br />
         <span>평점: {book.rating}</span> */}
@@ -50,7 +51,7 @@ function ProfilePage() {
           onCollapse={onCollapse}
         >
           <div className="logo" />
-          <Menu theme="white" defaultSelectedKeys={["profile_review"]} mode="inline">
+          <Menu theme="white" defaultSelectedKeys={["profile_book"]} mode="inline">
             <Menu.Item key="profile_review">
               <a href='/profile'>
               <UserOutlined />
@@ -92,4 +93,4 @@ function ProfilePage() {
   }
 }
 
-export default ProfilePage;
+export default ProfileBookPage;

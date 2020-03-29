@@ -71,11 +71,12 @@ function SearchPage(props) {
   });
   if(searchResult.length===0){
     return (<div> 
+      <center>
       <Search
         placeholder="책 이름, 작가, 출판사를 검색해주세요"
         onSearch={value => onSearch(value)}
         style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
-      />
+      /></center>
               <div style={{margin:"1rem 0"}}>
                 {result}
               </div> 
@@ -88,14 +89,15 @@ function SearchPage(props) {
   }
   else{
 
-       return (<div style={{textAlign:"center",margin:"1rem 0",paddingBottom: "50px"}} >
+       return (<div style={{textAlign:"center",margin:"1rem 0"}} >
+         <center>
                 <Search
         placeholder="책 이름, 작가, 출판사, 카테고리를 검색해주세요"
         onSearch={value => onSearch(value)}
         style={{ width: "100%",maxWidth: "650px", display: "flex",height:"50px" }}
-      />
+      /></center>
                 {result}
-                <div>
+                <div style={{paddingBottom: "50px"}}>
                    {renderCards}
                 </div>
             </div>)

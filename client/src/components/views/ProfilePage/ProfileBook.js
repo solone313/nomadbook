@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu, List } from "antd";
 import { UserOutlined, UploadOutlined } from "@ant-design/icons";
 import Axios from "axios";
 import { Row } from "antd";
+import { BACK_SERVER_URL } from '../../Config.js';
 const { Content, Sider } = Layout;
 
 function ProfileBookPage() {
@@ -16,7 +17,7 @@ function ProfileBookPage() {
     const variables = {
       _id: localStorage.getItem("userId")
     };
-    Axios.post("/api/users/profilebook",variables).then(response => {
+    Axios.post(`${BACK_SERVER_URL}/api/users/profilebook`,variables).then(response => {
       if (response.data.success) {
         setbooks(response.data.profilebooks);
         // console.log('/api/book/getbooks',response.data.books[0])
@@ -28,13 +29,25 @@ function ProfileBookPage() {
 
   const renderCards = books.map((book, index) => {
     return (
-      <Row lg={4} md={8} xs={12} style={{ maxHeight:"300px"}} key={index}>
-        <span>
-          <a href={`/book/${book._id}`}>{book.title} </a>, {book.author} {book.year} 
-        </span>
-        {/* <br />
-        <span>평점: {book.rating}</span> */}
-      </Row>
+      <Row lg={4} md={8} xs={12} style={{ maxHeight: "300px" }} key={index}>
+      <List>
+        <List.Item>
+          <img
+            src={`${book.filePath}`}
+            style={{
+              width: "60px",
+              height: "90px",
+              marginRight: "10px"
+            }}
+            alt="DetailImg"
+          />
+          <a href={`/book/${book._id}`}>{book.title} </a>, {book.author}{" "}
+          {book.year}
+        </List.Item>
+      </List>
+      {/* <br />
+      <span>평점: {book.rating}</span> */}
+    </Row>
     );
   });
   const onCollapse = collapsed => {
@@ -74,14 +87,11 @@ function ProfileBookPage() {
         </Sider>
         <Layout className="site-layout">
           <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>{user.userData.name}</Breadcrumb.Item>
-            </Breadcrumb>
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
+              <div>user/ {user.userData.name} </div>
               {renderCards}
             </div>
           </Content>

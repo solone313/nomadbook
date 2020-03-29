@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Input } from "antd";
 import axios from "axios";
 import queryString from "query-string";
+import { BACK_SERVER_URL } from '../../Config.js';
 const { Meta } = Card;
 const { Search } = Input;
 
@@ -23,7 +24,7 @@ function SearchPage(props) {
     window.location.reload(false);
   }
   useEffect(() => {
-    axios.post("/api/book/searchresult", variables).then(response => {
+    axios.post(`${BACK_SERVER_URL}/api/book/searchresult`, variables).then(response => {
       if (response.data.success) {
         setsearchResult(response.data.searchresult);
         if (response.data.searchresult.length===0){

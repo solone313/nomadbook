@@ -5,10 +5,10 @@ import {
     AUTH_USER,
     LOGOUT_USER,
 } from './types';
-import { USER_SERVER } from '../components/Config.js';
+import { BACK_SERVER_URL, TokenAndTokenExp } from '../components/Config.js';
 
 export function registerUser(dataToSubmit){
-    const request = axios.post(`${USER_SERVER}/register`,dataToSubmit)
+    const request = axios.post(`${BACK_SERVER_URL}/api/users/register`,dataToSubmit)
         .then(response => response.data);
     
     return {
@@ -18,7 +18,7 @@ export function registerUser(dataToSubmit){
 }
 
 export function loginUser(dataToSubmit){
-    const request = axios.post(`${USER_SERVER}/login`,dataToSubmit)
+    const request = axios.post(`${BACK_SERVER_URL}/api/users/login`,dataToSubmit)
                 .then(response => response.data);
 
     return {
@@ -28,9 +28,9 @@ export function loginUser(dataToSubmit){
 }
 
 export function auth(){
-    const request = axios.get(`${USER_SERVER}/auth`)
+    const request = axios.get(`${BACK_SERVER_URL}/api/users/auth?${TokenAndTokenExp}`)
     .then(response => response.data);
-
+    console.log(request,'asd')
     return {
         type: AUTH_USER,
         payload: request
@@ -38,7 +38,7 @@ export function auth(){
 }
 
 export function logoutUser(){
-    const request = axios.get(`${USER_SERVER}/logout`)
+    const request = axios.get(`${BACK_SERVER_URL}/api/users/logout?${TokenAndTokenExp}`)
     .then(response => response.data);
 
     return {
@@ -48,7 +48,7 @@ export function logoutUser(){
 }
 
 export function loginWithGoogle(dataToSubmit){
-    const request = axios.post(`${USER_SERVER}/googleLogin`,dataToSubmit)
+    const request = axios.post(`${BACK_SERVER_URL}/api/users/googleLogin`,dataToSubmit)
     .then(response => response.data);
     // console.log(request, '오늘밤주인공은나야나');
     return {

@@ -11,7 +11,7 @@ import Subscribe from "./Sections/Subscribe";
 import Comment from "./Sections/Comment";
 import StarRatings from "react-star-ratings";
 import './BookDetailPage.css'
-
+import { BACK_SERVER_URL } from '../../Config.js';
 function BookDetailPage(props) {
     const bookId = props.match.params.bookId;
     const variable = {
@@ -28,7 +28,7 @@ function BookDetailPage(props) {
     }
     useEffect(() => {
         Axios
-            .post("/api/book/getBookDetail", variable)
+            .post(`${BACK_SERVER_URL}/api/book/getBookDetail`, variable)
             .then(response => {
                 if (response.data.success) {
                     // console.log(response.data.book)
@@ -38,7 +38,7 @@ function BookDetailPage(props) {
                 }
             });
         Axios
-            .post("/api/comment/getComments", variable)
+            .post(`${BACK_SERVER_URL}/api/comment/getComments`, variable)
             .then(response => {
                 if (response.data.success) {
                     // console.log('response.data.comments',response.data.comments)
@@ -48,7 +48,7 @@ function BookDetailPage(props) {
                 }
             });
         Axios
-            .post("/api/comment/getBookscore", variable)
+            .post(`${BACK_SERVER_URL}/api/comment/getBookscore`, variable)
             .then(response => {
                 if (response.data.success) {
                     // console.log('response.data.rating',response.data.rating,
@@ -63,7 +63,7 @@ function BookDetailPage(props) {
     const updateComment = newComment => {
         setCommentLists(CommentLists.concat(newComment));
         Axios
-            .post("/api/comment/getBookscore", variable)
+            .post(`${BACK_SERVER_URL}/api/comment/getBookscore`, variable)
             .then(response => {
                 if (response.data.success) {
                     // console.log('response.data.rating',response.data.rating,

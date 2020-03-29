@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../BookDetailPage.css';
-
+import { BACK_SERVER_URL } from '../../../Config.js';
 function Subscribe(props) {
   const userTo = props.userTo;
   const userFrom = props.userFrom;
@@ -20,7 +20,7 @@ function Subscribe(props) {
       if (Subscribed) {
         //구독하고 있을 때
         axios
-          .post("/api/subscribe/unSubscribe", subscribeVariables)
+          .post(`${BACK_SERVER_URL}/api/subscribe/unSubscribe`, subscribeVariables)
           .then(response => {
             if (response.data.success) {
               setSubscribeNumber(SubscribeNumber - 1);
@@ -33,7 +33,7 @@ function Subscribe(props) {
         //구독하지 않았을 때
 
         axios
-          .post("/api/subscribe/subscribe", subscribeVariables)
+          .post(`${BACK_SERVER_URL}/api/subscribe/subscribe`, subscribeVariables)
           .then(response => {
             if (response.data.success) {
               setSubscribeNumber(SubscribeNumber + 1);
@@ -49,7 +49,7 @@ function Subscribe(props) {
   useEffect(() => {
     const subscribeNumberVariables = { userTo: userTo, userFrom: userFrom };
     axios
-      .post("/api/subscribe/subscribeNumber", subscribeNumberVariables)
+      .post(`${BACK_SERVER_URL}/api/subscribe/subscribeNumber`, subscribeNumberVariables)
       .then(response => {
         if (response.data.success) {
           setSubscribeNumber(response.data.subscribeNumber);
@@ -59,7 +59,7 @@ function Subscribe(props) {
       });
 
     axios
-      .post("/api/subscribe/subscribed", subscribeNumberVariables)
+      .post(`${BACK_SERVER_URL}/api/subscribe/subscribed`, subscribeNumberVariables)
       .then(response => {
         if (response.data.success) {
           setSubscribed(response.data.subcribed);

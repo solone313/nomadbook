@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Card, Avatar, Col, Typography, Row } from "antd";
 import Axios from "axios";
-import moment from "moment";
+import { BACK_SERVER_URL } from '../../Config.js';
 const { Title } = Typography;
 const { Meta } = Card;
 function SubscriptionPage() {
@@ -11,7 +11,7 @@ function SubscriptionPage() {
     const SubscriptionVariables = {
       userFrom: localStorage.getItem("userId")
     };
-    Axios.post("/api/book/getSubscriptionBooks", SubscriptionVariables).then(
+    Axios.post(`${BACK_SERVER_URL}/api/book/getSubscriptionBooks`, SubscriptionVariables).then(
       response => {
         if (response.data.success) {
           // console.log(response.data.books);

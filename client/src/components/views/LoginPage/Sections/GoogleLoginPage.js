@@ -10,12 +10,18 @@ function GoogleLoginPage(props) {
   const dispatch = useDispatch();
   const responseGoogle = response => {
     dispatch(loginWithGoogle(response)).then(response => {
-      if (response.payload.loginSuccess === true) {
-        window.localStorage.setItem("userId", response.payload.userId);
+      if (response.payload.loginSuccess) {
+        window.localStorage.setItem('x_token', response.payload.token);
+        window.localStorage.setItem('x_tokenExp', response.payload.tokenExp);
+        window.localStorage.setItem('userId', response.payload.userId);
+        // console.log(response.payload)
+        
         message.success(response.payload.msg);
+    
         props.history.push("/");
       } else {
-        setFormErrorMessage("Check out your Account or Password again");
+        // console.log(response.payload,'asd')
+        setFormErrorMessage('Check out your Account or Password again')
       }
     });
   };

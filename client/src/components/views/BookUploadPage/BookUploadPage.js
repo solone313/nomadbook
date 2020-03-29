@@ -3,6 +3,7 @@ import { Typography, Button, Form, message, Input, Icon } from "antd";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { BACK_SERVER_URL } from '../../Config.js';
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -53,7 +54,7 @@ function UploadBookPage(props) {
       publisher: Publisher,
       year: Year
     };
-    axios.post("/api/book/uploadBook", variables).then(response => {
+    axios.post(`${BACK_SERVER_URL}/api/book/uploadBook`, variables).then(response => {
       if (response.data.success) {
         message.success("업로드에 성공했습니다");
         setTimeout(() => {
@@ -70,7 +71,7 @@ function UploadBookPage(props) {
       header: { "content-type": "image/png" }
     };
     formData.append("img", files[0]);
-    axios.post("/api/book/uploadfiles", formData, config).then(response => {
+    axios.post(`${BACK_SERVER_URL}/api/book/uploadfiles`, formData, config).then(response => {
       if (response.data.success) {
         setFilePath(response.data.url);
         //gerenate thumbnail with this filepath !

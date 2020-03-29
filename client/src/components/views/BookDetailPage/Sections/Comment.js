@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import SingleComment from "./SingleComment";
 import StarRatings from "react-star-ratings";
 import '../BookDetailPage.css'
-
+import { BACK_SERVER_URL } from '../../../Config.js';
 const { TextArea } = Input;
 
 function Comments(props) {
@@ -32,7 +32,7 @@ function Comments(props) {
       rating: Rating
     };
 
-    axios.post("/api/comment/saveComment", variables).then(response => {
+    axios.post(`${BACK_SERVER_URL}/api/comment/saveComment`, variables).then(response => {
       if (response.data.success) {
         setComment("");
         props.refreshFunction(response.data.result);
@@ -65,7 +65,11 @@ function Comments(props) {
       {props.CommentLists.length===0 &&
         <p>리뷰가 없습니다.</p>
       }
+       {props.CommentLists.length!==0 &&
+       <p>리뷰가 {props.CommentLists.length}개 작성되었습니다.</p>
+      }
        <p> review this book </p>
+       
         <hr />
         <form
           style={{ display: "flex", flexDirection: "column" }}

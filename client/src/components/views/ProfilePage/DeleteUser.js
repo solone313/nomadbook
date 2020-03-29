@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { Layout, Menu, Breadcrumb , message, Button} from "antd";
 import { UserOutlined, UploadOutlined } from "@ant-design/icons";
-
+import { BACK_SERVER_URL } from '../../Config.js';
 const { Content, Sider } = Layout;
 
 function DeleteUserPage(props) {
@@ -21,14 +21,14 @@ function DeleteUserPage(props) {
     const variables = {
       _id : localStorage.getItem("userId")
     };
-    axios.post("/api/users/deleteuser", variables).then(response => {
+    axios.post(`${BACK_SERVER_URL}/api/users/deleteuser`, variables).then(response => {
       if (response.data.success) {
         message.success("회원탈퇴에 성공했습니다");
         setTimeout(() => {
           props.history.push("/");
         }, 3000);
       } else {
-        alert("Failed to upload Book");
+        alert("Failed to Delete");
       }
     });
   };

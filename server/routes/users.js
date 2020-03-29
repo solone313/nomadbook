@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../models/User");
-const axios = require("axios");
 const { auth } = require("../middleware/auth");
 const { OAuth2Client } = require("google-auth-library");
 const config = require("../config/key");
@@ -12,55 +11,63 @@ const { Subscriber } = require("../models/Subscriber");
 //=================================
 //             User
 //=================================
-
 router.get("/auth", auth, (req, res) => {
   res.status(200).json({
-    _id: req.user._id,
-    isAdmin: req.user.role === 0 ? false : true,
-    isAuth: true,
-    email: req.user.email,
-    name: req.user.name,
-    nickname: req.user.nickname,
-    role: req.user.role,
-    image: req.user.image
+      _id: req.user._id,
+      isAdmin: req.user.role === 0 ? false : true,
+      isAuth: true,
+      email: req.user.email,
+      name: req.user.name,
+      lastname: req.user.lastname,
+      role: req.user.role,
+      image: req.user.image,
+      company: req.user.company
   });
 });
 
 router.post("/register", (req, res) => {
+
   const user = new User(req.body);
 
   user.save((err, doc) => {
-    if (err) return res.json({ success: false, err });
-    return res.status(200).json({
-      success: true
-    });
+      // console.log(doc)
+      if (err) return res.json({ success: false, err });
+      return res.status(200).json({
+          success: true
+      });
   });
 });
 
 router.post("/login", (req, res) => {
-  User.findOne({ email: req.body.email }, (err, user) => {
-    if (!user)
-      return res.json({
-        loginSuccess: false,
-        message: "Auth failed, email not found"
-      });
+  User.findOne({ email: req.body.account }, (err, user) => {
+      if (!user)
+          return res.json({
+              loginSuccess: false,
+              message: "Auth failed, account not found"
+          });
 
-    user.comparePassword(req.body.password, (err, isMatch) => {
-      if (!isMatch)
-        return res.json({ loginSuccess: false, message: "Wrong password" });
+      user.comparePassword(req.body.password, (err, isMatch) => {
+          if (!isMatch)
+              return res.json({ loginSuccess: false, message: "Wrong password" });
 
-      user.generateToken((err, user) => {
-        if (err) return res.status(400).send(err);
-        res.cookie("w_authExp", user.tokenExp);
-        res
-          .cookie("w_auth", user.token)
-          .status(200)
-          .json({
-            loginSuccess: true,
-            userId: user._id
+          user.generateToken((err, user) => {
+              if (err) return res.status(400).send(err);
+              res.status(200).json({
+                  loginSuccess: true, userId: user._id,
+                  tokenExp: user.tokenExp, token: user.token,
+                  company: user.company
+              });
           });
       });
-    });
+  });
+});
+
+router.get("/logout", auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { token: "", tokenExp: "" }, (err, doc) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).send({
+          success: true
+      });
   });
 });
 
@@ -75,18 +82,14 @@ router.post("/googleLogin", (req, res) => {
       if (email_verified) {
         User.findOne({ email }).exec((err, user) => {
           if (user) {
-            // console.log(user)
+            // console.log(user,'asd')
             user.generateToken((err, user) => {
               if (err) return res.status(400).send(err);
-              res.cookie("w_authExp", user.tokenExp);
-              res
-                .cookie("w_auth", user.token)
-                .status(200)
-                .json({
-                  loginSuccess: true,
-                  userId: user._id,
-                  msg : "로그인 되었습니다."
-                });
+              res.status(200).json({
+                  loginSuccess: true, userId: user._id,
+                  tokenExp: user.tokenExp, token: user.token,
+                  msg: "로그인에 성공했습니다."
+              });
             });
           } else {
             let nickname = given_name;
@@ -101,15 +104,11 @@ router.post("/googleLogin", (req, res) => {
               }
               user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
-                res.cookie("w_authExp", user.tokenExp);
-                res
-                  .cookie("w_auth", user.token)
-                  .status(200)
-                  .json({
-                    loginSuccess: true,
-                    userId: user._id,
-                    msg : "가입에 성공했습니다"
-                  });
+                res.status(200).json({
+                    loginSuccess: true, userId: user._id,
+                    tokenExp: user.tokenExp, token: user.token,
+                    msg: "가입에 성공했습니다."
+                });
               });
             });
           }
@@ -122,27 +121,20 @@ router.post("/googleLogin", (req, res) => {
     });
 });
 
-router.get("/logout", auth, (req, res) => {
-  User.findOneAndUpdate(
-    { _id: req.user._id },
-    { token: "", tokenExp: "" },
-    (err, doc) => {
-      if (err) return res.json({ success: false, err });
-      return res.status(200).send({
-        success: true
-      });
-    }
-  );
-});
 
-router.post("/deleteuser", auth, (req, res) => {
-  Book.deleteMany({writer: req.user._id}), (err,doc) =>{
+router.post("/deleteuser", (req, res) => {
+  console.log(req.body._id);
+  Book.deleteMany({writer: req.body._id}, (err,doc) =>{
+    console.log('1')
     if (err) return res.json({ success: false, err });
-    Comment.deleteMany({writer: req.user._id}, (err, doc) => {
+    Comment.deleteMany({writer: req.body._id}, (err, doc) => {
+      console.log('2')
       if (err) return res.json({ success: false, err });
-      Subscriber.deleteMany({userFrom: req.user._id}, (err, doc) => {
+      Subscriber.deleteMany({userFrom: req.body._id}, (err, doc) => {
+        console.log('3')
         if (err) return res.json({ success: false, err });
-        User.findOneAndDelete({ _id: req.user._id }, (err,doc) =>{
+        User.findOneAndDelete({ _id: req.body._id }, (err,doc) =>{
+          console.log('4')
           if (err) return res.json({ success: false, err });
           return res.status(200).send({
             success: true
@@ -150,7 +142,7 @@ router.post("/deleteuser", auth, (req, res) => {
         })
       })
     })
-  }
+  })
 
 });
 

@@ -84,7 +84,7 @@ function Comments(props) {
           style={{ width: "100%", borderRadius: "5px" }}
           onChange={handleChange}
           value={Comment}
-          placeholder="리뷰를 작성해주세요"
+          placeholder="리뷰를 작성해주세요"        
         />
         <br />
         <Button style={{marginBottom: "40px", width: "30%", height: "52px" }} onClick={onSubmit}>

@@ -11,7 +11,16 @@ function NavBar() {
   let location = useLocation();
   let navColor = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "#fff";
   let navBorder = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "solid 1px #e8e8e8";
-
+  window.onscroll = function(){
+    var top =	 window.pageYOffset || document.documentElement.scrollTop;
+    if (top > 300) {
+      document.getElementById('nav').style.background = "#fff";
+      document.getElementById('nav').style.borderBottom = "solid 1px #e8e8e8";
+    } else {
+      document.getElementById('nav').style.background = "";
+      document.getElementById('nav').style.borderBottom = "rgba( 255, 255, 0.0, 0.0 )";
+    }
+  };
   const showDrawer = () => {
     setVisible(true);
   };
@@ -23,18 +32,19 @@ function NavBar() {
   return (
     <nav
       className="menu"
+      id="nav"
       style={{borderBottom: navBorder,padding: "0 20px", backgroundColor: navColor , position: "fixed", zIndex: 5, width: "100%" }}
     >
       <Col lg={3} xs={24}></Col>
       <Col lg={18} xs={24}>
         <div className="menu__logo">
           <a href="/">
-            <img
+            {/* <img
               src="https://goreads.s3.ap-northeast-2.amazonaws.com/goreads.png"
               height="55"
               width="120"
               alt="mainImg"
-            />
+            /> */}
           </a>
         </div>
 

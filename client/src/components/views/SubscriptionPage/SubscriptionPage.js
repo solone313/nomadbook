@@ -81,7 +81,7 @@ function SubscriptionPage() {
     <div
       style={{
         width: "85%",
-        margin: "3rem auto"
+        paddingTop:"80px"
       }}
     >
       <Title level={2}>Books</Title>

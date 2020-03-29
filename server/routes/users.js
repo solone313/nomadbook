@@ -125,16 +125,16 @@ router.post("/googleLogin", (req, res) => {
 router.post("/deleteuser", (req, res) => {
   console.log(req.body._id);
   Book.deleteMany({writer: req.body._id}, (err,doc) =>{
-    console.log('1')
+    // console.log('1')
     if (err) return res.json({ success: false, err });
     Comment.deleteMany({writer: req.body._id}, (err, doc) => {
-      console.log('2')
+      // console.log('2')
       if (err) return res.json({ success: false, err });
       Subscriber.deleteMany({userFrom: req.body._id}, (err, doc) => {
-        console.log('3')
+        // console.log('3')
         if (err) return res.json({ success: false, err });
         User.findOneAndDelete({ _id: req.body._id }, (err,doc) =>{
-          console.log('4')
+          // console.log('4')
           if (err) return res.json({ success: false, err });
           return res.status(200).send({
             success: true

@@ -24,6 +24,21 @@ router.post("/saveComment", (req, res) => {
   });
 });
 
+router.post("/deleteComment", (req, res) => {
+
+
+  Comment.deleteOne({ _id: req.body.postId }).exec((err, comments) => {
+    if (err) return res.json({ success: false, err });
+    Comment.find({ writer: req.body.userId})
+    .populate("postId")
+    .exec((err,profilecomments)=>{
+       console.log(profilecomments,err)
+      if(err) return res.status(400).send(err);
+      res.status(200).json({success:true, profilecomments})
+    });
+  });
+});
+
 router.get("/getCommentscount", (req, res) => {
   //책을 DB에 가져와서 클라이언트에 보낸다
   Comment.find()

@@ -12,17 +12,18 @@ function NavBar() {
   let navColor = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "#fff";
   let navBorder = location.pathname === '/' ? "rgba( 255, 255, 0.0, 0.0 )" : "solid 1px #e8e8e8";
 
-
-  window.onscroll = function(){
-    var top =	 window.pageYOffset || document.documentElement.scrollTop;
-    if (top > 300) {
-      document.getElementById('nav').style.background = "#fff";
-      document.getElementById('nav').style.borderBottom = "solid 1px #e8e8e8";
-    } else {
-      document.getElementById('nav').style.background = "";
-      document.getElementById('nav').style.borderBottom = "rgba( 255, 255, 0.0, 0.0 )";
-    }
-  };
+  if(location.pathname === '/'){
+    window.onscroll = function(){
+      var top =	 window.pageYOffset || document.documentElement.scrollTop;
+      if (top > 300) {
+        document.getElementById('nav').style.background = "#fff";
+        document.getElementById('nav').style.borderBottom = "solid 1px #e8e8e8";
+      } else {
+        document.getElementById('nav').style.background = "";
+        document.getElementById('nav').style.borderBottom = "rgba( 255, 255, 0.0, 0.0 )";
+      }
+    };
+  }
 
   const showDrawer = () => {
     setVisible(true);

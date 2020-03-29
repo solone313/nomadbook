@@ -9,7 +9,7 @@ const { Content, Sider } = Layout;
 
 function DeleteUserPage(props) {
   const user = useSelector(state => state.user);
-  const [Collapse, setCollapse] = useState(false);
+  const [Collapse, setCollapse] = useState(true);
 
   const onCollapse = collapsed => {
     // console.log(collapsed);

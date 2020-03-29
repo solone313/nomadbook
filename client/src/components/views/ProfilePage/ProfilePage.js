@@ -1,16 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Layout, Menu, List } from "antd";
+import { Layout, Menu, List, Button } from "antd";
 import { UserOutlined, UploadOutlined } from "@ant-design/icons";
 import Axios from "axios";
 import { Row } from "antd";
 import { BACK_SERVER_URL } from '../../Config.js';
+import axios from 'axios';
 const { Content, Sider } = Layout;
 
 function ProfilePage() {
   const user = useSelector(state => state.user);
-  const [Collapse, setCollapse] = useState(false);
+  const [Collapse, setCollapse] = useState(true);
   const [reviews, setreviews] = useState([]);
   useEffect(() => {
     const variables = {
@@ -26,6 +27,26 @@ function ProfilePage() {
     });
   }, []);
 
+
+  const onSubmit = e => {
+    e.preventDefault();
+
+    const variables = {
+      postId: e.target.value,
+      userId: localStorage.getItem("userId")
+    };
+    // console.log(variables, e.target);
+    axios.post(`${BACK_SERVER_URL}/api/comment/deleteComment`, variables).then(response => {
+      if (response.data.success) {
+        console.log("Qwe")
+        setreviews(response.data.profilecomments);
+      } else {
+        alert("코멘트 저장에 실패했습니다 이유: " + response.data.err);
+      }
+    });
+  };
+
+
   const renderCards = reviews.map((review, index) => {
     return (
       <Row lg={4} md={8} xs={12} style={{ maxHeight: "300px" }} key={index}>
@@ -34,14 +55,17 @@ function ProfilePage() {
             <img
               src={`${review.postId.filePath}`}
               style={{
-                width: "60px",
-                height: "90px",
+                width: "80px",
+                height: "110px",
                 marginRight: "10px"
               }}
               alt="DetailImg"
             />{" "}
             <a href={`/book/${review.postId._id}`}>{review.postId.title} </a>,{" "}
-            {review.content} {review.rating}
+            {review.content} {review.rating}&emsp;
+            <Button type="primary" onClick={onSubmit} value={review._id}>
+              삭제
+            </Button>
           </List.Item>
         </List>
         {/* <br />

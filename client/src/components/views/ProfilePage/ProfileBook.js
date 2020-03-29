@@ -1,16 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Layout, Menu, List } from "antd";
+import { Layout, Menu, List, Button } from "antd";
 import { UserOutlined, UploadOutlined } from "@ant-design/icons";
 import Axios from "axios";
 import { Row } from "antd";
 import { BACK_SERVER_URL } from '../../Config.js';
+import axios from 'axios';
 const { Content, Sider } = Layout;
 
 function ProfileBookPage() {
   const user = useSelector(state => state.user);
-  const [Collapse, setCollapse] = useState(false);
+  const [Collapse, setCollapse] = useState(true);
   const [books, setbooks] = useState([]);
 
   useEffect(() => {
@@ -27,22 +28,42 @@ function ProfileBookPage() {
     });
   }, []);
 
+  const onSubmit = e => {
+    e.preventDefault();
+
+    const variables = {
+      postId: e.target.value,
+      userId: localStorage.getItem("userId")
+    };
+    // console.log(variables, e.target);
+    axios.post(`${BACK_SERVER_URL}/api/book/deleteBook`, variables).then(response => {
+      if (response.data.success) {
+        setbooks(response.data.profilebooks);
+      } else {
+        alert("코멘트 저장에 실패했습니다 이유: " + response.data.err);
+      }
+    });
+  };
+
   const renderCards = books.map((book, index) => {
     return (
       <Row lg={4} md={8} xs={12} style={{ maxHeight: "300px" }} key={index}>
       <List>
         <List.Item>
-          <img
-            src={`${book.filePath}`}
-            style={{
-              width: "60px",
-              height: "90px",
-              marginRight: "10px"
-            }}
-            alt="DetailImg"
-          />
+        <img
+              src={`${book.filePath}`}
+              style={{
+                width: "80px",
+                height: "110px",
+                marginRight: "10px"
+              }}
+              alt="DetailImg"
+            />{" "}
           <a href={`/book/${book._id}`}>{book.title} </a>, {book.author}{" "}
           {book.year}
+          <Button type="primary" onClick={onSubmit} value={book._id}>
+              삭제
+          </Button>
         </List.Item>
       </List>
       {/* <br />

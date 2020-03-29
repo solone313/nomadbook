@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Book } = require("../models/Book");
 const { Subscriber } = require("../models/Subscriber");
+const { Comment } = require("../models/Comment");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const path = require("path");
@@ -121,5 +122,28 @@ router.post("/getSubscriptionBooks", (req, res) => {
            })
    
  })
+
+ router.post("/deleteBook", (req, res) => {
+
+
+  Book.deleteOne({ _id: req.body.postId }).exec((err, books) => {
+    if (err) return res.json({ success: false, err });
+    Comment.deleteMany({postId: req.body.postId}, (err, doc) => {
+      // console.log('2')
+      if (err) return res.json({ success: false, err });
+      Subscriber.deleteMany({userTo: req.body.postId}, (err, doc) => {
+        // console.log('3')
+        if (err) return res.json({ success: false, err });
+        Book.find({ writer: req.body.userId})
+        .populate("writer")
+        .exec((err,profilebooks)=>{
+          // console.log(profilebooks,err)
+          if(err) return res.status(400).send(err);
+          res.status(200).json({success:true, profilebooks})
+        });
+      });
+    });
+  });
+});
 
 module.exports = router;

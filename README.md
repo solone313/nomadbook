@@ -2,6 +2,8 @@
 목표: 한국 버전의 “GoodReads 클론” 만들기  
 👉🏻 자세히 보기: https://hackathon.nomadcoders.co/ 
 
+## 사이트주소  
+http://ec2-15-165-203-193.ap-northeast-2.compute.amazonaws.com/
 
 ## 기능정리
 ![function](./doc/function.png)
@@ -21,12 +23,12 @@
 ## 구현(로컬 기준)
 * 로그인 구현 : 구현 (소셜로그인: 구글)
 * 리스트 : 구현
-* 검색 : 구현중
+* 검색 : 구현
 * 디테일 : 구현
 * ADD NEW : 구현
 * RATE and REVIEW : 구현
 * WANT to read : 구현
-* Profile page : 구현중
+* Profile page : 구현
 
 ## How to Run
 1) git clone this repository

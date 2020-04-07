@@ -1,4 +1,4 @@
-# NOMAD hackaton 출품작 ~29
+# NOMAD hackaton 출품작
 목표: 한국 버전의 “GoodReads 클론” 만들기  
 👉🏻 자세히 보기: https://hackathon.nomadcoders.co/ 
 
@@ -7,18 +7,19 @@ http://ec2-15-165-203-193.ap-northeast-2.compute.amazonaws.com/
 
 ## 기능정리
 ![function](./doc/function.png)
+
 ## 기술스택
-* Infra : HEROKU, STORAGE: AWS S3
+* Infra : EC2(ubuntu) STORAGE: AWS S3
 * 개발 언어 : Nodejs
-* Backend : Express.js
-* Frontend : ReactJS
-* DBMS : mongoDB
+* Backend : Expressjs
+* Frontend : Reacjs
+* DBMS : mongoDB atlas
 
 
 ## 이외의 기술
 * prettier를 통한 코드스타일 정리 (default 값으로 정리)
 * Google 애널리틱스를 통한 접속자 수 확인
-* S3를 heroku에 넣어 인프라 관리 (secret vars 등) 
+* ec2 우분투 인스턴스 사용 ftp는 filezila ssh는 윈도우10의 오픈ssh 사용
 
 ## 구현(로컬 기준)
 * 로그인 구현 : 구현 (소셜로그인: 구글)

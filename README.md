@@ -21,15 +21,6 @@ http://ec2-15-165-203-193.ap-northeast-2.compute.amazonaws.com/
 * Google 애널리틱스를 통한 접속자 수 확인
 * ec2 우분투 인스턴스 사용 ftp는 filezila ssh는 윈도우10의 오픈ssh 사용
 
-## 구현(로컬 기준)
-* 로그인 구현 : 구현 (소셜로그인: 구글)
-* 리스트 : 구현
-* 검색 : 구현
-* 디테일 : 구현
-* ADD NEW : 구현
-* RATE and REVIEW : 구현
-* WANT to read : 구현
-* Profile page : 구현
 
 ## How to Run
 1) git clone this repository
@@ -38,3 +29,6 @@ http://ec2-15-165-203-193.ap-northeast-2.compute.amazonaws.com/
 4) cd .. & make dev.js
 5) make config/dev.js -> write google, awsS3 key
 6) npm run dev
+
+## 문의
+email : solone313@naver.com

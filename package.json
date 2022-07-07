@@ -28,7 +28,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "google-auth-library": "^5.9.2",
     "jsonwebtoken": "^8.5.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.9.1",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
